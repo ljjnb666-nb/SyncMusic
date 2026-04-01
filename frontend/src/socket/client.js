@@ -4,6 +4,12 @@ import { getSessionId } from '../utils/session'
 
 const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
+// Socket metadata storage (avoid socket.data which may be undefined)
+const socketMeta = {
+  roomId: null,
+  sessionId: null
+}
+
 const socket = io(SOCKET_URL, {
   autoConnect: false,
   reconnection: true,
@@ -20,11 +26,18 @@ const socket = io(SOCKET_URL, {
  */
 export function connectToRoom(roomId, username) {
   const sessionId = getSessionId()
-  socket.data.roomId = roomId
-  socket.data.sessionId = sessionId
+  socketMeta.roomId = roomId
+  socketMeta.sessionId = sessionId
   socket.connect()
   socket.emit('room:join', { roomId, username })
   return socket
+}
+
+/**
+ * Get socket metadata
+ */
+export function getSocketMeta() {
+  return socketMeta
 }
 
 /**
