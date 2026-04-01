@@ -5,44 +5,21 @@ import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import fs from 'fs'
-import { setupSocketHandlers } from './socket/handlers.js'
-import { loadRooms } from './services/roomService.js'
+import { handleJoin, handleDisconnect } from './socket/handlers.js'
 
 const DOWNLOAD_DIR = process.env.DOWNLOAD_DIR || path.join(process.cwd(), '../downloads')
 
 const app = express()
-const httpServer = createServer(app)
+const server = createServer(app)
 
-const DEV_ORIGINS = [
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'http://localhost:3002',
-  'http://localhost:5173'
-]
-
-const io = new Server(httpServer, {
+const io = new Server(server, {
   cors: {
-    origin: (origin, callback) => {
-      if (!origin || DEV_ORIGINS.some(o => origin.startsWith(o))) {
-        callback(null, true)
-      } else {
-        callback(null, true)
-      }
-    },
-    credentials: true
+    origin: '*',
+    methods: ['GET', 'POST']
   }
 })
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || DEV_ORIGINS.some(o => origin.startsWith(o))) {
-      callback(null, true)
-    } else {
-      callback(null, true)
-    }
-  },
-  credentials: true
-}))
+app.use(cors())
 app.use(express.json())
 
 function serveDownloadFile(req, res, prefix) {
@@ -59,10 +36,8 @@ function serveDownloadFile(req, res, prefix) {
   const stream = fs.createReadStream(resolvedPath)
   stream.on('error', (e) => {
     if (e.code === 'ENOENT') {
-      console.log(`[${prefix}] File not found:`, resolvedPath)
       res.status(404).send('File not found')
     } else {
-      console.error(`[${prefix}] Error:`, e)
       res.status(500).send('Server error')
     }
   })
@@ -106,16 +81,24 @@ import musicRouter from './routes/music.js'
 import roomRouter from './routes/room.js'
 
 app.use('/api/music', musicRouter)
-app.use('/api/room', roomRouter)
+app.use('/api/rooms', roomRouter)
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' })
 })
 
-setupSocketHandlers(io)
-loadRooms()
+// Socket.io connection handler
+io.on('connection', (socket) => {
+  console.log('Client connected:', socket.id)
+
+  socket.on('room:join', (data) => handleJoin(io, socket, data))
+
+  socket.on('disconnect', (reason) => handleDisconnect(io, socket, reason))
+})
 
 const PORT = process.env.PORT || 3001
-httpServer.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Backend running on port ${PORT}`)
 })
+
+export { app, server, io }
