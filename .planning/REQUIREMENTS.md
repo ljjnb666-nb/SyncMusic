@@ -14,8 +14,8 @@
 - [x] **ROOM-01**: User can create a new room with a custom name
 - [x] **ROOM-02**: User receives a shareable room link (URL with room ID)
 - [x] **ROOM-03**: User can join a room via link without registration
-- [ ] **ROOM-04**: Room displays list of current participants
-- [ ] **ROOM-05**: Room host is identified visually; host controls playback
+- [p] **ROOM-04**: Room displays list of current participants (state ready, UI pending 01-03)
+- [p] **ROOM-05**: Room host is identified visually; host controls playback (state ready, UI pending 01-03)
 - [x] **ROOM-06**: If host disconnects, next participant becomes host
 
 ### Real-time Sync
@@ -96,8 +96,8 @@
 | ROOM-01 | Phase 1 | Complete |
 | ROOM-02 | Phase 1 | Complete |
 | ROOM-03 | Phase 1 | Complete |
-| ROOM-04 | Phase 1 | Pending |
-| ROOM-05 | Phase 1 | Pending |
+| ROOM-04 | Phase 1 | In Progress (01-02 done, 01-03 pending) |
+| ROOM-05 | Phase 1 | In Progress (01-02 done, 01-03 pending) |
 | ROOM-06 | Phase 1 | Complete |
 | SYNC-01 | Phase 2 | Pending |
 | SYNC-02 | Phase 2 | Pending |
