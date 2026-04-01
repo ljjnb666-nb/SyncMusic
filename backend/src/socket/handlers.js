@@ -17,12 +17,14 @@ function handleJoin(io, socket, { roomId, username }) {
     return
   }
 
-  // Generate or reuse userId
-  let userId = socket.data.userId
+  // Use sessionId from header if available, otherwise generate
+  // Frontend sends x-session-id header when connecting via Socket.io
+  let userId = socket.handshake.headers['x-session-id'] || socket.data.userId
   if (!userId) {
     userId = nanoid(8)
-    socket.data.userId = userId
   }
+  socket.data.userId = userId
+  socket.data.roomId = roomId
 
   // Create participant
   const participant = {
@@ -34,7 +36,6 @@ function handleJoin(io, socket, { roomId, username }) {
 
   // Add to room
   room.participants.push(participant)
-  socket.data.roomId = roomId
 
   // Join Socket.io room
   socket.join(roomId)

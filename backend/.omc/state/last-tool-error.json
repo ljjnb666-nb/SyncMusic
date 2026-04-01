@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"sleep 5 && curl -s \\\"http://127.0.0.1:3000/api/rooms/test\\\" 2>&1\",\"description\":\"Test proxy\"}",
+  "error": "Exit code 7",
+  "timestamp": "2026-04-01T17:50:30.736Z",
+  "retry_count": 1
+}

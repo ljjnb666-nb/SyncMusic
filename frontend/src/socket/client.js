@@ -10,12 +10,17 @@ const socketMeta = {
   sessionId: null
 }
 
+// Create socket with sessionId header
+const sessionId = getSessionId()
 const socket = io(SOCKET_URL, {
   autoConnect: false,
   reconnection: true,
   reconnectionDelay: 1000,
   reconnectionAttempts: 5,
-  transports: ['websocket', 'polling']
+  transports: ['websocket', 'polling'],
+  extraHeaders: {
+    'x-session-id': sessionId
+  }
 })
 
 /**
@@ -25,7 +30,6 @@ const socket = io(SOCKET_URL, {
  * @returns {Socket} socket instance
  */
 export function connectToRoom(roomId, username) {
-  const sessionId = getSessionId()
   socketMeta.roomId = roomId
   socketMeta.sessionId = sessionId
   socket.connect()

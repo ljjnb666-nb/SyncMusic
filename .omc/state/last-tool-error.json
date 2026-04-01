@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"agent-browser fill @e1 \\\"Transfer Test\\\" && sleep 1 && agent-browser click @e2 && sleep 5 && agent-browser get url --session test1 --json 2>&1\",\"description\":\"Create room\"}",
+  "error": "Exit code 1\n\u001b[31m✗\u001b[0m locator.fill: Unsupported token \"@e1\" while parsing css selector \"@e1\". Did you mean to CSS.escape it?\nCall log:\n\u001b[2m  - waiting for @e1\u001b[22m",
+  "timestamp": "2026-04-01T17:40:15.305Z",
+  "retry_count": 2
+}

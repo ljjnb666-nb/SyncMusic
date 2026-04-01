@@ -1,0 +1,275 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1775050524131,
+  "projectRoot": "C:\\Users\\LJJ2004\\所有项目\\SyncMusic",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {},
+  "hotPaths": [
+    {
+      "path": ".planning\\PROJECT.md",
+      "accessCount": 10,
+      "lastAccessed": 1775055089943,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\ROADMAP.md",
+      "accessCount": 9,
+      "lastAccessed": 1775055016906,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\REQUIREMENTS.md",
+      "accessCount": 9,
+      "lastAccessed": 1775055032757,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\STATE.md",
+      "accessCount": 9,
+      "lastAccessed": 1775055089990,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\socket\\client.js",
+      "accessCount": 8,
+      "lastAccessed": 1775065144272,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\research\\ARCHITECTURE.md",
+      "accessCount": 7,
+      "lastAccessed": 1775053640314,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\views\\Home.vue",
+      "accessCount": 7,
+      "lastAccessed": 1775064398622,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\research\\STACK.md",
+      "accessCount": 6,
+      "lastAccessed": 1775053640378,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\phases\\01-room-management\\01-RESEARCH.md",
+      "accessCount": 6,
+      "lastAccessed": 1775055090071,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\config.json",
+      "accessCount": 6,
+      "lastAccessed": 1775055090102,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\utils\\session.js",
+      "accessCount": 6,
+      "lastAccessed": 1775060989248,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\views\\Room.vue",
+      "accessCount": 6,
+      "lastAccessed": 1775064564673,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\stores\\room.js",
+      "accessCount": 6,
+      "lastAccessed": 1775065056283,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\api\\room.js",
+      "accessCount": 5,
+      "lastAccessed": 1775064541588,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\socket\\handlers.js",
+      "accessCount": 5,
+      "lastAccessed": 1775065128664,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\services\\roomService.js",
+      "accessCount": 5,
+      "lastAccessed": 1775065361094,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\research\\PITFALLS.md",
+      "accessCount": 4,
+      "lastAccessed": 1775052075140,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\research\\SUMMARY.md",
+      "accessCount": 4,
+      "lastAccessed": 1775052193004,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\index.js",
+      "accessCount": 4,
+      "lastAccessed": 1775060933669,
+      "type": "file"
+    },
+    {
+      "path": "frontend/src",
+      "accessCount": 4,
+      "lastAccessed": 1775064513321,
+      "type": "directory"
+    },
+    {
+      "path": ".planning\\research\\FEATURES.md",
+      "accessCount": 3,
+      "lastAccessed": 1775052075060,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\phases\\01-room-management\\01-01-PLAN.md",
+      "accessCount": 3,
+      "lastAccessed": 1775053629546,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\phases\\01-room-management\\01-02-PLAN.md",
+      "accessCount": 3,
+      "lastAccessed": 1775054699499,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\phases\\01-room-management\\01-03-PLAN.md",
+      "accessCount": 3,
+      "lastAccessed": 1775055089896,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\routes\\room.js",
+      "accessCount": 3,
+      "lastAccessed": 1775060835475,
+      "type": "file"
+    },
+    {
+      "path": "backend/src",
+      "accessCount": 3,
+      "lastAccessed": 1775065042702,
+      "type": "directory"
+    },
+    {
+      "path": "",
+      "accessCount": 2,
+      "lastAccessed": 1775053650266,
+      "type": "directory"
+    },
+    {
+      "path": "backend\\tests\\room.service.test.js",
+      "accessCount": 2,
+      "lastAccessed": 1775054551387,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\phases\\01-room-management\\01-01-SUMMARY.md",
+      "accessCount": 2,
+      "lastAccessed": 1775054708576,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\main.js",
+      "accessCount": 2,
+      "lastAccessed": 1775055360569,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\App.vue",
+      "accessCount": 2,
+      "lastAccessed": 1775055361375,
+      "type": "file"
+    },
+    {
+      "path": ".planning",
+      "accessCount": 1,
+      "lastAccessed": 1775052802753,
+      "type": "directory"
+    },
+    {
+      "path": "backend\\src\\db.js",
+      "accessCount": 1,
+      "lastAccessed": 1775053719489,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\state\\roomManager.js",
+      "accessCount": 1,
+      "lastAccessed": 1775053769724,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\phases\\01-room-management\\01-02-SUMMARY.md",
+      "accessCount": 1,
+      "lastAccessed": 1775054967439,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 1,
+      "lastAccessed": 1775055090039,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\package.json",
+      "accessCount": 1,
+      "lastAccessed": 1775055157777,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\router\\index.js",
+      "accessCount": 1,
+      "lastAccessed": 1775055330402,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\components\\ParticipantList.vue",
+      "accessCount": 1,
+      "lastAccessed": 1775055332077,
+      "type": "file"
+    },
+    {
+      "path": "frontend/src/views/Home.vue",
+      "accessCount": 1,
+      "lastAccessed": 1775064394307,
+      "type": "directory"
+    }
+  ],
+  "userDirectives": []
+}

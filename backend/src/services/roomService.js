@@ -5,20 +5,19 @@ import { createRoom as dbCreateRoom, getRoom as dbGetRoom } from '../db.js'
 
 function createRoom(name, hostId, hostUsername) {
   const roomId = nanoid(10)
-  const userId = nanoid(8)
 
   const room = {
     id: roomId,
     name: name.trim().slice(0, 50),
     createdAt: Date.now(),
-    hostId: userId,
+    hostId: hostId,  // Use the provided hostId
     isPlaying: false,
     currentTrack: null,
     position: 0,
     positionUpdatedAt: Date.now(),
     playlist: [],
     participants: [{
-      id: userId,
+      id: hostId,  // Use the provided hostId as participant id
       username: hostUsername || 'Guest' + nanoid(4).slice(0, 4),
       joinedAt: Date.now(),
       isHost: true
