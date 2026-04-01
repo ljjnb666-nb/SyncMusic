@@ -1,55 +1,10 @@
 <template>
   <div class="app-container">
     <router-view />
-    <MiniPlayer
-      v-if="playerStore.currentSong"
-      @toggle-play="togglePlay"
-      @play-next="playNext"
-      @play-prev="playPrev"
-      @expand="expandPlayer"
-    />
   </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import { useAuthStore } from './stores/auth.js'
-import { usePlayerStore } from './stores/player.js'
-import MiniPlayer from './components/MiniPlayer.vue'
-
-const authStore = useAuthStore()
-const playerStore = usePlayerStore()
-
-onMounted(() => {
-  if (authStore.token) {
-    authStore.fetchCurrentUser()
-  }
-})
-
-function togglePlay() {
-  playerStore.setPlaying(!playerStore.isPlaying)
-}
-
-function playNext() {
-  const nextIndex = playerStore.getNextIndex()
-  if (nextIndex >= 0) {
-    playerStore.setCurrentIndex(nextIndex)
-  }
-}
-
-function playPrev() {
-  const prevIndex = playerStore.getPrevIndex()
-  if (prevIndex >= 0) {
-    playerStore.setCurrentIndex(prevIndex)
-  }
-}
-
-function expandPlayer() {
-  const playerSection = document.querySelector('.player-section, .audio-player, #player')
-  if (playerSection) {
-    playerSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
-}
 </script>
 
 <style scoped>
