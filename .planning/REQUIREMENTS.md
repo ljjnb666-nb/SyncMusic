@@ -11,12 +11,12 @@
 
 ### Room Management
 
-- [ ] **ROOM-01**: User can create a new room with a custom name
-- [ ] **ROOM-02**: User receives a shareable room link (URL with room ID)
-- [ ] **ROOM-03**: User can join a room via link without registration
+- [x] **ROOM-01**: User can create a new room with a custom name
+- [x] **ROOM-02**: User receives a shareable room link (URL with room ID)
+- [x] **ROOM-03**: User can join a room via link without registration
 - [ ] **ROOM-04**: Room displays list of current participants
 - [ ] **ROOM-05**: Room host is identified visually; host controls playback
-- [ ] **ROOM-06**: If host disconnects, next participant becomes host
+- [x] **ROOM-06**: If host disconnects, next participant becomes host
 
 ### Real-time Sync
 
@@ -93,12 +93,12 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ROOM-01 | Phase 1 | Pending |
-| ROOM-02 | Phase 1 | Pending |
-| ROOM-03 | Phase 1 | Pending |
+| ROOM-01 | Phase 1 | Complete |
+| ROOM-02 | Phase 1 | Complete |
+| ROOM-03 | Phase 1 | Complete |
 | ROOM-04 | Phase 1 | Pending |
 | ROOM-05 | Phase 1 | Pending |
-| ROOM-06 | Phase 1 | Pending |
+| ROOM-06 | Phase 1 | Complete |
 | SYNC-01 | Phase 2 | Pending |
 | SYNC-02 | Phase 2 | Pending |
 | SYNC-03 | Phase 2 | Pending |
