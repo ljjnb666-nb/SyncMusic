@@ -1,31 +1,41 @@
-import axios from 'axios'
+// REST API client for room operations
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
-const api = axios.create({
-  baseURL: 'http://localhost:3001/api'
-})
-
-// 获取房间信息
-export async function getRoom(roomId) {
-  const response = await api.get(`/room/${roomId}`)
-  return response.data
-}
-
-// 获取播放列表
-export async function getPlaylist(roomId) {
-  const response = await api.get(`/room/${roomId}/playlist`)
-  return response.data
-}
-
-// 添加歌曲到播放列表
-export async function addToPlaylist(roomId, song, socketId) {
-  const response = await api.post(`/room/${roomId}/playlist`, { song, socketId })
-  return response.data
-}
-
-// 从播放列表移除歌曲
-export async function removeFromPlaylist(roomId, index, socketId) {
-  const response = await api.delete(`/room/${roomId}/playlist/${index}`, {
-    data: { socketId }
+/**
+ * Create a new room
+ * @param {string} name - room name
+ * @param {string} sessionId - user's session ID
+ * @param {string} username - user's display name
+ * @returns {{ roomId: string, inviteUrl: string }}
+ */
+export async function createRoom(name, sessionId, username) {
+  const response = await fetch(`${API_BASE}/api/rooms`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-session-id': sessionId
+    },
+    body: JSON.stringify({ name, username })
   })
-  return response.data
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({ message: 'Failed to create room' }))
+    throw new Error(err.message || 'Failed to create room')
+  }
+  return response.json()
+}
+
+/**
+ * Get room metadata
+ * @param {string} roomId
+ * @returns {{ id, name, hostId, createdAt } | null}
+ */
+export async function getRoom(roomId) {
+  try {
+    const response = await fetch(`${API_BASE}/api/rooms/${roomId}`)
+    if (response.status === 404) return null
+    if (!response.ok) throw new Error('Failed to fetch room')
+    return response.json()
+  } catch {
+    throw new Error('Failed to fetch room')
+  }
 }
