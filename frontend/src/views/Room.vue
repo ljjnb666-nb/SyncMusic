@@ -78,15 +78,15 @@
 
       <!-- Playback Area -->
       <div class="room-section playback-section">
-        <div v-if="roomStore.currentTrack" class="player-card">
+        <div v-if="playerStore.currentSong" class="player-card">
           <div class="now-playing">
             <div class="track-info">
-              <p class="track-title">{{ roomStore.currentTrack.title || '未知歌曲' }}</p>
-              <p class="track-artist">{{ roomStore.currentTrack.artist || '未知艺术家' }}</p>
+              <p class="track-title">{{ playerStore.currentSong?.title || '未知歌曲' }}</p>
+              <p class="track-artist">{{ playerStore.currentSong?.artist || '未知艺术家' }}</p>
             </div>
             <div class="player-controls">
               <button v-if="roomStore.isHost" @click="togglePlay" class="play-btn">
-                <svg v-if="!roomStore.isPlaying" viewBox="0 0 24 24" fill="currentColor">
+                <svg v-if="!playerStore.isPlaying" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="5 3 19 12 5 21 5 3"/>
                 </svg>
                 <svg v-else viewBox="0 0 24 24" fill="currentColor">
@@ -94,8 +94,8 @@
                   <rect x="14" y="4" width="4" height="16"/>
                 </svg>
               </button>
-              <div v-else class="sync-badge" :class="roomStore.isPlaying ? 'playing' : 'paused'">
-                <span>{{ roomStore.isPlaying ? '同步播放中' : '已暂停' }}</span>
+              <div v-else class="sync-badge" :class="playerStore.isPlaying ? 'playing' : 'paused'">
+                <span>{{ playerStore.isPlaying ? '同步播放中' : '已暂停' }}</span>
               </div>
             </div>
           </div>
@@ -113,7 +113,10 @@
             <polygon points="10 8 16 12 10 16 10 8"/>
           </svg>
           <p>暂无音乐播放</p>
-          <span>Phase 2: 音乐播放功能</span>
+          <!-- Music Parser for host -->
+          <div v-if="roomStore.isHost" class="music-parser-wrapper">
+            <MusicParser @add-to-playlist="onSongAdded" />
+          </div>
         </div>
       </div>
 
@@ -141,11 +144,13 @@
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useRoomStore } from '../stores/room'
+import { usePlayerStore } from '../stores/player'
 import { getRoom } from '../api/room'
 import { getSessionId, getUsername } from '../utils/session'
 import socket, { connectToRoom, disconnect, getSocketInstance } from '../socket/client'
 import ParticipantList from '../components/ParticipantList.vue'
 import AudioPlayer from '../components/AudioPlayer.vue'
+import MusicParser from '../components/MusicParser.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -165,10 +170,11 @@ const duration = ref(0)
 const roomId = computed(() => route.params.roomId)
 const sessionId = getSessionId()
 const hostParticipant = computed(() => roomStore.hostParticipant)
+const playerStore = usePlayerStore()
 
 // Current track source for AudioPlayer
 const currentTrackSrc = computed(() => {
-  const track = roomStore.currentTrack
+  const track = playerStore.currentSong || roomStore.currentTrack
   if (!track) return ''
   // Prefer local path if available
   if (track.path) return `/local-music/${encodeURIComponent(track.path)}`
@@ -193,13 +199,23 @@ function formatTime(seconds) {
 // Host toggle play
 function togglePlay() {
   if (roomStore.isHost) {
-    if (roomStore.isPlaying) {
+    if (playerStore.isPlaying) {
       emitPause()
-      roomStore.setPlaying(false)
+      playerStore.setPlaying(false)
     } else {
       emitPlay()
-      roomStore.setPlaying(true)
+      playerStore.setPlaying(true)
     }
+  }
+}
+
+// Song added from parser - auto play first song
+function onSongAdded(song) {
+  if (roomStore.isHost && playerStore.playlist.length === 1) {
+    playerStore.setCurrentIndex(0)
+    roomStore.currentTrack = song // For sync
+    emitPlay()
+    playerStore.setPlaying(true)
   }
 }
 
@@ -266,7 +282,7 @@ function emitPlay() {
   if (!roomStore.isHost) return
   sock.emit('playback:play', {
     roomId: roomId.value,
-    track: roomStore.currentTrack,
+    track: playerStore.currentSong,
     position: currentTime.value,
     timestamp: Date.now()
   })
@@ -708,6 +724,13 @@ onUnmounted(() => {
 .leave-btn:hover {
   background: rgba(239, 68, 68, 0.2);
   border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Music Parser Wrapper */
+.music-parser-wrapper {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 16px;
 }
 
 /* Modal */
