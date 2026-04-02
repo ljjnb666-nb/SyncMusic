@@ -223,6 +223,17 @@
             <FavoriteButton :song="song" :size="18" />
             <button
               v-if="hasRoom"
+              @click="$emit('play-now', song)"
+              class="btn btn-primary btn-sm"
+              :disabled="downloadingId === song.id"
+            >
+              <AppIcon v-if="downloadingId === song.id" name="loader" :size="14" class="animate-spin" />
+              <AppIcon v-else name="play" :size="14" />
+              <span v-if="downloadingId === song.id">下载中</span>
+              <span v-else>播放</span>
+            </button>
+            <button
+              v-if="hasRoom"
               @click="$emit('add-to-playlist', song)"
               class="btn btn-secondary btn-sm"
             >
@@ -231,7 +242,7 @@
             </button>
             <button
               @click="$emit('download-song', song)"
-              class="btn btn-primary btn-sm"
+              class="btn btn-secondary btn-sm"
             >
               <AppIcon name="download" :size="14" />
             </button>
@@ -286,12 +297,13 @@ const props = defineProps({
   searched: Boolean,
   hasRoom: Boolean,
   parsedPlaylist: Object,
-  downloadingSelected: Boolean
+  downloadingSelected: Boolean,
+  downloadingId: String
 })
 
 const emit = defineEmits([
   'parse', 'download', 'search', 'add-to-playlist',
-  'parse-playlist', 'download-selected', 'download-song'
+  'parse-playlist', 'download-selected', 'download-song', 'play-now'
 ])
 
 const musicUrl = ref('')
