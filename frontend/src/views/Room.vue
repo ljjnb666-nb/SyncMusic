@@ -24,6 +24,15 @@
 
     <!-- Room Content -->
     <div v-else class="room-content">
+      <!-- Hidden Audio Player -->
+      <AudioPlayer
+        ref="audioPlayerRef"
+        :src="currentTrackSrc"
+        :volume="volume"
+        @timeupdate="onAudioTimeUpdate"
+        @ended="onAudioEnded"
+        @loaded="onAudioLoaded"
+      />
       <!-- Room Header -->
       <header class="room-header">
         <button @click="confirmLeave" class="back-btn">
@@ -67,9 +76,38 @@
         <ParticipantList />
       </div>
 
-      <!-- Playback Area Placeholder -->
+      <!-- Playback Area -->
       <div class="room-section playback-section">
-        <div class="playback-placeholder">
+        <div v-if="roomStore.currentTrack" class="player-card">
+          <div class="now-playing">
+            <div class="track-info">
+              <p class="track-title">{{ roomStore.currentTrack.title || '未知歌曲' }}</p>
+              <p class="track-artist">{{ roomStore.currentTrack.artist || '未知艺术家' }}</p>
+            </div>
+            <div class="player-controls">
+              <button v-if="roomStore.isHost" @click="togglePlay" class="play-btn">
+                <svg v-if="!roomStore.isPlaying" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                <svg v-else viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="4" width="4" height="16"/>
+                  <rect x="14" y="4" width="4" height="16"/>
+                </svg>
+              </button>
+              <div v-else class="sync-badge" :class="roomStore.isPlaying ? 'playing' : 'paused'">
+                <span>{{ roomStore.isPlaying ? '同步播放中' : '已暂停' }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="progress-bar-container">
+            <span class="time-label">{{ formatTime(currentTime) }}</span>
+            <div class="progress-track">
+              <div class="progress-fill" :style="{ width: progressPercent + '%' }"></div>
+            </div>
+            <span class="time-label">{{ formatTime(duration) }}</span>
+          </div>
+        </div>
+        <div v-else class="playback-placeholder">
           <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"/>
             <polygon points="10 8 16 12 10 16 10 8"/>
@@ -105,8 +143,9 @@ import { useRoute, useRouter } from 'vue-router'
 import { useRoomStore } from '../stores/room'
 import { getRoom } from '../api/room'
 import { getSessionId, getUsername } from '../utils/session'
-import socket, { connectToRoom, disconnect } from '../socket/client'
+import socket, { connectToRoom, disconnect, getSocketInstance } from '../socket/client'
 import ParticipantList from '../components/ParticipantList.vue'
+import AudioPlayer from '../components/AudioPlayer.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -117,9 +156,52 @@ const error = ref('')
 const copied = ref(false)
 const showLeaveModal = ref(false)
 
+// Audio player state
+const audioPlayerRef = ref(null)
+const volume = ref(80)
+const currentTime = ref(0)
+const duration = ref(0)
+
 const roomId = computed(() => route.params.roomId)
 const sessionId = getSessionId()
 const hostParticipant = computed(() => roomStore.hostParticipant)
+
+// Current track source for AudioPlayer
+const currentTrackSrc = computed(() => {
+  const track = roomStore.currentTrack
+  if (!track) return ''
+  // Prefer local path if available
+  if (track.path) return `/local-music/${encodeURIComponent(track.path)}`
+  if (track.url) return track.url
+  return ''
+})
+
+// Progress percent
+const progressPercent = computed(() => {
+  if (!duration.value || duration.value === 0) return 0
+  return (currentTime.value / duration.value) * 100
+})
+
+// Format time helper
+function formatTime(seconds) {
+  if (!seconds || isNaN(seconds)) return '0:00'
+  const mins = Math.floor(seconds / 60)
+  const secs = Math.floor(seconds % 60)
+  return `${mins}:${secs.toString().padStart(2, '0')}`
+}
+
+// Host toggle play
+function togglePlay() {
+  if (roomStore.isHost) {
+    if (roomStore.isPlaying) {
+      emitPause()
+      roomStore.setPlaying(false)
+    } else {
+      emitPlay()
+      roomStore.setPlaying(true)
+    }
+  }
+}
 
 const inviteUrl = computed(() => {
   return `${window.location.origin}/room/${roomId.value}`
@@ -161,6 +243,71 @@ function goHome() {
   router.push('/')
 }
 
+// Audio event handlers
+function onAudioTimeUpdate(time) {
+  currentTime.value = time
+}
+
+function onAudioEnded() {
+  // Notify host to play next
+  const sock = getSocketInstance()
+  if (roomStore.isHost) {
+    sock.emit('playback:next', { roomId: roomId.value })
+  }
+}
+
+function onAudioLoaded(dur) {
+  duration.value = dur
+}
+
+// Host playback controls - emit to socket
+function emitPlay() {
+  const sock = getSocketInstance()
+  if (!roomStore.isHost) return
+  sock.emit('playback:play', {
+    roomId: roomId.value,
+    track: roomStore.currentTrack,
+    position: currentTime.value,
+    timestamp: Date.now()
+  })
+}
+
+function emitPause() {
+  const sock = getSocketInstance()
+  if (!roomStore.isHost) return
+  sock.emit('playback:pause', {
+    roomId: roomId.value,
+    position: currentTime.value,
+    timestamp: Date.now()
+  })
+}
+
+function emitSeek(time) {
+  const sock = getSocketInstance()
+  if (!roomStore.isHost) return
+  sock.emit('playback:seek', {
+    roomId: roomId.value,
+    position: time,
+    timestamp: Date.now()
+  })
+}
+
+// Watch for host playback state changes
+watch(() => roomStore.isPlaying, (playing) => {
+  if (!audioPlayerRef.value) return
+  if (playing) {
+    audioPlayerRef.value.play()
+  } else {
+    audioPlayerRef.value.pause()
+  }
+})
+
+// Watch for track changes
+watch(() => roomStore.currentTrack, (track) => {
+  if (!track || !audioPlayerRef.value) return
+  audioPlayerRef.value.load(currentTrackSrc.value)
+})
+
 onMounted(async () => {
   try {
     // Check if room exists
@@ -175,11 +322,14 @@ onMounted(async () => {
     roomStore.setSessionId(sessionId)
     const username = getUsername()
 
+    // Connect to room first (creates socket)
+    connectToRoom(roomId.value, username)
+
     // Initialize socket event listeners
     roomStore.initSocket()
 
-    // Connect to room
-    connectToRoom(roomId.value, username)
+    // Set audio player ref for sync events
+    roomStore.setAudioPlayerRef(audioPlayerRef)
 
     // Watch for connection status
     watch(() => roomStore.isConnected, (connected) => {
@@ -436,6 +586,109 @@ onUnmounted(() => {
 .playback-placeholder span {
   font-size: 13px;
   color: #475569;
+}
+
+/* Player Card */
+.player-card {
+  background: rgba(26, 26, 36, 0.8);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.track-info {
+  flex: 1;
+}
+
+.track-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0 0 4px;
+}
+
+.track-artist {
+  font-size: 14px;
+  color: #a78bfa;
+  margin: 0;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+}
+
+.play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.play-btn:hover {
+  transform: scale(1.05);
+}
+
+.play-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sync-badge {
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.sync-badge.playing {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.sync-badge.paused {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.time-label {
+  font-size: 12px;
+  color: #64748b;
+  min-width: 35px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(139, 92, 246, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6 0%, #06b6d4 100%);
+  transition: width 0.1s;
 }
 
 /* Leave Button */

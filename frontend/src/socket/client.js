@@ -4,24 +4,34 @@ import { getSessionId } from '../utils/session'
 
 const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
-// Socket metadata storage (avoid socket.data which may be undefined)
+// Socket metadata storage
 const socketMeta = {
   roomId: null,
   sessionId: null
 }
 
-// Create socket with sessionId header
-const sessionId = getSessionId()
-const socket = io(SOCKET_URL, {
-  autoConnect: false,
-  reconnection: true,
-  reconnectionDelay: 1000,
-  reconnectionAttempts: 5,
-  transports: ['websocket', 'polling'],
-  extraHeaders: {
-    'x-session-id': sessionId
+// Socket instance (lazy)
+let socket = null
+
+/**
+ * Get or create socket instance with current sessionId
+ */
+function getSocket() {
+  const currentSessionId = getSessionId()
+  if (!socket) {
+    socket = io(SOCKET_URL, {
+      autoConnect: false,
+      reconnection: true,
+      reconnectionDelay: 1000,
+      reconnectionAttempts: 5,
+      transports: ['websocket', 'polling'],
+      extraHeaders: {
+        'x-session-id': currentSessionId
+      }
+    })
   }
-})
+  return socket
+}
 
 /**
  * Connect to a room and emit room:join
@@ -30,8 +40,25 @@ const socket = io(SOCKET_URL, {
  * @returns {Socket} socket instance
  */
 export function connectToRoom(roomId, username) {
+  const currentSessionId = getSessionId()
   socketMeta.roomId = roomId
-  socketMeta.sessionId = sessionId
+  socketMeta.sessionId = currentSessionId
+
+  // Disconnect existing socket if sessionId changed
+  if (socket && socket.connected) {
+    socket.disconnect()
+  }
+  // Create new socket with current sessionId
+  socket = io(SOCKET_URL, {
+    autoConnect: false,
+    reconnection: true,
+    reconnectionDelay: 1000,
+    reconnectionAttempts: 5,
+    transports: ['websocket', 'polling'],
+    extraHeaders: {
+      'x-session-id': currentSessionId
+    }
+  })
   socket.connect()
   socket.emit('room:join', { roomId, username })
   return socket
@@ -45,10 +72,19 @@ export function getSocketMeta() {
 }
 
 /**
+ * Get current socket instance (may be null if not connected yet)
+ */
+export function getSocketInstance() {
+  return socket
+}
+
+/**
  * Disconnect from socket
  */
 export function disconnect() {
-  socket.disconnect()
+  if (socket) {
+    socket.disconnect()
+  }
 }
 
-export default socket
+export default { connectToRoom, disconnect, getSocketMeta, getSocketInstance }

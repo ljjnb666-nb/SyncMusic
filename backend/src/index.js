@@ -5,7 +5,7 @@ import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import fs from 'fs'
-import { handleJoin, handleDisconnect } from './socket/handlers.js'
+import { handleJoin, handleDisconnect, handlePlay, handlePause, handleSeek } from './socket/handlers.js'
 
 const DOWNLOAD_DIR = process.env.DOWNLOAD_DIR || path.join(process.cwd(), '../downloads')
 
@@ -92,6 +92,9 @@ io.on('connection', (socket) => {
   console.log('Client connected:', socket.id)
 
   socket.on('room:join', (data) => handleJoin(io, socket, data))
+  socket.on('playback:play', (data) => handlePlay(io, socket, data))
+  socket.on('playback:pause', (data) => handlePause(io, socket, data))
+  socket.on('playback:seek', (data) => handleSeek(io, socket, data))
 
   socket.on('disconnect', (reason) => handleDisconnect(io, socket, reason))
 })

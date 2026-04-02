@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import socket from '../socket/client'
+import { getSocketInstance } from '../socket/client'
 
 export const useRoomStore = defineStore('room', () => {
   // State
@@ -78,11 +78,47 @@ export const useRoomStore = defineStore('room', () => {
   }
 
   // Initialize socket event bindings (call once)
+  // audioPlayerRef should be set externally via setAudioPlayerRef
+  let audioPlayerRef = null
+  function setAudioPlayerRef(ref) {
+    audioPlayerRef = ref
+  }
+
   function initSocket() {
-    socket.on('room:state', (room) => setRoom(room))
-    socket.on('room:join', ({ userId, username }) => addParticipant({ userId, username }))
-    socket.on('room:leave', ({ userId }) => removeParticipant(userId))
-    socket.on('room:host', ({ hostId: newHostId }) => setHost(newHostId))
+    const sock = getSocketInstance()
+    if (!sock) return
+    sock.on('room:state', (room) => setRoom(room))
+    sock.on('room:join', ({ userId, username }) => addParticipant({ userId, username }))
+    sock.on('room:leave', ({ userId }) => removeParticipant(userId))
+    sock.on('room:host', ({ hostId: newHostId }) => setHost(newHostId))
+
+    // Playback sync listeners (for non-host participants)
+    sock.on('playback:play', ({ track, position, timestamp }) => {
+      isPlaying.value = true
+      if (track) currentTrack.value = track
+      position.value = position
+      if (audioPlayerRef) {
+        const elapsed = (Date.now() - timestamp) / 1000
+        const currentPos = position + elapsed
+        audioPlayerRef.value?.seek(currentPos)
+        audioPlayerRef.value?.play()
+      }
+    })
+    sock.on('playback:pause', ({ position, timestamp }) => {
+      isPlaying.value = false
+      if (audioPlayerRef) {
+        const elapsed = (Date.now() - timestamp) / 1000
+        const currentPos = position + elapsed
+        audioPlayerRef.value?.seek(currentPos)
+        audioPlayerRef.value?.pause()
+      }
+    })
+    sock.on('playback:seek', ({ position, timestamp }) => {
+      position.value = position
+      if (audioPlayerRef) {
+        audioPlayerRef.value?.seek(position)
+      }
+    })
   }
 
   return {
@@ -109,6 +145,7 @@ export const useRoomStore = defineStore('room', () => {
     setHost,
     clearRoom,
     updateParticipantUsername,
-    initSocket
+    initSocket,
+    setAudioPlayerRef
   }
 })
