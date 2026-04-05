@@ -29,6 +29,7 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue'
+import { trackPathToUrl } from './utils/trackUtils.js'
 import { useRoute } from 'vue-router'
 import AppNavbar from './components/AppNavbar.vue'
 import AudioPlayer from './components/AudioPlayer.vue'
@@ -43,26 +44,11 @@ const route = useRoute()
 const isInRoom = computed(() => route.path.startsWith('/room/'))
 
 // Audio source for local music
+// Uses shared utility for safe URL construction
 const audioSrc = computed(() => {
   const song = playerStore.currentSong
   if (!song) return ''
-  // Prefer blobUrl (locally imported files)
-  if (song.blobUrl) return song.blobUrl
-  // Prefer local path if available
-  if (song.path) {
-    // 如果是 URL 路径（/downloads/ 或 /local-music/ 前缀），直接使用
-    if (song.path.startsWith('/downloads/') || song.path.startsWith('/local-music/')) {
-      return song.path
-    }
-    // 如果是绝对路径（Windows: C:/, Unix: /），使用 /local-music/ 代理
-    if (song.path.match(/^[A-Z]:/i) || song.path.startsWith('/')) {
-      return `/local-music/${encodeURIComponent(song.path)}`
-    }
-    // 相对路径放到 downloads 下
-    return `/downloads/${song.path}`
-  }
-  if (song.url) return song.url
-  return ''
+  return trackPathToUrl(song)
 })
 
 const hasAudioSrc = computed(() => audioSrc.value !== '')

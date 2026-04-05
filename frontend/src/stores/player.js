@@ -1,15 +1,19 @@
 import { defineStore } from 'pinia'
+import { normalizeTrackPath } from '../utils/trackUtils.js'
 import { ref, computed } from 'vue'
 
 const STORAGE_KEY = 'syncmusic_playlist'
 const STORAGE_INDEX_KEY = 'syncmusic_playlist_index'
 
 // 从 localStorage 加载保存的播放列表
+// 自动迁移：规范化所有 track.path，修复历史遗留的 % 字符问题
 function loadPlaylist() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
     if (saved) {
-      return JSON.parse(saved)
+      const playlist = JSON.parse(saved)
+      // Migration: normalize all track paths on load
+      return playlist.map(normalizeTrackPath)
     }
   } catch (e) {
     console.error('Failed to load playlist:', e)

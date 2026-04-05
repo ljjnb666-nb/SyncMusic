@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid'
 import { RoomManager } from '../state/roomManager.js'
 import { getRoom, roomExists } from '../services/roomService.js'
 import { deleteRoom, addParticipant, removeParticipant } from '../db.js'
+import { normalizeTrackPath, normalizePlaylist } from '../routes/music.js'
 
 function handleJoin(io, socket, { roomId, username }) {
   try {
@@ -63,7 +64,8 @@ function handleJoin(io, socket, { roomId, username }) {
       isPlaying: room.isPlaying,
       position: room.position,
       positionUpdatedAt: room.positionUpdatedAt,
-      playlist: room.playlist || []
+      playlist: normalizePlaylist(room.playlist || []),
+      currentTrack: normalizeTrackPath(room.currentTrack)
     })
 
     // Emit room:join to others
@@ -84,7 +86,8 @@ function handlePlay(io, socket, { roomId, track, position, timestamp }) {
     if (track) room.currentTrack = track
   }
   // Broadcast to ALL room members (including host) so host triggers local playback
-  io.to(roomId).emit('playback:play', { track, position, timestamp })
+  // Normalize track path before broadcast to prevent URL encoding issues
+  io.to(roomId).emit('playback:play', { track: normalizeTrackPath(track), position, timestamp })
 }
 
 function handlePause(io, socket, { roomId, position, timestamp }) {
@@ -108,7 +111,7 @@ function handleNext(io, socket, { roomId }) {
   if (!room) return
 
   socket.to(roomId).emit('playback:next', {
-    track: room.currentTrack,
+    track: normalizeTrackPath(room.currentTrack),
     position: 0,
     timestamp: Date.now()
   })
@@ -119,7 +122,7 @@ function handleRoomUpdate(io, socket, { roomId, playlist, currentTrack }) {
   if (!room) return
   if (playlist !== undefined) room.playlist = playlist
   if (currentTrack !== undefined) room.currentTrack = currentTrack
-  socket.to(roomId).emit('room:update', { playlist: room.playlist, currentTrack: room.currentTrack })
+  socket.to(roomId).emit('room:update', { playlist: normalizePlaylist(room.playlist), currentTrack: normalizeTrackPath(room.currentTrack) })
 }
 
 function handleDisconnect(io, socket, reason) {

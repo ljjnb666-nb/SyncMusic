@@ -201,6 +201,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { trackPathToUrl } from '../utils/trackUtils.js'
 import { useRoute, useRouter } from 'vue-router'
 import { useRoomStore } from '../stores/room'
 import { usePlayerStore } from '../stores/player'
@@ -231,26 +232,11 @@ const hostParticipant = computed(() => roomStore.hostParticipant)
 const playerStore = usePlayerStore()
 
 // Current track source for AudioPlayer
+// Uses shared utility that handles all path formats and URL-encoding safely
 const currentTrackSrc = computed(() => {
   const track = playerStore.currentSong || roomStore.currentTrack
   if (!track) return ''
-  // Prefer blobUrl (locally imported files)
-  if (track.blobUrl) return track.blobUrl
-  // Prefer local path if available
-  if (track.path) {
-    // 如果是 URL 路径（/downloads/ 或 /local-music/ 前缀），直接使用
-    if (track.path.startsWith('/downloads/') || track.path.startsWith('/local-music/')) {
-      return track.path
-    }
-    // 如果是绝对路径（Windows: C:/, Unix: /），使用 /local-music/ 代理
-    if (track.path.match(/^[A-Z]:/i) || track.path.startsWith('/')) {
-      return `/local-music/${encodeURIComponent(track.path)}`
-    }
-    // 相对路径放到 downloads 下
-    return `/downloads/${track.path}`
-  }
-  if (track.url) return track.url
-  return ''
+  return trackPathToUrl(track)
 })
 
 // Progress percent

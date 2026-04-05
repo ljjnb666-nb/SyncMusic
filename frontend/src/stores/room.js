@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import { trackPathToUrl } from '../utils/trackUtils.js'
 import { getSocketInstance } from '../socket/client'
 import { usePlayerStore } from './player'
 
@@ -171,15 +172,8 @@ export const useRoomStore = defineStore('room', () => {
         if (track && track.path) {
           // 直接设置 src，不依赖 watch 链（watch 的 load 会用 currentTrackSrc 覆盖）
           const src = audio.src
-          // 转换 path 为正确的 URL（与 Room.vue 的 currentTrackSrc 逻辑一致）
-          let targetSrc
-          if (track.path.startsWith('/downloads/') || track.path.startsWith('/local-music/')) {
-            targetSrc = track.path
-          } else if (track.path.match(/^[A-Z]:/i) || track.path.startsWith('/')) {
-            targetSrc = `/local-music/${encodeURIComponent(track.path)}`
-          } else {
-            targetSrc = `/downloads/${track.path}`
-          }
+          // 使用共享的 URL 构建工具，处理所有路径格式和 URL 编码
+          const targetSrc = trackPathToUrl(track)
           // 如果 src 已经是目标 path，无需重新加载，直接尝试 seek+play
           if (src !== targetSrc) {
             audio.src = targetSrc

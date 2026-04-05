@@ -27,6 +27,41 @@ function safeFilename(name) {
   return name.replace(/%/g, '_').replace(/[<>:"/\\|?*]/g, '_').replace(/\s+/g, ' ').trim()
 }
 
+
+// 规范化 track.path：确保路径段不含 % 等 URL 编码问题字符
+// 对 /downloads/xxx 或 /local-music/xxx 路径中的文件名部分做安全化
+function normalizeTrackPath(track) {
+  if (!track) return track
+  const result = { ...track }
+  if (result.path && typeof result.path === 'string') {
+    // 处理 /downloads/xxx 路径
+    if (result.path.startsWith('/downloads/')) {
+      const filename = result.path.slice('/downloads/'.length)
+      result.path = '/downloads/' + safeFilename(filename)
+    }
+    // 处理 /local-music/xxx 路径
+    else if (result.path.startsWith('/local-music/')) {
+      const encodedPart = result.path.slice('/local-music/'.length)
+      // If the encodedPart has unencoded %, fix it
+      if (encodedPart.includes('%') && !encodedPart.includes('%25')) {
+        try {
+          const decoded = decodeURIComponent(encodedPart)
+          result.path = '/local-music/' + encodeURIComponent(decoded)
+        } catch {
+          result.path = '/local-music/' + safeFilename(encodedPart.replace(/%/g, '_'))
+        }
+      }
+    }
+  }
+  return result
+}
+
+// 规范化 track 数组（播放列表）
+function normalizePlaylist(tracks) {
+  if (!Array.isArray(tracks)) return tracks
+  return tracks.map(normalizeTrackPath)
+}
+
 // 文件上传配置
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -682,5 +717,7 @@ router.post('/upload', upload.array('files', 100), async (req, res) => {
     res.status(500).json({ error: error.message || 'Upload failed' })
   }
 })
+
+export { safeFilename, normalizeTrackPath, normalizePlaylist }
 
 export default router

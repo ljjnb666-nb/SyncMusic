@@ -223,6 +223,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { normalizeTrackPath } from '../utils/trackUtils.js'
 import { usePlayerStore } from '../stores/player'
 import { searchMusic, getStreamUrl, parseMusicUrl, downloadMusic, parsePlaylist, browserDownload } from '../api/music'
 import FavoriteButton from '../components/FavoriteButton.vue'
@@ -330,9 +331,10 @@ async function confirmDownload() {
       throw new Error(result.error || result.message || '下载请求失败')
     }
 
-    // 下载成功后更新歌曲的 path，以便收藏后能正常播放
+    // 下载成功后更新歌曲的 path（后端已通过 safeFilename 处理文件名，这里做防御性规范化）
     if (result.filename) {
-      selectedSong.value.path = `/downloads/${result.filename}`
+      const track = normalizeTrackPath({ path: '/downloads/' + result.filename })
+      selectedSong.value.path = track.path
     }
 
     downloadProgress.value = 100
