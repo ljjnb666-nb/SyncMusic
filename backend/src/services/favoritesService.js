@@ -80,6 +80,7 @@ function addFavorite(song) {
     duration: song.duration || 0,
     coverUrl: song.coverUrl || song.cover || '',
     fileUrl: song.fileUrl || song.url || '',
+    path: song.path || '',  // 保存本地文件路径用于播放
     source: song.source || '',
     addedAt: new Date().toISOString()
   }

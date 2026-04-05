@@ -1,7 +1,8 @@
 // Room REST API routes
 import { Router } from 'express'
 import { nanoid } from 'nanoid'
-import { createRoom, getRoom } from '../services/roomService.js'
+import { createRoom, getRoom, joinRoom } from '../services/roomService.js'
+import { RoomManager } from '../state/roomManager.js'
 
 const router = Router()
 
@@ -37,6 +38,45 @@ router.get('/:id', (req, res) => {
     hostId: room.hostId,
     createdAt: room.createdAt
   })
+})
+
+// GET /api/rooms/:id/debug - Get full room state (for debugging)
+router.get('/:id/debug', (req, res) => {
+  const room = RoomManager.get(req.params.id)
+
+  if (!room) {
+    return res.status(404).json({ error: 'Room not found' })
+  }
+
+  res.json({
+    ...room,
+    participants: room.participants.map(p => ({
+      id: p.id,
+      username: p.username,
+      isHost: p.isHost,
+      joinedAt: p.joinedAt
+    }))
+  })
+})
+
+// POST /api/rooms/:id/join - Join an existing room
+router.post('/:id/join', (req, res) => {
+  const { username } = req.body
+  const sessionId = req.headers['x-session-id']
+
+  if (!sessionId) {
+    return res.status(400).json({ error: 'x-session-id header is required' })
+  }
+
+  try {
+    const result = joinRoom(req.params.id, sessionId, username)
+    res.json({ success: true, ...result })
+  } catch (err) {
+    if (err.message === 'Room not found') {
+      return res.status(404).json({ error: 'Room not found' })
+    }
+    res.status(500).json({ error: err.message || 'Failed to join room' })
+  }
 })
 
 export default router

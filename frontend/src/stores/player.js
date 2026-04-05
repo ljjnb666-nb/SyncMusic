@@ -119,6 +119,11 @@ export const usePlayerStore = defineStore('player', () => {
     currentTime.value = time
   }
 
+  // Seek to specific time (used by sync events)
+  function seekTo(time) {
+    currentTime.value = time
+  }
+
   function setVolume(vol) {
     volume.value = vol
   }
@@ -210,6 +215,7 @@ export const usePlayerStore = defineStore('player', () => {
     setCurrentIndex,
     setPlaying,
     setCurrentTime,
+    seekTo,
     setVolume,
     setLyrics,
     setLyricsFetched,

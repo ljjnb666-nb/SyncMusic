@@ -1,0 +1,7 @@
+{
+  "tool_name": "mcp__playwright__browser_console_messages",
+  "tool_input_preview": "{\"level\":\"all\"}",
+  "error": "### Error\n[\n  {\n    \"code\": \"invalid_value\",\n    \"values\": [\n      \"error\",\n      \"warning\",\n      \"info\",\n      \"debug\"\n    ],\n    \"path\": [\n      \"level\"\n    ],\n    \"message\": \"Invalid option: expected one of \\\"error\\\"|\\\"warning\\\"|\\\"info\\\"|\\\"debug\\\"\"\n  }\n]",
+  "timestamp": "2026-04-04T17:31:32.016Z",
+  "retry_count": 1
+}

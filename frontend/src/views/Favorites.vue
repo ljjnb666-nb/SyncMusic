@@ -65,6 +65,7 @@ import { ref, onMounted } from 'vue'
 import { getFavorites, removeFavorite } from '../api/favorites.js'
 import { formatDuration } from '../utils/format.js'
 import AppIcon from '../components/AppIcon.vue'
+import { usePlayerStore } from '../stores/player.js'
 
 const props = defineProps({
   hasRoom: {
@@ -77,6 +78,7 @@ const emit = defineEmits(['play', 'add-to-room'])
 
 const favorites = ref([])
 const loading = ref(false)
+const playerStore = usePlayerStore()
 
 async function fetchFavorites() {
   loading.value = true
@@ -95,7 +97,10 @@ function handleRefresh() {
 }
 
 function handlePlay(song) {
-  emit('play', song)
+  // 直接播放歌曲：设置播放列表为当前歌曲，开始播放
+  playerStore.setPlaylist([song])
+  playerStore.setCurrentIndex(0)
+  playerStore.setPlaying(true)
 }
 
 function handleAddToRoom(song) {

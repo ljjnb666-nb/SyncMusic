@@ -5,7 +5,7 @@ import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import fs from 'fs'
-import { handleJoin, handleDisconnect, handlePlay, handlePause, handleSeek } from './socket/handlers.js'
+import { handleJoin, handleDisconnect, handlePlay, handlePause, handleSeek, handleNext, handleRoomUpdate } from './socket/handlers.js'
 
 const DOWNLOAD_DIR = process.env.DOWNLOAD_DIR || path.join(process.cwd(), '../downloads')
 
@@ -23,9 +23,11 @@ app.use(cors())
 app.use(express.json())
 
 function serveDownloadFile(req, res, prefix) {
+  console.log(`[serveDownloadFile] ${prefix} ${req.path} params:`, req.params)
   const urlPath = req.params[0]
   const filename = decodeURIComponent(urlPath)
   const resolvedPath = path.resolve(DOWNLOAD_DIR, filename)
+  console.log(`[serveDownloadFile] filename: ${filename} resolved: ${resolvedPath} exists: ${fs.existsSync(resolvedPath)}`)
 
   if (!resolvedPath.startsWith(DOWNLOAD_DIR)) {
     return res.status(403).send('Forbidden')
@@ -74,14 +76,22 @@ function serveLocalMusicFile(req, res) {
 }
 
 app.get('/downloads/*', (req, res) => serveDownloadFile(req, res, '/downloads'))
+app.get('/downloads', (req, res) => res.redirect('/downloads/'))
 app.get('/api/downloads/*', (req, res) => serveDownloadFile(req, res, '/api/downloads'))
+app.get('/api/downloads', (req, res) => res.redirect('/api/downloads/'))
 app.get('/local-music/*', (req, res) => serveLocalMusicFile(req, res))
 
 import musicRouter from './routes/music.js'
 import roomRouter from './routes/room.js'
+import favoritesRouter from './routes/favorites.js'
+import historyRouter from './routes/history.js'
+import authRouter from './routes/auth.js'
 
 app.use('/api/music', musicRouter)
 app.use('/api/rooms', roomRouter)
+app.use('/api/favorites', favoritesRouter)
+app.use('/api/history', historyRouter)
+app.use('/api/auth', authRouter)
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' })
@@ -92,9 +102,11 @@ io.on('connection', (socket) => {
   console.log('Client connected:', socket.id)
 
   socket.on('room:join', (data) => handleJoin(io, socket, data))
+  socket.on('room:update', (data) => handleRoomUpdate(io, socket, data))
   socket.on('playback:play', (data) => handlePlay(io, socket, data))
   socket.on('playback:pause', (data) => handlePause(io, socket, data))
   socket.on('playback:seek', (data) => handleSeek(io, socket, data))
+  socket.on('playback:next', (data) => handleNext(io, socket, data))
 
   socket.on('disconnect', (reason) => handleDisconnect(io, socket, reason))
 })

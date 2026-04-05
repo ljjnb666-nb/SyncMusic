@@ -2,7 +2,7 @@
 import { io } from 'socket.io-client'
 import { getSessionId } from '../utils/session'
 
-const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
 
 // Socket metadata storage
 const socketMeta = {
@@ -18,6 +18,14 @@ let socket = null
  */
 function getSocket() {
   const currentSessionId = getSessionId()
+  // If socket exists but sessionId changed, disconnect old socket
+  if (socket && socket.connected) {
+    const existingSessionId = socket.io.engine?.transport?.headers?.['x-session-id']
+    if (existingSessionId !== currentSessionId) {
+      socket.disconnect()
+      socket = null
+    }
+  }
   if (!socket) {
     socket = io(SOCKET_URL, {
       autoConnect: false,
@@ -41,10 +49,17 @@ function getSocket() {
  */
 export function connectToRoom(roomId, username) {
   const currentSessionId = getSessionId()
+
+  // Skip if already connected to the same room
+  if (socket && socket.connected && socketMeta.roomId === roomId) {
+    socket.emit('room:join', { roomId, username })
+    return socket
+  }
+
   socketMeta.roomId = roomId
   socketMeta.sessionId = currentSessionId
 
-  // Disconnect existing socket if sessionId changed
+  // Disconnect existing socket if roomId changed
   if (socket && socket.connected) {
     socket.disconnect()
   }
@@ -55,8 +70,8 @@ export function connectToRoom(roomId, username) {
     reconnectionDelay: 1000,
     reconnectionAttempts: 5,
     transports: ['websocket', 'polling'],
-    extraHeaders: {
-      'x-session-id': currentSessionId
+    query: {
+      sessionId: currentSessionId
     }
   })
   socket.connect()

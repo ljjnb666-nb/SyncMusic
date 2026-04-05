@@ -49,6 +49,11 @@ export async function browserDownload(title, artist) {
   return response.data
 }
 
+export async function getStreamUrl(title, artist) {
+  const response = await api.post('/music/stream-url', { title, artist })
+  return response.data
+}
+
 export async function getDownloadDir() {
   const response = await api.get('/music/download-dir')
   return response.data

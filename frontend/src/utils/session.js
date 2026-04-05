@@ -15,14 +15,27 @@ function generateId() {
 
 /**
  * Get or generate session ID from localStorage
+ * For multi-tab support, each tab gets a unique sessionId via sessionStorage
  * @returns {string} session ID (32 chars)
  */
 export function getSessionId() {
-  const stored = localStorage.getItem(SESSION_KEY)
-  if (stored) return stored
-  const newId = generateId()
-  localStorage.setItem(SESSION_KEY, newId)
-  return newId
+  // Use sessionStorage for per-tab session to avoid conflicts when multiple tabs
+  // join the same room or when tab is refreshed
+  const tabSessionKey = 'syncmusic_tab_session'
+  try {
+    const stored = sessionStorage.getItem(tabSessionKey)
+    if (stored) return stored
+    const newId = generateId()
+    sessionStorage.setItem(tabSessionKey, newId)
+    return newId
+  } catch {
+    // Fallback to localStorage if sessionStorage is not available
+    const stored = localStorage.getItem(SESSION_KEY)
+    if (stored) return stored
+    const newId = generateId()
+    localStorage.setItem(SESSION_KEY, newId)
+    return newId
+  }
 }
 
 /**

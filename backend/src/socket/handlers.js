@@ -2,20 +2,21 @@
 import { nanoid } from 'nanoid'
 import { RoomManager } from '../state/roomManager.js'
 import { getRoom, roomExists } from '../services/roomService.js'
-import { deleteRoom } from '../db.js'
+import { deleteRoom, addParticipant, removeParticipant } from '../db.js'
 
 function handleJoin(io, socket, { roomId, username }) {
   try {
     console.log(`[JOIN] roomId=${roomId} username=${username}`)
     console.log(`[JOIN] headers: ${JSON.stringify(socket.handshake.headers)}`)
 
-    // Validate room exists
+    // Validate room exists (checks both memory and DB)
     if (!roomExists(roomId)) {
       socket.emit('error', { message: 'Room not found' })
       return
     }
 
-    const room = RoomManager.get(roomId)
+    // Use getRoom which reconstructs from DB if needed
+    const room = getRoom(roomId)
     if (!room) {
       socket.emit('error', { message: 'Room not found' })
       return
@@ -48,6 +49,8 @@ function handleJoin(io, socket, { roomId, username }) {
       }
       room.participants.push(participant)
       socket.data.joinedAt = participant.joinedAt
+      // Persist to DB
+      addParticipant({ id: userId, roomId, username: participant.username, isHost: false, joinedAt: participant.joinedAt })
     }
 
     // Join Socket.io room
@@ -74,6 +77,25 @@ function handlePause(io, socket, { roomId, position, timestamp }) {
 
 function handleSeek(io, socket, { roomId, position, timestamp }) {
   socket.to(roomId).emit('playback:seek', { position, timestamp })
+}
+
+function handleNext(io, socket, { roomId }) {
+  const room = RoomManager.get(roomId)
+  if (!room) return
+
+  socket.to(roomId).emit('playback:next', {
+    track: room.currentTrack,
+    position: 0,
+    timestamp: Date.now()
+  })
+}
+
+function handleRoomUpdate(io, socket, { roomId, playlist, currentTrack }) {
+  const room = RoomManager.get(roomId)
+  if (!room) return
+  if (playlist !== undefined) room.playlist = playlist
+  if (currentTrack !== undefined) room.currentTrack = currentTrack
+  socket.to(roomId).emit('room:update', { playlist: room.playlist, currentTrack: room.currentTrack })
 }
 
 function handleDisconnect(io, socket, reason) {
@@ -104,6 +126,8 @@ function handleDisconnect(io, socket, reason) {
   const wasHost = room.participants[participantIndex].isHost
   console.log(`[DISCONNECT] wasHost=${wasHost}, removing participant`)
   room.participants.splice(participantIndex, 1)
+  // Remove from DB
+  removeParticipant(userId, roomId)
 
   // Emit room:leave to others
   socket.to(roomId).emit('room:leave', { userId })
@@ -129,4 +153,4 @@ function handleDisconnect(io, socket, reason) {
   socket.leave(roomId)
 }
 
-export { handleJoin, handleDisconnect, handlePlay, handlePause, handleSeek }
+export { handleJoin, handleDisconnect, handlePlay, handlePause, handleSeek, handleNext, handleRoomUpdate }

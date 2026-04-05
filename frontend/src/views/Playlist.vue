@@ -20,10 +20,18 @@
           <AppIcon name="folder" :size="18" />
           <span>本地音乐</span>
         </h2>
-        <button @click="$emit('import-music')" class="btn-secondary btn-sm">
+        <button @click="triggerFileInput" class="btn-secondary btn-sm">
           <AppIcon name="upload" :size="14" />
           <span>导入</span>
         </button>
+        <input
+          ref="fileInputRef"
+          type="file"
+          accept=".mp3,.flac,.m4a,audio/*"
+          multiple
+          style="display: none"
+          @change="handleFileSelect"
+        />
       </div>
       <div class="input-group">
         <input
@@ -41,7 +49,11 @@
       <p class="hint-text">支持 mp3 / flac / m4a</p>
 
       <!-- 本地音乐列表 -->
-      <div v-if="localMusic.length === 0" class="empty-state-sm">
+      <div v-if="isLoadingLocal" class="loading-state">
+        <div class="spinner"></div>
+        <p>加载中...</p>
+      </div>
+      <div v-else-if="localMusic.length === 0" class="empty-state-sm">
         <AppIcon name="music" :size="32" class="empty-icon" />
         <p>暂无本地音乐</p>
       </div>
@@ -158,13 +170,14 @@
 </template>
 
 <script setup>
-import { ref, computed, toRef } from 'vue'
+import { ref, computed } from 'vue'
 import { usePlayerStore } from '../stores/player.js'
 import { formatDuration } from '../utils/format.js'
 import AppIcon from '../components/AppIcon.vue'
 import FavoriteButton from '../components/FavoriteButton.vue'
+import { uploadMusicFiles, browseFolder } from '../api/music.js'
 
-const emit = defineEmits(['load-local-music', 'import-music', 'play', 'add-to-playlist'])
+const emit = defineEmits([])
 
 const playerStore = usePlayerStore()
 
@@ -177,12 +190,19 @@ const props = defineProps({
 
 const localMusicPath = ref('')
 const localMusicPage = ref(1)
+const fileInputRef = ref(null)
+const isLoadingLocal = ref(false)
 const localMusicPageSize = 10
 const playlistPage = ref(1)
 const playlistPageSize = 20
 
-// 本地音乐使用 props.localMusic
-const localMusic = toRef(props, 'localMusic')
+// 本地音乐使用自己的状态
+const localMusic = ref([])
+
+// 如果有 props.localMusic，合并到本地状态
+if (props.localMusic && props.localMusic.length > 0) {
+  localMusic.value = [...props.localMusic]
+}
 
 // 本地音乐分页
 const localMusicTotalPages = computed(() => Math.ceil(localMusic.value.length / localMusicPageSize) || 1)
@@ -211,13 +231,72 @@ const actualPlayingIndex = computed(() => {
   return -1
 })
 
-function loadLocalMusic(path) {
+async function loadLocalMusic(path) {
   if (!path) return
-  emit('load-local-music', path)
+  isLoadingLocal.value = true
+  try {
+    const result = await browseFolder(path)
+    if (result.files && result.files.length > 0) {
+      const songs = result.files.map((file, index) => {
+        // 解析文件名获取标题和艺术家
+        const nameWithoutExt = file.name.replace(/\.[^.]+$/, '')
+        const parts = nameWithoutExt.split(/[-–—]/)
+        const title = parts.length > 1 ? parts[parts.length - 1].trim() : nameWithoutExt
+        const artist = parts.length > 1 ? parts.slice(0, -1).map(p => p.trim()).join(' ') : '本地音乐'
+        return {
+          id: `local_${Date.now()}_${index}`,
+          title,
+          artist,
+          album: '本地音乐',
+          duration: 0,
+          path: file.path,
+          isLocal: true
+        }
+      })
+      localMusic.value = songs
+    }
+  } catch (err) {
+    console.error('加载本地音乐失败:', err)
+  } finally {
+    isLoadingLocal.value = false
+  }
+}
+
+function triggerFileInput() {
+  fileInputRef.value?.click()
+}
+
+async function handleFileSelect(event) {
+  const files = Array.from(event.target.files)
+  if (!files || files.length === 0) return
+
+  isLoadingLocal.value = true
+  try {
+    const result = await uploadMusicFiles(files)
+    if (result.files && result.files.length > 0) {
+      result.files.forEach(file => {
+        const song = {
+          id: `local_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+          title: file.title,
+          artist: file.artist,
+          album: '本地音乐',
+          duration: file.duration || 0,
+          path: file.path,
+          isLocal: true
+        }
+        addToPlaylist(song)
+      })
+    }
+  } catch (err) {
+    console.error('导入音乐失败:', err)
+  } finally {
+    isLoadingLocal.value = false
+    event.target.value = ''
+  }
 }
 
 function addToPlaylist(song) {
-  emit('add-to-playlist', song)
+  playerStore.addSong(song)
 }
 
 function playSong(song) {
@@ -225,16 +304,12 @@ function playSong(song) {
   playerStore.setPlaylist([song])
   playerStore.setCurrentIndex(0)
   playerStore.setPlaying(true)
-  // 通知 Home.vue 播放
-  emit('play', 0)
 }
 
 function playSongByIndex(index) {
   const actualIndex = (playlistPage.value - 1) * playlistPageSize + index
   playerStore.setCurrentIndex(actualIndex)
   playerStore.setPlaying(true)
-  // 通知 Home.vue 播放
-  emit('play', actualIndex)
 }
 
 function removeSong(index) {
@@ -381,6 +456,29 @@ function clearPlaylist() {
   text-align: center;
   padding: 30px 20px;
   color: #64748b;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  color: #64748b;
+}
+
+.loading-state .spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(139, 92, 246, 0.2);
+  border-top-color: #8b5cf6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .empty-icon {

@@ -1,5 +1,5 @@
 // REST API client for room operations
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001'
 
 /**
  * Create a new room
@@ -20,6 +20,29 @@ export async function createRoom(name, sessionId, username) {
   if (!response.ok) {
     const err = await response.json().catch(() => ({ message: 'Failed to create room' }))
     throw new Error(err.message || 'Failed to create room')
+  }
+  return response.json()
+}
+
+/**
+ * Join an existing room
+ * @param {string} roomId - room ID to join
+ * @param {string} sessionId - user's session ID
+ * @param {string} username - user's display name
+ * @returns {{ success: boolean, roomId: string }}
+ */
+export async function joinRoom(roomId, sessionId, username) {
+  const response = await fetch(`${API_BASE}/api/rooms/${roomId}/join`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-session-id': sessionId
+    },
+    body: JSON.stringify({ username })
+  })
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({ message: 'Failed to join room' }))
+    throw new Error(err.message || 'Failed to join room')
   }
   return response.json()
 }

@@ -18,6 +18,42 @@
         </div>
       </header>
 
+      <!-- Join Room Card -->
+      <div class="join-card">
+        <div class="card-header">
+          <h2 class="card-title">加入房间</h2>
+          <p class="card-subtitle">输入房间号，与朋友一起听歌</p>
+        </div>
+
+        <form @submit.prevent="handleJoinRoom" class="join-form">
+          <div class="input-group">
+            <input
+              v-model="joinRoomId"
+              type="text"
+              class="room-input"
+              placeholder="输入房间号"
+              maxlength="20"
+              :disabled="isJoining"
+            />
+            <p v-if="joinError" class="error-text">{{ joinError }}</p>
+          </div>
+
+          <button
+            type="submit"
+            class="join-btn"
+            :disabled="isJoining || joinRoomId.trim() === ''"
+          >
+            <span v-if="isJoining" class="btn-loading">
+              <svg class="spinner" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="30 70"/>
+              </svg>
+              加入中...
+            </span>
+            <span v-else>加入房间</span>
+          </button>
+        </form>
+      </div>
+
       <!-- Room Creation Card -->
       <div class="create-card">
         <div class="card-header">
@@ -98,8 +134,8 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRoomStore } from '../stores/room'
-import { createRoom } from '../api/room'
-import { getSessionId, getUsername } from '../utils/session'
+import { createRoom, joinRoom } from '../api/room'
+import { getSessionId, getUsername, setUsername } from '../utils/session'
 import { connectToRoom } from '../socket/client'
 
 const router = useRouter()
@@ -108,6 +144,10 @@ const roomStore = useRoomStore()
 const roomName = ref('')
 const isCreating = ref(false)
 const error = ref('')
+
+const joinRoomId = ref('')
+const isJoining = ref(false)
+const joinError = ref('')
 
 async function handleCreateRoom() {
   if (roomName.value.trim() === '') {
@@ -121,6 +161,7 @@ async function handleCreateRoom() {
   try {
     const sessionId = getSessionId()
     const username = getUsername()
+    setUsername(username)
 
     const result = await createRoom(roomName.value.trim(), sessionId, username)
 
@@ -134,6 +175,34 @@ async function handleCreateRoom() {
     error.value = err.message || '创建房间失败'
   } finally {
     isCreating.value = false
+  }
+}
+
+async function handleJoinRoom() {
+  if (joinRoomId.value.trim() === '') {
+    joinError.value = '请输入房间号'
+    return
+  }
+
+  isJoining.value = true
+  joinError.value = ''
+
+  try {
+    const sessionId = getSessionId()
+    const username = getUsername()
+
+    await joinRoom(joinRoomId.value.trim(), sessionId, username)
+
+    // Connect to socket and join room
+    connectToRoom(joinRoomId.value.trim(), username)
+    roomStore.setSessionId(sessionId)
+
+    // Navigate to room
+    router.push(`/room/${joinRoomId.value.trim()}`)
+  } catch (err) {
+    joinError.value = err.message || '加入房间失败'
+  } finally {
+    isJoining.value = false
   }
 }
 </script>
@@ -218,6 +287,53 @@ async function handleCreateRoom() {
   font-size: 12px;
   font-weight: 600;
   color: #a78bfa;
+}
+
+/* Join Card */
+.join-card {
+  background: rgba(26, 26, 36, 0.8);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.join-card .card-title {
+  color: #22d3ee;
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.join-btn {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #0891b2 0%, #22d3ee 100%);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.join-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);
+}
+
+.join-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.join-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Create Card */

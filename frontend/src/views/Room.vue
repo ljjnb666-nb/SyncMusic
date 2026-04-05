@@ -155,20 +155,68 @@
               </div>
             </div>
           </div>
-          <!-- Music Parser for host -->
-          <div v-if="roomStore.isHost" class="music-parser-wrapper">
-            <MusicParser
-              @search="handleSearch"
-              @add-to-playlist="onSongAdded"
-              @play-now="onPlayNow"
-              :loadingSearch="loadingSearch"
-              :searchResults="searchResults"
-              :searched="searched"
-              :downloadingId="downloadingId"
-              hasRoom
-            />
+        </div>
+      </div>
+
+      <!-- Room Playlist (显示房间里已添加的歌曲) -->
+      <div v-if="playerStore.playlist.length > 0" class="room-section">
+        <h3 class="section-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <line x1="8" y1="6" x2="21" y2="6"/>
+            <line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/>
+            <line x1="3" y1="12" x2="3.01" y2="12"/>
+            <line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+          播放列表
+          <span class="playlist-count">({{ playerStore.playlist.length }} 首)</span>
+        </h3>
+        <div class="room-playlist">
+          <div
+            v-for="(song, index) in playerStore.playlist"
+            :key="song.id || index"
+            :class="['room-playlist-item', { active: index === playerStore.currentIndex }]"
+            @click="playFromPlaylist(index)"
+          >
+            <div class="playlist-item-info">
+              <span class="playlist-item-title">{{ song.title }}</span>
+              <span class="playlist-item-artist">{{ song.artist }}</span>
+            </div>
+            <div class="playlist-item-actions">
+              <button
+                v-if="index !== playerStore.currentIndex"
+                @click.stop="removeFromPlaylist(index)"
+                class="btn-icon"
+                title="移除"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+              <span v-else class="playing-indicator">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- Music Search Area (for host) -->
+      <div v-if="roomStore.isHost" class="room-section">
+        <MusicParser
+          :has-room="true"
+          :downloading-id="downloadingId"
+          :search-results="searchResults"
+          :loading-search="loadingSearch"
+          :searched="searched"
+          @search="onSearch"
+          @play-now="onPlayNow"
+          @add-to-playlist="onSongAdded"
+        />
       </div>
 
       <!-- Leave Room Button -->
@@ -196,8 +244,8 @@ import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useRoomStore } from '../stores/room'
 import { usePlayerStore } from '../stores/player'
-import { getRoom } from '../api/room'
-import { searchMusic, browserDownload } from '../api/music'
+import { getRoom, joinRoom } from '../api/room'
+import { browserDownload, uploadMusicFiles } from '../api/music'
 import { getSessionId, getUsername, setUsername } from '../utils/session'
 import socket, { connectToRoom, disconnect, getSocketInstance } from '../socket/client'
 import ParticipantList from '../components/ParticipantList.vue'
@@ -212,12 +260,10 @@ const isLoading = ref(true)
 const error = ref('')
 const copied = ref(false)
 const showLeaveModal = ref(false)
-
-// Search state for MusicParser
-const loadingSearch = ref(false)
-const searchResults = ref([])
-const searched = ref(false)
 const downloadingId = ref('')
+const searchResults = ref([])
+const loadingSearch = ref(false)
+const searched = ref(false)
 
 // Local music state
 const localMusic = ref([])
@@ -241,7 +287,18 @@ const currentTrackSrc = computed(() => {
   // Prefer blobUrl (locally imported files)
   if (track.blobUrl) return track.blobUrl
   // Prefer local path if available
-  if (track.path) return `/local-music/${encodeURIComponent(track.path)}`
+  if (track.path) {
+    // 如果是 URL 路径（/downloads/ 或 /local-music/ 前缀），直接使用
+    if (track.path.startsWith('/downloads/') || track.path.startsWith('/local-music/')) {
+      return track.path
+    }
+    // 如果是绝对路径（Windows: C:/, Unix: /），使用 /local-music/ 代理
+    if (track.path.match(/^[A-Z]:/i) || track.path.startsWith('/')) {
+      return `/local-music/${encodeURIComponent(track.path)}`
+    }
+    // 相对路径放到 downloads 下
+    return `/downloads/${track.path}`
+  }
   if (track.url) return track.url
   return ''
 })
@@ -260,33 +317,59 @@ function formatTime(seconds) {
   return `${mins}:${secs.toString().padStart(2, '0')}`
 }
 
-// Host toggle play
+// Toggle play - both Host and Guest can control
 function togglePlay() {
   if (roomStore.isHost) {
     if (playerStore.isPlaying) {
-      emitPause()
+      // Host 暂停：先暂停本地播放器，再广播
+      audioPlayerRef.value?.pause()
+      roomStore.isPlaying = false
       playerStore.setPlaying(false)
+      emitPause()
     } else {
-      emitPlay()
+      // Host 播放：先播放本地播放器，再广播
+      audioPlayerRef.value?.play()
+      roomStore.isPlaying = true
       playerStore.setPlaying(true)
+      emitPlay()
+    }
+  } else {
+    // Guest: 发送播放控制事件给 Host，不自己播放
+    const sock = getSocketInstance()
+    if (!sock) return
+    if (playerStore.isPlaying) {
+      sock.emit('playback:pause', { roomId: roomId.value })
+    } else {
+      const { blobUrl, ...trackForGuest } = playerStore.currentSong || roomStore.currentTrack || {}
+      sock.emit('playback:play', {
+        roomId: roomId.value,
+        track: trackForGuest,
+        position: currentTime.value,
+        timestamp: Date.now()
+      })
     }
   }
 }
 
 // Search music handler
-async function handleSearch(keyword) {
+async function onSearch(keyword) {
   if (!keyword?.trim()) return
   loadingSearch.value = true
-  searched.value = false
   try {
+    const { searchMusic } = await import('../api/music')
     const data = await searchMusic(keyword.trim())
-    searchResults.value = data?.results || []
+    if (data.results) {
+      searchResults.value = data.results
+    } else {
+      searchResults.value = []
+    }
+    searched.value = true
   } catch (err) {
     console.error('Search failed:', err)
     searchResults.value = []
+    searched.value = true
   } finally {
     loadingSearch.value = false
-    searched.value = true
   }
 }
 
@@ -296,6 +379,13 @@ function onSongAdded(song) {
   if (added && roomStore.isHost) {
     playerStore.setCurrentIndex(playerStore.playlist.length - 1)
     roomStore.currentTrack = song
+    // Sync playlist to backend so guests receive it
+    const sock = getSocketInstance()
+    sock?.emit('room:update', {
+      roomId: roomId.value,
+      playlist: playerStore.playlist,
+      currentTrack: song
+    })
     // Don't auto-play, let user click play
   }
 }
@@ -312,7 +402,7 @@ async function onPlayNow(song) {
         ...song,
         id: `downloaded_${Date.now()}`,
         path: data.filename,
-        url: `/local-music/${encodeURIComponent(data.filename)}`
+        url: `/downloads/${data.filename}`
       }
       const added = playerStore.addSong(downloadedSong)
       if (added) {
@@ -333,7 +423,7 @@ async function onPlayNow(song) {
 }
 
 // Handle local file import
-function handleLocalFileImport(event) {
+async function handleLocalFileImport(event) {
   const files = event.target.files
   if (!files || files.length === 0) return
 
@@ -341,23 +431,26 @@ function handleLocalFileImport(event) {
     f.type.startsWith('audio/') || /\.(mp3|flac|m4a|wav|ogg|aac)$/i.test(f.name)
   )
 
-  for (const file of audioFiles) {
-    // Extract artist/title from filename (remove extension)
-    const nameWithoutExt = file.name.replace(/\.[^.]+$/, '')
-    const parts = nameWithoutExt.split(/[-–—]/)
-    const title = parts.length > 1 ? parts[parts.length - 1].trim() : nameWithoutExt
-    const artist = parts.length > 1 ? parts.slice(0, -1).map(p => p.trim()).join(' ') : '本地音乐'
+  if (audioFiles.length === 0) return
 
-    const song = {
-      id: `local_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
-      title,
-      artist,
-      album: '本地音乐',
-      duration: 0,
-      blobUrl: URL.createObjectURL(file),
-      isLocal: true
+  // 先上传到后端，获取 path 用于同步
+  try {
+    const result = await uploadMusicFiles(audioFiles)
+    if (result.files && result.files.length > 0) {
+      const newSongs = result.files.map((file, i) => ({
+        id: `local_${Date.now()}_${i}_${Math.random().toString(36).slice(2, 6)}`,
+        title: file.title,
+        artist: file.artist,
+        album: '本地音乐',
+        duration: file.duration || 0,
+        path: file.path,  // 后端返回的路径，可用于同步
+        url: file.path,
+        isLocal: true
+      }))
+      localMusic.value = [...localMusic.value, ...newSongs]
     }
-    localMusic.value = [...localMusic.value, song]
+  } catch (err) {
+    console.error('导入音乐失败:', err)
   }
 
   // Clear input so same file can be re-selected
@@ -370,6 +463,22 @@ function addLocalToPlaylist(song) {
   if (added && roomStore.isHost) {
     playerStore.setCurrentIndex(playerStore.playlist.length - 1)
     roomStore.currentTrack = song
+    // Host: 让 AudioPlayer 的 watch 负责加载，自己只负责播放
+    // 先设置 playing 状态，watch 会检测到 src 变化并自动 load
+    roomStore.isPlaying = true
+    playerStore.setPlaying(true)
+    // Sync playlist to backend so guests receive it
+    const sock = getSocketInstance()
+    sock?.emit('room:update', {
+      roomId: roomId.value,
+      playlist: playerStore.playlist,
+      currentTrack: song
+    })
+    // 短暂延迟后播放，确保 load 已经开始
+    setTimeout(() => {
+      audioPlayerRef.value?.play()
+      emitPlay()
+    }, 100)
   }
 }
 
@@ -378,13 +487,48 @@ function triggerLocalImport() {
   localMusicInputRef.value?.click()
 }
 
+// Play song from playlist at given index
+function playFromPlaylist(index) {
+  playerStore.setCurrentIndex(index)
+  const song = playerStore.playlist[index]
+  if (song && roomStore.isHost) {
+    roomStore.currentTrack = song
+    roomStore.isPlaying = true
+    playerStore.setPlaying(true)
+    // Sync currentTrack to backend so guests receive it
+    const sock = getSocketInstance()
+    sock?.emit('room:update', {
+      roomId: roomId.value,
+      playlist: playerStore.playlist,
+      currentTrack: song
+    })
+    setTimeout(() => {
+      audioPlayerRef.value?.play()
+      emitPlay()
+    }, 100)
+  }
+}
+
+// Remove song from playlist at given index
+function removeFromPlaylist(index) {
+  playerStore.removeSong(index)
+  if (roomStore.isHost) {
+    const sock = getSocketInstance()
+    sock?.emit('room:update', {
+      roomId: roomId.value,
+      playlist: playerStore.playlist,
+      currentTrack: roomStore.currentTrack
+    })
+  }
+}
+
 const inviteUrl = computed(() => {
   return `${window.location.origin}/room/${roomId.value}`
 })
 
 async function copyInviteLink() {
   try {
-    await navigator.clipboard.writeText(inviteUrl.value)
+    await navigator.clipboard.writeText(roomId.value)
     copied.value = true
     setTimeout(() => {
       copied.value = false
@@ -392,7 +536,7 @@ async function copyInviteLink() {
   } catch {
     // Fallback for older browsers
     const textArea = document.createElement('textarea')
-    textArea.value = inviteUrl.value
+    textArea.value = roomId.value
     document.body.appendChild(textArea)
     textArea.select()
     document.execCommand('copy')
@@ -439,9 +583,11 @@ function onAudioLoaded(dur) {
 function emitPlay() {
   const sock = getSocketInstance()
   if (!roomStore.isHost) return
+  // 排除 blobUrl（无法跨浏览器共享），让房客通过 path 或 url 访问
+  const { blobUrl, ...trackForGuest } = playerStore.currentSong || {}
   sock.emit('playback:play', {
     roomId: roomId.value,
-    track: playerStore.currentSong,
+    track: trackForGuest,
     position: currentTime.value,
     timestamp: Date.now()
   })
@@ -475,6 +621,8 @@ watch(() => roomStore.isPlaying, (playing) => {
   } else {
     audioPlayerRef.value.pause()
   }
+  // Sync playerStore.isPlaying for UI badge display
+  playerStore.setPlaying(playing)
 })
 
 // Watch for track changes
@@ -501,8 +649,16 @@ onMounted(async () => {
     // Connect to room first (creates socket)
     connectToRoom(roomId.value, username)
 
-    // Initialize socket event listeners
+    // Initialize socket event listeners BEFORE joining room
+    // This prevents the race condition where room:state arrives before listeners are set
     roomStore.initSocket()
+
+    // Join room via API (will add as participant if not already)
+    try {
+      await joinRoom(roomId.value, sessionId, username)
+    } catch (e) {
+      // Ignore join errors (might already be joined)
+    }
 
     // Set audio player ref for sync events
     roomStore.setAudioPlayerRef(audioPlayerRef)
@@ -1029,5 +1185,95 @@ onUnmounted(() => {
 .btn-sm {
   padding: 6px 12px;
   font-size: 13px;
+}
+
+/* Room Playlist Styles */
+.room-playlist {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.room-playlist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.room-playlist-item:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+.room-playlist-item.active {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.playlist-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.playlist-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f8fafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.playlist-item-artist {
+  font-size: 12px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.playlist-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.playing-indicator {
+  color: #8b5cf6;
+  display: flex;
+  align-items: center;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #64748b;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.playlist-count {
+  font-size: 13px;
+  font-weight: 400;
+  color: #64748b;
+  margin-left: 8px;
 }
 </style>
