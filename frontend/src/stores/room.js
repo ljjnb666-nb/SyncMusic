@@ -49,7 +49,7 @@ export const useRoomStore = defineStore('room', () => {
         playerStore.setCurrentIndex(0)
       }
       // Seek guest to correct position and play/pause to sync with host
-      if (audioPlayerRef.value) {
+      if (audioPlayerRef?.value) {
         syncGuestPlayback(room)
       } else {
         // audioPlayerRef not ready yet, save for later
@@ -117,7 +117,7 @@ export const useRoomStore = defineStore('room', () => {
 
   // Sync guest playback when room:state arrives
   function syncGuestPlayback(room) {
-    if (!audioPlayerRef.value || isHost.value) return
+    if (!audioPlayerRef?.value || isHost.value) return
     const playerStore = usePlayerStore()
     playerStore.setPlaying(room.isPlaying ?? false)
     if (room.playlist && room.playlist.length > 0) {
@@ -164,7 +164,7 @@ export const useRoomStore = defineStore('room', () => {
     // Playback sync listeners (for non-host participants)
     // Guest 收到 sync 事件时尝试播放，audioPlayerRef 可能还没设置好，需要重试
     function tryPlay(pos, timestamp, track) {
-      if (audioPlayerRef.value) {
+      if (audioPlayerRef?.value) {
         const audio = audioPlayerRef.value.audioPlayer
         if (!audio) return false
         // 如果 track 有 path，优先使用 path（跳过 watch 触发的 load）
@@ -254,7 +254,7 @@ export const useRoomStore = defineStore('room', () => {
     })
     sock.on('playback:pause', ({ position: pos, timestamp }) => {
       isPlaying.value = false
-      if (audioPlayerRef.value) {
+      if (audioPlayerRef?.value) {
         const elapsed = (Date.now() - timestamp) / 1000
         const currentPos = pos + elapsed
         audioPlayerRef.value?.seek(currentPos)
@@ -267,7 +267,7 @@ export const useRoomStore = defineStore('room', () => {
     })
     sock.on('playback:seek', ({ position: pos, timestamp }) => {
       position.value = pos
-      if (audioPlayerRef.value) {
+      if (audioPlayerRef?.value) {
         audioPlayerRef.value?.seek(pos)
       } else if (!isHost.value) {
         // Guest: 通过 playerStore 同步进度（App.vue AudioPlayer 会响应）
