@@ -1,7 +1,7 @@
 {
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"agent-browser fill @e1 \\\"Transfer Test\\\" && sleep 1 && agent-browser click @e2 && sleep 5 && agent-browser get url --session test1 --json 2>&1\",\"description\":\"Create room\"}",
-  "error": "Exit code 1\n\u001b[31m✗\u001b[0m locator.fill: Unsupported token \"@e1\" while parsing css selector \"@e1\". Did you mean to CSS.escape it?\nCall log:\n\u001b[2m  - waiting for @e1\u001b[22m",
-  "timestamp": "2026-04-01T17:40:15.305Z",
-  "retry_count": 2
+  "tool_name": "WebFetch",
+  "tool_input_preview": "{\"url\":\"https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/ccv2%2F2026-04-05%2FMiniMax-M2.7%2F2026126682619913127%2F8bc35ed2cb8097c65828b5ad5e18b04163b4381c862ad3c218f78d7c958c308a..png?Ex...",
+  "error": "Unable to verify if domain minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com is safe to fetch. This may be due to network restrictions or enterprise security policies blocking claude.ai.",
+  "timestamp": "2026-04-05T10:16:43.947Z",
+  "retry_count": 1
 }

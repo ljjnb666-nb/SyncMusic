@@ -1,0 +1,241 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [active] [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e142]:
+      - heading "下载管理" [level=1] [ref=e144]:
+        - img [ref=e145]
+        - generic [ref=e148]: 下载管理
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - heading "已下载文件" [level=2] [ref=e152]:
+            - img [ref=e153]
+            - text: 已下载文件
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - img [ref=e159]
+              - generic [ref=e163]:
+                - paragraph [ref=e164]: Capo Productions - Cast Away.mp3
+                - paragraph [ref=e165]: 4.3 MB
+              - generic [ref=e166]:
+                - button "添加" [ref=e167] [cursor=pointer]:
+                  - img [ref=e168]
+                  - generic [ref=e169]: 添加
+                - link "下载" [ref=e170] [cursor=pointer]:
+                  - /url: /downloads/Capo Productions - Cast Away.mp3
+                  - img [ref=e171]
+                  - generic [ref=e174]: 下载
+            - generic [ref=e175]:
+              - img [ref=e177]
+              - generic [ref=e181]:
+                - paragraph [ref=e182]: Adele - Hello (Official Music Video) [YQHsXMglC9A].mp3
+                - paragraph [ref=e183]: 431.8 KB
+              - generic [ref=e184]:
+                - button "添加" [ref=e185] [cursor=pointer]:
+                  - img [ref=e186]
+                  - generic [ref=e187]: 添加
+                - link "下载" [ref=e188] [cursor=pointer]:
+                  - /url: /downloads/Adele - Hello (Official Music Video) [YQHsXMglC9A].mp3
+                  - img [ref=e189]
+                  - generic [ref=e192]: 下载
+            - generic [ref=e193]:
+              - img [ref=e195]
+              - generic [ref=e199]:
+                - paragraph [ref=e200]: ÖÜ½ÜÂ× - ÇçÌì.mp3
+                - paragraph [ref=e201]: 4.4 MB
+              - generic [ref=e202]:
+                - button "添加" [ref=e203] [cursor=pointer]:
+                  - img [ref=e204]
+                  - generic [ref=e205]: 添加
+                - link "下载" [ref=e206] [cursor=pointer]:
+                  - /url: /downloads/ÖÜ½ÜÂ× - ÇçÌì.mp3
+                  - img [ref=e207]
+                  - generic [ref=e210]: 下载
+            - generic [ref=e211]:
+              - img [ref=e213]
+              - generic [ref=e217]:
+                - paragraph [ref=e218]: Liturgy of the Lord’s Passion ｜ Good Friday [HTRdizoGIio].mp3
+                - paragraph [ref=e219]: 60.1 MB
+              - generic [ref=e220]:
+                - button "添加" [ref=e221] [cursor=pointer]:
+                  - img [ref=e222]
+                  - generic [ref=e223]: 添加
+                - link "下载" [ref=e224] [cursor=pointer]:
+                  - /url: /downloads/Liturgy of the Lord’s Passion ｜ Good Friday [HTRdizoGIio].mp3
+                  - img [ref=e225]
+                  - generic [ref=e228]: 下载
+            - generic [ref=e229]:
+              - img [ref=e231]
+              - generic [ref=e235]:
+                - paragraph [ref=e236]: test.mp3
+                - paragraph [ref=e237]: 207.9 KB
+              - generic [ref=e238]:
+                - button "添加" [ref=e239] [cursor=pointer]:
+                  - img [ref=e240]
+                  - generic [ref=e241]: 添加
+                - link "下载" [ref=e242] [cursor=pointer]:
+                  - /url: /downloads/test.mp3
+                  - img [ref=e243]
+                  - generic [ref=e246]: 下载
+            - generic [ref=e247]:
+              - img [ref=e249]
+              - generic [ref=e253]:
+                - paragraph [ref=e254]: Capo Productions - Breathe.mp3
+                - paragraph [ref=e255]: 31.8 KB
+              - generic [ref=e256]:
+                - button "添加" [ref=e257] [cursor=pointer]:
+                  - img [ref=e258]
+                  - generic [ref=e259]: 添加
+                - link "下载" [ref=e260] [cursor=pointer]:
+                  - /url: /downloads/Capo Productions - Breathe.mp3
+                  - img [ref=e261]
+                  - generic [ref=e264]: 下载
+            - generic [ref=e265]:
+              - img [ref=e267]
+              - generic [ref=e271]:
+                - paragraph [ref=e272]: Capo Productions - Beautiful Revenge.mp3
+                - paragraph [ref=e273]: 4.0 MB
+              - generic [ref=e274]:
+                - button "添加" [ref=e275] [cursor=pointer]:
+                  - img [ref=e276]
+                  - generic [ref=e277]: 添加
+                - link "下载" [ref=e278] [cursor=pointer]:
+                  - /url: /downloads/Capo Productions - Beautiful Revenge.mp3
+                  - img [ref=e279]
+                  - generic [ref=e282]: 下载
+            - generic [ref=e283]:
+              - img [ref=e285]
+              - generic [ref=e289]:
+                - paragraph [ref=e290]: Capo Productions - Enchantment.mp3
+                - paragraph [ref=e291]: 2.8 MB
+              - generic [ref=e292]:
+                - button "添加" [ref=e293] [cursor=pointer]:
+                  - img [ref=e294]
+                  - generic [ref=e295]: 添加
+                - link "下载" [ref=e296] [cursor=pointer]:
+                  - /url: /downloads/Capo Productions - Enchantment.mp3
+                  - img [ref=e297]
+                  - generic [ref=e300]: 下载
+            - generic [ref=e301]:
+              - img [ref=e303]
+              - generic [ref=e307]:
+                - paragraph [ref=e308]: Capo Productions - Courage.mp3
+                - paragraph [ref=e309]: 2.0 MB
+              - generic [ref=e310]:
+                - button "添加" [ref=e311] [cursor=pointer]:
+                  - img [ref=e312]
+                  - generic [ref=e313]: 添加
+                - link "下载" [ref=e314] [cursor=pointer]:
+                  - /url: /downloads/Capo Productions - Courage.mp3
+                  - img [ref=e315]
+                  - generic [ref=e318]: 下载
+            - generic [ref=e319]:
+              - img [ref=e321]
+              - generic [ref=e325]:
+                - paragraph [ref=e326]: Capo Productions - Corporate Dreams.mp3
+                - paragraph [ref=e327]: 4.2 MB
+              - generic [ref=e328]:
+                - button "添加" [ref=e329] [cursor=pointer]:
+                  - img [ref=e330]
+                  - generic [ref=e331]: 添加
+                - link "下载" [ref=e332] [cursor=pointer]:
+                  - /url: /downloads/Capo Productions - Corporate Dreams.mp3
+                  - img [ref=e333]
+                  - generic [ref=e336]: 下载
+            - generic [ref=e337]:
+              - img [ref=e339]
+              - generic [ref=e343]:
+                - paragraph [ref=e344]: Capo Productions - Aurora.mp3
+                - paragraph [ref=e345]: 2.1 MB
+              - generic [ref=e346]:
+                - button "添加" [ref=e347] [cursor=pointer]:
+                  - img [ref=e348]
+                  - generic [ref=e349]: 添加
+                - link "下载" [ref=e350] [cursor=pointer]:
+                  - /url: /downloads/Capo Productions - Aurora.mp3
+                  - img [ref=e351]
+                  - generic [ref=e354]: 下载
+            - generic [ref=e355]:
+              - img [ref=e357]
+              - generic [ref=e361]:
+                - paragraph [ref=e362]: Capo Productions - Fade Away.mp3
+                - paragraph [ref=e363]: 2.3 MB
+              - generic [ref=e364]:
+                - button "添加" [ref=e365] [cursor=pointer]:
+                  - img [ref=e366]
+                  - generic [ref=e367]: 添加
+                - link "下载" [ref=e368] [cursor=pointer]:
+                  - /url: /downloads/Capo Productions - Fade Away.mp3
+                  - img [ref=e369]
+                  - generic [ref=e372]: 下载
+            - generic [ref=e373]:
+              - img [ref=e375]
+              - generic [ref=e379]:
+                - paragraph [ref=e380]: Capo Productions - Field of Dreams.mp3
+                - paragraph [ref=e381]: 3.8 MB
+              - generic [ref=e382]:
+                - button "添加" [ref=e383] [cursor=pointer]:
+                  - img [ref=e384]
+                  - generic [ref=e385]: 添加
+                - link "下载" [ref=e386] [cursor=pointer]:
+                  - /url: /downloads/Capo Productions - Field of Dreams.mp3
+                  - img [ref=e387]
+                  - generic [ref=e390]: 下载
+            - generic [ref=e391]:
+              - img [ref=e393]
+              - generic [ref=e397]:
+                - paragraph [ref=e398]: 周杰倫 Jay Chou【晴天 Sunny Day】-Official Music Video [DYptgVvkVLQ].mp3
+                - paragraph [ref=e399]: 4.1 MB
+              - generic [ref=e400]:
+                - button "添加" [ref=e401] [cursor=pointer]:
+                  - img [ref=e402]
+                  - generic [ref=e403]: 添加
+                - link "下载" [ref=e404] [cursor=pointer]:
+                  - /url: /downloads/周杰倫 Jay Chou【晴天 Sunny Day】-Official Music Video [DYptgVvkVLQ].mp3
+                  - img [ref=e405]
+                  - generic [ref=e408]: 下载
+          - button "刷新列表" [ref=e409] [cursor=pointer]:
+            - img [ref=e410]
+            - generic [ref=e414]: 刷新列表
+        - generic [ref=e415]:
+          - heading "下载位置" [level=2] [ref=e416]:
+            - img [ref=e417]
+            - text: 下载位置
+          - generic [ref=e420]:
+            - textbox "输入下载目录路径..." [ref=e421]: C:\Users\LJJ2004\所有项目\SyncMusic\downloads
+            - button "设置" [ref=e422] [cursor=pointer]:
+              - img [ref=e423]
+              - generic [ref=e427]: 设置
+          - paragraph [ref=e428]: 💡 支持绝对路径或相对路径（相对于项目根目录）

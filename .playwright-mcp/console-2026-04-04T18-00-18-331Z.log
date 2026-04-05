@@ -1,0 +1,6 @@
+[    1179ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
+[   92706ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/rooms/SsnzQ6kMss:0
+[  103175ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/rooms/SsnzQ6kMss:0
+[  127395ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[  129745ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/:0
+[  132864ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/rooms/SsnzQ6kMss:0

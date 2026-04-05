@@ -1,0 +1,92 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e222]:
+      - generic [ref=e223]:
+        - button [ref=e224] [cursor=pointer]:
+          - img [ref=e225]
+        - generic [ref=e227]:
+          - heading "测试房间" [level=1] [ref=e228]
+          - paragraph [ref=e229]: "房间号: ApPeQvbtew"
+        - button [ref=e230] [cursor=pointer]:
+          - img [ref=e231]
+      - generic [ref=e235]:
+        - img [ref=e236]
+        - text: 你现在是房主
+      - generic [ref=e239]:
+        - generic [ref=e240]:
+          - heading "参与者" [level=3] [ref=e241]
+          - generic [ref=e242]: "2"
+        - list [ref=e243]:
+          - listitem [ref=e244]:
+            - generic [ref=e245]:
+              - generic [ref=e246]: Guest6625
+              - generic [ref=e247]: 房主
+              - generic [ref=e248]: 你
+          - listitem [ref=e264]:
+            - generic [ref=e266]: Guest6625
+      - generic [ref=e250]:
+        - generic [ref=e251]:
+          - generic [ref=e252]:
+            - paragraph [ref=e253]: Breathe
+            - paragraph [ref=e254]: Capo Productions
+          - button [ref=e256] [cursor=pointer]:
+            - img [ref=e267]
+        - generic [ref=e259]:
+          - generic [ref=e260]: 0:00
+          - generic [ref=e262]: 0:00
+      - button "离开房间" [ref=e263] [cursor=pointer]
+  - generic [ref=e102]:
+    - img [ref=e106]
+    - generic [ref=e109]:
+      - generic [ref=e110] [cursor=pointer]:
+        - generic [ref=e111]: Breathe
+        - generic [ref=e112]: Capo Productions
+      - generic [ref=e113]:
+        - generic [ref=e114]: 0:00
+        - slider [ref=e116] [cursor=pointer]: "0"
+        - generic [ref=e118]: 2:05
+    - generic [ref=e119]:
+      - button "上一首" [ref=e120] [cursor=pointer]:
+        - img [ref=e121]
+      - button "暂停" [active] [ref=e271] [cursor=pointer]:
+        - img [ref=e272]
+      - button "下一首" [ref=e126] [cursor=pointer]:
+        - img [ref=e127]
+    - generic [ref=e129]:
+      - button "静音" [ref=e130] [cursor=pointer]:
+        - img [ref=e131]
+      - slider [ref=e136] [cursor=pointer]: "80"

@@ -1,0 +1,125 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - button "搜索" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - textbox "输入音乐链接或搜索关键词..." [ref=e104]: 周杰伦
+          - button "搜索" [ref=e105] [cursor=pointer]
+          - button [ref=e106] [cursor=pointer]:
+            - img [ref=e107]
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - generic [ref=e120]:
+              - paragraph [ref=e121]: 那天下雨了
+              - paragraph [ref=e122]: 周杰伦 • 未知
+            - generic [ref=e123]:
+              - button "添加到歌单" [ref=e124] [cursor=pointer]:
+                - img [ref=e125]
+              - button "下载" [ref=e126] [cursor=pointer]:
+                - img [ref=e127]
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - paragraph [ref=e132]: 爱琴海
+              - paragraph [ref=e133]: 周杰伦 • 未知
+            - generic [ref=e134]:
+              - button "添加到歌单" [ref=e135] [cursor=pointer]:
+                - img [ref=e136]
+              - button "下载" [ref=e137] [cursor=pointer]:
+                - img [ref=e138]
+          - generic [ref=e141]:
+            - generic [ref=e142]:
+              - paragraph [ref=e143]: 晴天
+              - paragraph [ref=e144]: 周杰伦 • 未知
+            - generic [ref=e145]:
+              - button "添加到歌单" [ref=e146] [cursor=pointer]:
+                - img [ref=e147]
+              - button "下载" [ref=e148] [cursor=pointer]:
+                - img [ref=e149]
+          - generic [ref=e152]:
+            - generic [ref=e153]:
+              - paragraph [ref=e154]: 太阳之子
+              - paragraph [ref=e155]: 周杰伦 • 未知
+            - generic [ref=e156]:
+              - button "添加到歌单" [ref=e157] [cursor=pointer]:
+                - img [ref=e158]
+              - button "下载" [ref=e159] [cursor=pointer]:
+                - img [ref=e160]
+          - generic [ref=e163]:
+            - generic [ref=e164]:
+              - paragraph [ref=e165]: 稻香
+              - paragraph [ref=e166]: 周杰伦 • 未知
+            - generic [ref=e167]:
+              - button "添加到歌单" [ref=e168] [cursor=pointer]:
+                - img [ref=e169]
+              - button "下载" [ref=e170] [cursor=pointer]:
+                - img [ref=e171]
+        - generic [ref=e111]:
+          - textbox "输入QQ音乐/网易云/酷狗链接..." [ref=e112]
+          - button "解析" [ref=e113] [cursor=pointer]
+        - generic [ref=e115]:
+          - textbox "输入歌单链接..." [ref=e116]
+          - button "解析歌单" [ref=e117] [cursor=pointer]
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e51]:
+      - generic [ref=e54]:
+        - img [ref=e55]
+        - heading "SyncMusic" [level=1] [ref=e59]
+        - generic [ref=e60]: 一起听
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - heading "加入房间" [level=2] [ref=e63]
+          - paragraph [ref=e64]: 输入房间号，与朋友一起听歌
+        - generic [ref=e65]:
+          - textbox "输入房间号" [ref=e67]
+          - button "加入房间" [disabled] [ref=e68]
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - heading "创建房间" [level=2] [ref=e71]
+          - paragraph [ref=e72]: 创建一个新房间，邀请朋友一起听音乐
+        - generic [ref=e73]:
+          - textbox "输入房间名称" [ref=e75]
+          - button "创建房间" [disabled] [ref=e76]
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - img [ref=e80]
+          - heading "邀请朋友" [level=3] [ref=e85]
+          - paragraph [ref=e86]: 创建房间后分享链接即可邀请朋友加入
+        - generic [ref=e87]:
+          - img [ref=e89]
+          - heading "同步播放" [level=3] [ref=e93]
+          - paragraph [ref=e94]: 房主控制播放，所有人同步收听
+        - generic [ref=e95]:
+          - img [ref=e97]
+          - heading "音乐解析" [level=3] [ref=e100]
+          - paragraph [ref=e101]: 支持QQ音乐、网易云、酷狗链接解析

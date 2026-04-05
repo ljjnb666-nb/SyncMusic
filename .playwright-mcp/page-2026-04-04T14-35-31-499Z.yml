@@ -1,0 +1,51 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [active] [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - generic [ref=e50]:
+    - heading "一起听音乐" [level=3] [ref=e51]
+    - paragraph [ref=e52]: 创建或加入房间，与朋友同步听歌
+    - generic [ref=e53]:
+      - heading "创建房间" [level=4] [ref=e54]
+      - generic [ref=e55]:
+        - textbox "输入房间名称" [ref=e56]
+        - button "创建" [disabled] [ref=e57]
+    - generic [ref=e59]: 或
+    - generic [ref=e60]:
+      - heading "加入房间" [level=4] [ref=e61]
+      - generic [ref=e62]:
+        - textbox "输入房间号" [ref=e63]
+        - button "加入" [disabled] [ref=e64]
+    - button "关闭" [ref=e65] [cursor=pointer]
+  - main [ref=e48]

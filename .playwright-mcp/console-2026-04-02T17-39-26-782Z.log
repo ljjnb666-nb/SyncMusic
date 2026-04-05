@@ -1,0 +1,9 @@
+[  106765ms] [ERROR] Play error: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:41
+[  106775ms] TypeError: Cannot create property 'value' on number '0'
+    at Socket2.<anonymous> (http://localhost:3000/src/stores/room.js?t=1775151398015:99:22)
+    at Emitter.emit (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:819:20)
+    at Socket2.emitEvent (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:3165:16)
+    at Socket2.onevent (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:3153:12)
+    at Socket2.onpacket (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:3124:14)
+    at Emitter.emit (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:819:20)
+    at http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:3728:12

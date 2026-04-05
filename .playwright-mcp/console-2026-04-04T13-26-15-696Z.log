@@ -1,0 +1,3 @@
+[     143ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
+[   58393ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[   58393ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:88

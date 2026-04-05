@@ -1,0 +1,36 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e9]:
+      - img [ref=e10]
+      - heading "SyncMusic" [level=1] [ref=e14]
+      - generic [ref=e15]: 一起听
+  - generic [ref=e16]:
+    - generic [ref=e17]:
+      - heading "加入房间" [level=2] [ref=e18]
+      - paragraph [ref=e19]: 输入房间号，与朋友一起听歌
+    - generic [ref=e20]:
+      - textbox "输入房间号" [ref=e22]
+      - button "加入房间" [disabled] [ref=e23]
+  - generic [ref=e24]:
+    - generic [ref=e25]:
+      - heading "创建房间" [level=2] [ref=e26]
+      - paragraph [ref=e27]: 创建一个新房间，邀请朋友一起听音乐
+    - generic [ref=e28]:
+      - textbox "输入房间名称" [disabled] [ref=e30]: 持久化测试
+      - button "创建中..." [disabled] [ref=e57]:
+        - generic [ref=e58]:
+          - img [ref=e59]
+          - text: 创建中...
+  - generic [ref=e32]:
+    - generic [ref=e33]:
+      - img [ref=e35]
+      - heading "邀请朋友" [level=3] [ref=e40]
+      - paragraph [ref=e41]: 创建房间后分享链接即可邀请朋友加入
+    - generic [ref=e42]:
+      - img [ref=e44]
+      - heading "同步播放" [level=3] [ref=e48]
+      - paragraph [ref=e49]: 房主控制播放，所有人同步收听
+    - generic [ref=e50]:
+      - img [ref=e52]
+      - heading "音乐解析" [level=3] [ref=e55]
+      - paragraph [ref=e56]: 支持QQ音乐、网易云、酷狗链接解析

@@ -1,0 +1,185 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1775326410265,
+  "projectRoot": "C:\\Users\\LJJ2004\\所有项目\\SyncMusic\\frontend",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "vue",
+        "version": "3.4.0",
+        "category": "frontend"
+      },
+      {
+        "name": "vite",
+        "version": "5.0.0",
+        "category": "build"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": "ES modules",
+    "testPattern": null,
+    "fileOrganization": "type-based"
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "src"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "dist": {
+      "path": "dist",
+      "purpose": "Distribution/build output",
+      "fileCount": 1,
+      "lastAccessed": 1775326410245,
+      "keyFiles": [
+        "index.html"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 3,
+      "lastAccessed": 1775326410245,
+      "keyFiles": [
+        "App.vue",
+        "main.js",
+        "style.css"
+      ]
+    },
+    "dist\\assets": {
+      "path": "dist\\assets",
+      "purpose": "Static assets",
+      "fileCount": 172,
+      "lastAccessed": 1775326410250,
+      "keyFiles": [
+        "Downloads-2r0OfzcM.js",
+        "Downloads-48b_6pU1.js",
+        "Downloads-4htzTqyA.js"
+      ]
+    },
+    "src\\api": {
+      "path": "src\\api",
+      "purpose": "API routes",
+      "fileCount": 5,
+      "lastAccessed": 1775326410250,
+      "keyFiles": [
+        "favorites.js",
+        "history.js",
+        "music.js"
+      ]
+    },
+    "src\\components": {
+      "path": "src\\components",
+      "purpose": "UI components",
+      "fileCount": 13,
+      "lastAccessed": 1775326410251,
+      "keyFiles": [
+        "AppIcon.vue",
+        "AppNavbar.vue",
+        "AudioPlayer.vue"
+      ]
+    },
+    "src\\utils": {
+      "path": "src\\utils",
+      "purpose": "Utility functions",
+      "fileCount": 3,
+      "lastAccessed": 1775326410251,
+      "keyFiles": [
+        "format.js",
+        "lrcParser.js",
+        "session.js"
+      ]
+    },
+    "src\\views": {
+      "path": "src\\views",
+      "purpose": "View templates",
+      "fileCount": 8,
+      "lastAccessed": 1775326410251,
+      "keyFiles": [
+        "Downloads.vue",
+        "Favorites.vue",
+        "History.vue"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src\\views\\Room.vue",
+      "accessCount": 10,
+      "lastAccessed": 1775355673596,
+      "type": "file"
+    },
+    {
+      "path": "src\\App.vue",
+      "accessCount": 9,
+      "lastAccessed": 1775355386454,
+      "type": "file"
+    },
+    {
+      "path": "src\\stores\\room.js",
+      "accessCount": 8,
+      "lastAccessed": 1775355718839,
+      "type": "file"
+    },
+    {
+      "path": "src\\stores\\player.js",
+      "accessCount": 7,
+      "lastAccessed": 1775355386507,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\AudioPlayer.vue",
+      "accessCount": 2,
+      "lastAccessed": 1775355386490,
+      "type": "file"
+    },
+    {
+      "path": "src",
+      "accessCount": 1,
+      "lastAccessed": 1775326922926,
+      "type": "directory"
+    },
+    {
+      "path": "src\\api\\room.js",
+      "accessCount": 1,
+      "lastAccessed": 1775326926097,
+      "type": "file"
+    },
+    {
+      "path": "src\\socket\\client.js",
+      "accessCount": 1,
+      "lastAccessed": 1775355426241,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

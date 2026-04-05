@@ -1,0 +1,82 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [active] [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e287]:
+      - heading "下载管理" [level=1] [ref=e289]:
+        - img [ref=e290]
+        - generic [ref=e293]: 下载管理
+      - generic [ref=e294]:
+        - generic [ref=e295]:
+          - heading "已下载文件" [level=2] [ref=e297]:
+            - img [ref=e298]
+            - text: 已下载文件
+          - generic [ref=e301]:
+            - img [ref=e302]
+            - paragraph [ref=e306]: 暂无下载文件
+          - button "刷新列表" [ref=e307] [cursor=pointer]:
+            - img [ref=e308]
+            - generic [ref=e312]: 刷新列表
+        - generic [ref=e313]:
+          - heading "下载位置" [level=2] [ref=e314]:
+            - img [ref=e315]
+            - text: 下载位置
+          - generic [ref=e318]:
+            - textbox "输入下载目录路径..." [ref=e319]: C:\Users\LJJ2004\所有项目\SyncMusic\downloads
+            - button "设置" [ref=e320] [cursor=pointer]:
+              - img [ref=e321]
+              - generic [ref=e325]: 设置
+          - paragraph [ref=e326]: 💡 支持绝对路径或相对路径（相对于项目根目录）
+  - generic [ref=e102]:
+    - img [ref=e106]
+    - generic [ref=e109]:
+      - generic [ref=e110] [cursor=pointer]:
+        - generic [ref=e111]: Courage
+        - generic [ref=e112]: Capo Productions
+      - generic [ref=e113]:
+        - generic [ref=e114]: 0:00
+        - slider [ref=e116] [cursor=pointer]: "0"
+        - generic [ref=e118]: 2:03
+    - generic [ref=e119]:
+      - button "上一首" [ref=e120] [cursor=pointer]:
+        - img [ref=e121]
+      - button "播放" [ref=e123] [cursor=pointer]:
+        - img [ref=e124]
+      - button "下一首" [ref=e126] [cursor=pointer]:
+        - img [ref=e127]
+    - generic [ref=e129]:
+      - button "静音" [ref=e130] [cursor=pointer]:
+        - img [ref=e131]
+      - slider [ref=e136] [cursor=pointer]: "80"

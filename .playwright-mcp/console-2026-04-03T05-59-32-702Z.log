@@ -1,0 +1,3 @@
+[      21ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/downloads:0
+[   26933ms] [ERROR] Connecting to 'http://localhost:3000/api/music/downloads' violates the following Content Security Policy directive: "default-src 'none'". Note that 'connect-src' was not explicitly set, so 'default-src' is used as a fallback. The action has been blocked. @ :2
+[   26933ms] [ERROR] Fetch API cannot load http://localhost:3000/api/music/downloads. Refused to connect because it violates the document's Content Security Policy. @ :2

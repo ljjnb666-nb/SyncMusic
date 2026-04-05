@@ -1,0 +1,92 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - button [ref=e53] [cursor=pointer]:
+          - img [ref=e54]
+        - generic [ref=e56]:
+          - heading "FinalSync" [level=1] [ref=e130]
+          - paragraph [ref=e58]: "房间号: syUTbZZIvN"
+        - button [ref=e59] [cursor=pointer]:
+          - img [ref=e60]
+      - generic [ref=e64]:
+        - img [ref=e65]
+        - text: "房主: Guest6625"
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - heading "参与者" [level=3] [ref=e71]
+          - generic [ref=e72]: "2"
+        - list [ref=e131]:
+          - listitem [ref=e132]:
+            - generic [ref=e133]:
+              - generic [ref=e134]: Guest6625
+              - generic [ref=e135]: 房主
+          - listitem [ref=e136]:
+            - generic [ref=e137]:
+              - generic [ref=e138]: Guest6625
+              - generic [ref=e139]: 你
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - paragraph [ref=e84]: Cast Away
+            - paragraph [ref=e85]: Capo Productions
+          - generic [ref=e87]: 已暂停
+        - generic [ref=e88]:
+          - generic [ref=e89]: 0:00
+          - generic [ref=e91]: 0:00
+      - button "离开房间" [ref=e92] [cursor=pointer]
+  - generic [ref=e93]:
+    - img [ref=e97]
+    - generic [ref=e100]:
+      - generic [ref=e101] [cursor=pointer]:
+        - generic [ref=e102]: Cast Away
+        - generic [ref=e103]: Capo Productions
+      - generic [ref=e104]:
+        - generic [ref=e105]: 0:00
+        - slider [ref=e107] [cursor=pointer]: "0"
+        - generic [ref=e109]: 0:00
+    - generic [ref=e110]:
+      - button "上一首" [ref=e111] [cursor=pointer]:
+        - img [ref=e112]
+      - button "播放" [ref=e114] [cursor=pointer]:
+        - img [ref=e115]
+      - button "下一首" [ref=e117] [cursor=pointer]:
+        - img [ref=e118]
+    - generic [ref=e120]:
+      - button "静音" [ref=e121] [cursor=pointer]:
+        - img [ref=e122]
+      - slider [ref=e127] [cursor=pointer]: "80"

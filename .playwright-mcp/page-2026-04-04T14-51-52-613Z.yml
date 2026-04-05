@@ -1,0 +1,61 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [active] [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e102]:
+      - heading "下载管理" [level=1] [ref=e104]:
+        - img [ref=e105]
+        - generic [ref=e108]: 下载管理
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - heading "已下载文件" [level=2] [ref=e112]:
+            - img [ref=e113]
+            - text: 已下载文件
+          - generic [ref=e116]:
+            - img [ref=e117]
+            - paragraph [ref=e121]: 暂无下载文件
+          - button "刷新列表" [ref=e122] [cursor=pointer]:
+            - img [ref=e123]
+            - generic [ref=e127]: 刷新列表
+        - generic [ref=e128]:
+          - heading "下载位置" [level=2] [ref=e129]:
+            - img [ref=e130]
+            - text: 下载位置
+          - generic [ref=e133]:
+            - textbox "输入下载目录路径..." [ref=e134]: C:\Users\LJJ2004\所有项目\SyncMusic\downloads
+            - button "设置" [ref=e135] [cursor=pointer]:
+              - img [ref=e136]
+              - generic [ref=e140]: 设置
+          - paragraph [ref=e141]: 💡 支持绝对路径或相对路径（相对于项目根目录）

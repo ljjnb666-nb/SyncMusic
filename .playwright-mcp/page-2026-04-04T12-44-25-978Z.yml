@@ -1,0 +1,97 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [active] [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - generic [ref=e351]:
+    - heading "一起听音乐" [level=3] [ref=e352]
+    - paragraph [ref=e353]: 创建或加入房间，与朋友同步听歌
+    - generic [ref=e354]:
+      - heading "创建房间" [level=4] [ref=e355]
+      - generic [ref=e356]:
+        - textbox "输入房间名称" [ref=e357]
+        - button "创建" [disabled] [ref=e358]
+    - generic [ref=e360]: 或
+    - generic [ref=e361]:
+      - heading "加入房间" [level=4] [ref=e362]
+      - generic [ref=e363]:
+        - textbox "输入房间号" [ref=e364]
+        - button "加入" [disabled] [ref=e365]
+    - button "关闭" [ref=e366] [cursor=pointer]
+  - main [ref=e48]:
+    - generic [ref=e304]:
+      - heading "下载管理" [level=1] [ref=e306]:
+        - img [ref=e307]
+        - generic [ref=e310]: 下载管理
+      - generic [ref=e311]:
+        - generic [ref=e312]:
+          - heading "已下载文件" [level=2] [ref=e314]:
+            - img [ref=e315]
+            - text: 已下载文件
+          - generic [ref=e344]:
+            - img [ref=e345]
+            - paragraph [ref=e349]: 暂无下载文件
+          - button "刷新列表" [ref=e324] [cursor=pointer]:
+            - img [ref=e325]
+            - generic [ref=e329]: 刷新列表
+        - generic [ref=e330]:
+          - heading "下载位置" [level=2] [ref=e331]:
+            - img [ref=e332]
+            - text: 下载位置
+          - generic [ref=e335]:
+            - textbox "输入下载目录路径..." [ref=e336]: C:\Users\LJJ2004\所有项目\SyncMusic\downloads
+            - button "设置" [ref=e337] [cursor=pointer]:
+              - img [ref=e338]
+              - generic [ref=e342]: 设置
+          - paragraph [ref=e343]: 💡 支持绝对路径或相对路径（相对于项目根目录）
+  - generic [ref=e102]:
+    - img [ref=e106]
+    - generic [ref=e109]:
+      - generic [ref=e110] [cursor=pointer]:
+        - generic [ref=e111]: Breathe
+        - generic [ref=e112]: Capo Productions
+      - generic [ref=e113]:
+        - generic [ref=e114]: 0:00
+        - slider [ref=e116] [cursor=pointer]: "0"
+        - generic [ref=e118]: 2:05
+    - generic [ref=e119]:
+      - button "上一首" [ref=e120] [cursor=pointer]:
+        - img [ref=e121]
+      - button "播放" [ref=e123] [cursor=pointer]:
+        - img [ref=e124]
+      - button "下一首" [ref=e126] [cursor=pointer]:
+        - img [ref=e127]
+    - generic [ref=e129]:
+      - button "静音" [ref=e130] [cursor=pointer]:
+        - img [ref=e131]
+      - slider [ref=e136] [cursor=pointer]: "80"

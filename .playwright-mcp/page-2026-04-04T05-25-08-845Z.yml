@@ -1,0 +1,70 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [active] [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e102]:
+      - generic [ref=e103]:
+        - heading "歌单" [level=1] [ref=e104]:
+          - img [ref=e105]
+          - generic [ref=e107]: 歌单
+        - button "清空" [ref=e109] [cursor=pointer]:
+          - img [ref=e110]
+          - generic [ref=e113]: 清空
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - heading "本地音乐" [level=2] [ref=e116]:
+            - img [ref=e117]
+            - generic [ref=e119]: 本地音乐
+          - button "导入" [ref=e120] [cursor=pointer]:
+            - img [ref=e121]
+            - generic [ref=e124]: 导入
+        - generic [ref=e125]:
+          - textbox "输入音乐文件夹路径，如 D:\\Music" [ref=e126]
+          - button "加载" [ref=e127] [cursor=pointer]:
+            - img [ref=e128]
+            - generic [ref=e132]: 加载
+        - paragraph [ref=e133]: 支持 mp3 / flac / m4a
+        - generic [ref=e134]:
+          - img [ref=e135]
+          - paragraph [ref=e139]: 暂无本地音乐
+      - generic [ref=e140]:
+        - heading "播放列表 (0 首)" [level=2] [ref=e142]:
+          - img [ref=e143]
+          - generic [ref=e145]: 播放列表
+          - generic [ref=e146]: (0 首)
+        - generic [ref=e147]:
+          - img [ref=e148]
+          - paragraph [ref=e152]: 播放列表为空
+          - paragraph [ref=e153]: 从上方本地音乐添加歌曲到歌单

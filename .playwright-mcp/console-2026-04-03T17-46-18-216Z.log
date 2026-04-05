@@ -1,0 +1,4 @@
+[  121270ms] [ERROR] Play error: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:41
+[  121273ms] [ERROR] Play error: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:41
+[  188378ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[  190740ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/:0

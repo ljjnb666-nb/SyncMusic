@@ -1,0 +1,6 @@
+[   19643ms] [LOG] audioRef: undefined @ :7
+[   19643ms] [LOG] audioRef.value: undefined @ :8
+[   19643ms] [LOG] Is it a ref?: undefined @ :9
+[   19643ms] [LOG] Audio elements count: 0 @ :13
+[   80082ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[   82427ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/:0

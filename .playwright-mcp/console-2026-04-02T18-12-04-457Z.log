@@ -1,0 +1,16 @@
+[    1781ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/favicon.ico:0
+[   61515ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/api/history?limit=50:0
+[   61517ms] [ERROR] Failed to fetch history: AxiosError: Request failed with status code 500
+    at settle (http://localhost:3001/node_modules/.vite/deps/axios.js?v=6a9fb59f:1319:7)
+    at XMLHttpRequest.onloadend (http://localhost:3001/node_modules/.vite/deps/axios.js?v=6a9fb59f:1682:7)
+    at Axios.request (http://localhost:3001/node_modules/.vite/deps/axios.js?v=6a9fb59f:2328:41)
+    at async getHistory (http://localhost:3001/src/api/history.js:9:20)
+    at async Proxy.fetchHistory (http://localhost:3001/src/stores/history.js:13:20)
+    at async http://localhost:3001/src/views/History.vue:30:3 @ http://localhost:3001/src/stores/history.js:15
+[   63063ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/api/favorites:0
+[   63064ms] [ERROR] Failed to fetch favorites: AxiosError: Request failed with status code 500
+    at settle (http://localhost:3001/node_modules/.vite/deps/axios.js?v=6a9fb59f:1319:7)
+    at XMLHttpRequest.onloadend (http://localhost:3001/node_modules/.vite/deps/axios.js?v=6a9fb59f:1682:7)
+    at Axios.request (http://localhost:3001/node_modules/.vite/deps/axios.js?v=6a9fb59f:2328:41)
+    at async getFavorites (http://localhost:3001/src/api/favorites.js:8:20)
+    at async fetchFavorites (http://localhost:3001/src/views/Favorites.vue:29:20) @ http://localhost:3001/src/views/Favorites.vue:31

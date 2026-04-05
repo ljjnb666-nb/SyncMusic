@@ -1,0 +1,196 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1775311243569,
+  "projectRoot": "C:\\Users\\LJJ2004\\所有项目\\SyncMusic\\backend",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "express",
+        "version": "4.18.0",
+        "category": "backend"
+      },
+      {
+        "name": "vitest",
+        "version": "4.1.2",
+        "category": "testing"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "node --watch src/index.js",
+      "start": "node src/index.js"
+    }
+  },
+  "conventions": {
+    "namingStyle": "camelCase",
+    "importStyle": "ES modules",
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "src",
+      "tests"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 2,
+      "lastAccessed": 1775311243529,
+      "keyFiles": [
+        "db.js",
+        "index.js"
+      ]
+    },
+    "tests": {
+      "path": "tests",
+      "purpose": "Test files",
+      "fileCount": 1,
+      "lastAccessed": 1775311243529,
+      "keyFiles": [
+        "room.service.test.js"
+      ]
+    },
+    "src\\middleware": {
+      "path": "src\\middleware",
+      "purpose": "Middleware",
+      "fileCount": 1,
+      "lastAccessed": 1775311243558,
+      "keyFiles": [
+        "auth.js"
+      ]
+    },
+    "src\\routes": {
+      "path": "src\\routes",
+      "purpose": "Route handlers",
+      "fileCount": 7,
+      "lastAccessed": 1775311243558,
+      "keyFiles": [
+        "auth.js",
+        "favorites.js",
+        "history.js"
+      ]
+    },
+    "src\\services": {
+      "path": "src\\services",
+      "purpose": "Business logic services",
+      "fileCount": 10,
+      "lastAccessed": 1775311243558,
+      "keyFiles": [
+        "authService.js",
+        "favoritesService.js",
+        "historyService.js"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src\\routes\\music.js",
+      "accessCount": 59,
+      "lastAccessed": 1775366301375,
+      "type": "file"
+    },
+    {
+      "path": "src\\index.js",
+      "accessCount": 29,
+      "lastAccessed": 1775377075867,
+      "type": "file"
+    },
+    {
+      "path": "src\\socket\\handlers.js",
+      "accessCount": 15,
+      "lastAccessed": 1775377061341,
+      "type": "file"
+    },
+    {
+      "path": "src\\services\\roomService.js",
+      "accessCount": 8,
+      "lastAccessed": 1775376926607,
+      "type": "file"
+    },
+    {
+      "path": "src",
+      "accessCount": 7,
+      "lastAccessed": 1775376840012,
+      "type": "directory"
+    },
+    {
+      "path": "exec-ytdl.cjs",
+      "accessCount": 5,
+      "lastAccessed": 1775141381531,
+      "type": "file"
+    },
+    {
+      "path": "src\\routes\\room.js",
+      "accessCount": 3,
+      "lastAccessed": 1775367451704,
+      "type": "file"
+    },
+    {
+      "path": "src\\socket",
+      "accessCount": 2,
+      "lastAccessed": 1775376801808,
+      "type": "directory"
+    },
+    {
+      "path": "test-ytdl2.cjs",
+      "accessCount": 1,
+      "lastAccessed": 1775146733259,
+      "type": "file"
+    },
+    {
+      "path": "src\\services",
+      "accessCount": 1,
+      "lastAccessed": 1775195548592,
+      "type": "directory"
+    },
+    {
+      "path": "src\\services\\searchService.js",
+      "accessCount": 1,
+      "lastAccessed": 1775195552474,
+      "type": "file"
+    },
+    {
+      "path": "test_encoding.mjs",
+      "accessCount": 1,
+      "lastAccessed": 1775229550083,
+      "type": "file"
+    },
+    {
+      "path": "src\\db.js",
+      "accessCount": 1,
+      "lastAccessed": 1775320293674,
+      "type": "file"
+    },
+    {
+      "path": "src\\state\\roomManager.js",
+      "accessCount": 1,
+      "lastAccessed": 1775377051327,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

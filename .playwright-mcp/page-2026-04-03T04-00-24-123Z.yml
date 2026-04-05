@@ -1,0 +1,98 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+      - button "一起听" [ref=e36] [cursor=pointer]:
+        - img [ref=e37]
+        - generic [ref=e42]: 一起听
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - generic [ref=e46]:
+        - img [ref=e47]
+        - textbox "搜索歌曲、歌手或专辑..." [ref=e50]: 周杰伦
+        - button [ref=e58] [cursor=pointer]:
+          - img [ref=e59]
+      - generic [ref=e62]:
+        - generic [ref=e64]: 找到 5 首歌曲
+        - generic [ref=e65]:
+          - generic [ref=e66] [cursor=pointer]:
+            - generic [ref=e67]:
+              - img [ref=e69]
+              - img [ref=e74]
+            - generic [ref=e77]: 周杰伦
+            - generic [ref=e78]:
+              - button "添加到歌单" [ref=e79]:
+                - img [ref=e80]
+              - button "下载" [active] [ref=e81]:
+                - img [ref=e82]
+          - generic [ref=e85] [cursor=pointer]:
+            - generic [ref=e86]:
+              - img [ref=e88]
+              - img [ref=e93]
+            - generic [ref=e96]: 周杰伦
+            - generic [ref=e97]:
+              - button "添加到歌单" [ref=e98]:
+                - img [ref=e99]
+              - button "下载" [ref=e100]:
+                - img [ref=e101]
+          - generic [ref=e104] [cursor=pointer]:
+            - generic [ref=e105]:
+              - img [ref=e107]
+              - img [ref=e112]
+            - generic [ref=e115]: 周杰伦
+            - generic [ref=e116]:
+              - button "添加到歌单" [ref=e117]:
+                - img [ref=e118]
+              - button "下载" [ref=e119]:
+                - img [ref=e120]
+          - generic [ref=e123] [cursor=pointer]:
+            - generic [ref=e124]:
+              - img [ref=e126]
+              - img [ref=e131]
+            - generic [ref=e134]: 周杰伦
+            - generic [ref=e135]:
+              - button "添加到歌单" [ref=e136]:
+                - img [ref=e137]
+              - button "下载" [ref=e138]:
+                - img [ref=e139]
+          - generic [ref=e142] [cursor=pointer]:
+            - generic [ref=e143]:
+              - img [ref=e145]
+              - img [ref=e150]
+            - generic [ref=e153]: 周杰伦
+            - generic [ref=e154]:
+              - button "添加到歌单" [ref=e155]:
+                - img [ref=e156]
+              - button "下载" [ref=e157]:
+                - img [ref=e158]
+      - generic [ref=e162]:
+        - heading "下载歌曲" [level=3] [ref=e163]
+        - generic [ref=e164]:
+          - paragraph
+          - paragraph [ref=e165]: 周杰伦
+        - button "开始下载" [ref=e167] [cursor=pointer]
+        - button "关闭" [ref=e168] [cursor=pointer]

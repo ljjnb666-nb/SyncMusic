@@ -1,0 +1,14 @@
+[      39ms] [WARNING] [Vue warn]: Unhandled error during execution of setup function 
+  at <App> @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:2203
+[      45ms] ReferenceError: useRoute is not defined
+    at setup (http://localhost:3000/src/App.vue:15:15)
+    at callWithErrorHandling (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:2351:19)
+    at setupStatefulComponent (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:10292:25)
+    at setupComponent (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:10254:36)
+    at mountComponent (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:8181:7)
+    at processComponent (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:8147:9)
+    at patch (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:7644:11)
+    at render2 (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:8967:7)
+    at mount (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:6405:13)
+    at app.mount (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=bba82083:12664:19)
+[   21049ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/rooms/1vwixdJDzq:0

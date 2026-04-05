@@ -1,0 +1,75 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+      - button "一起听" [ref=e36] [cursor=pointer]:
+        - img [ref=e37]
+        - generic [ref=e42]: 一起听
+  - main [ref=e43]:
+    - generic [ref=e146]:
+      - generic [ref=e147]:
+        - heading "歌单" [level=1] [ref=e148]:
+          - img [ref=e149]
+          - generic [ref=e151]: 歌单
+        - button "清空" [ref=e153] [cursor=pointer]:
+          - img [ref=e154]
+          - generic [ref=e157]: 清空
+      - generic [ref=e158]:
+        - generic [ref=e159]:
+          - heading "本地音乐" [level=2] [ref=e160]:
+            - img [ref=e161]
+            - generic [ref=e163]: 本地音乐
+          - button "导入" [active] [ref=e164] [cursor=pointer]:
+            - img [ref=e165]
+            - generic [ref=e168]: 导入
+        - generic [ref=e169]:
+          - textbox "输入音乐文件夹路径，如 D:\\Music" [ref=e170]
+          - button "加载" [ref=e171] [cursor=pointer]:
+            - img [ref=e172]
+            - generic [ref=e176]: 加载
+        - paragraph [ref=e177]: 支持 mp3 / flac / m4a
+        - generic [ref=e178]:
+          - img [ref=e179]
+          - paragraph [ref=e183]: 暂无本地音乐
+      - generic [ref=e184]:
+        - heading "播放列表 (1 首)" [level=2] [ref=e186]:
+          - img [ref=e187]
+          - generic [ref=e189]: 播放列表
+          - generic [ref=e190]: (1 首)
+        - generic [ref=e193] [cursor=pointer]:
+          - generic [ref=e194]:
+            - generic [ref=e195]: "1"
+            - img [ref=e196]
+          - generic [ref=e198]:
+            - generic [ref=e199]: test
+            - generic [ref=e200]: 本地音乐
+          - generic [ref=e201]: 0:00
+          - generic [ref=e202]:
+            - button "收藏" [ref=e203]:
+              - img [ref=e204]
+            - button "移除" [ref=e206]:
+              - img [ref=e207]

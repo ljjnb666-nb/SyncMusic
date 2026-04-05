@@ -1,0 +1,193 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - heading "歌单" [level=1] [ref=e51]:
+          - img [ref=e52]
+          - generic [ref=e54]: 歌单
+        - button "清空" [ref=e56] [cursor=pointer]:
+          - img [ref=e57]
+          - generic [ref=e60]: 清空
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - heading "本地音乐" [level=2] [ref=e63]:
+            - img [ref=e64]
+            - generic [ref=e66]: 本地音乐
+          - button "导入" [ref=e67] [cursor=pointer]:
+            - img [ref=e68]
+            - generic [ref=e71]: 导入
+        - generic [ref=e72]:
+          - textbox "输入音乐文件夹路径，如 D:\\Music" [ref=e73]: C:\Users\LJJ2004\Desktop\音乐\英文
+          - button "加载" [active] [ref=e74] [cursor=pointer]:
+            - img [ref=e75]
+            - generic [ref=e79]: 加载
+        - paragraph [ref=e80]: 支持 mp3 / flac / m4a
+        - generic [ref=e113]:
+          - generic [ref=e114] [cursor=pointer]:
+            - generic [ref=e115]:
+              - generic [ref=e116]: Nothin' on Me
+              - generic [ref=e117]: Leah Marie Perez
+            - generic [ref=e118]:
+              - button "收藏" [ref=e119]:
+                - img [ref=e120]
+              - button "添加到歌单" [ref=e122]:
+                - img [ref=e123]
+              - button "播放" [ref=e124]:
+                - img [ref=e125]
+          - generic [ref=e127] [cursor=pointer]:
+            - generic [ref=e128]:
+              - generic [ref=e129]: All For Love
+              - generic [ref=e130]: Tungevaag、Raaban、Richard Smitt
+            - generic [ref=e131]:
+              - button "收藏" [ref=e132]:
+                - img [ref=e133]
+              - button "添加到歌单" [ref=e135]:
+                - img [ref=e136]
+              - button "播放" [ref=e137]:
+                - img [ref=e138]
+          - generic [ref=e140] [cursor=pointer]:
+            - generic [ref=e141]:
+              - generic [ref=e142]: In the rain
+              - generic [ref=e143]: kinoyo
+            - generic [ref=e144]:
+              - button "收藏" [ref=e145]:
+                - img [ref=e146]
+              - button "添加到歌单" [ref=e148]:
+                - img [ref=e149]
+              - button "播放" [ref=e150]:
+                - img [ref=e151]
+          - generic [ref=e153] [cursor=pointer]:
+            - generic [ref=e154]:
+              - generic [ref=e155]: Lost & Found
+              - generic [ref=e156]: Embody、Claire Ridgely
+            - generic [ref=e157]:
+              - button "收藏" [ref=e158]:
+                - img [ref=e159]
+              - button "添加到歌单" [ref=e161]:
+                - img [ref=e162]
+              - button "播放" [ref=e163]:
+                - img [ref=e164]
+          - generic [ref=e166] [cursor=pointer]:
+            - generic [ref=e167]:
+              - generic [ref=e168]: Payphone
+              - generic [ref=e169]: Maroon 5、Wiz Khalifa
+            - generic [ref=e170]:
+              - button "收藏" [ref=e171]:
+                - img [ref=e172]
+              - button "添加到歌单" [ref=e174]:
+                - img [ref=e175]
+              - button "播放" [ref=e176]:
+                - img [ref=e177]
+          - generic [ref=e179] [cursor=pointer]:
+            - generic [ref=e180]:
+              - generic [ref=e181]: Love Me Like You Do
+              - generic [ref=e182]: Ellie Goulding
+            - generic [ref=e183]:
+              - button "收藏" [ref=e184]:
+                - img [ref=e185]
+              - button "添加到歌单" [ref=e187]:
+                - img [ref=e188]
+              - button "播放" [ref=e189]:
+                - img [ref=e190]
+          - generic [ref=e192] [cursor=pointer]:
+            - generic [ref=e193]:
+              - generic [ref=e194]: Drag Me Down
+              - generic [ref=e195]: One Direction
+            - generic [ref=e196]:
+              - button "收藏" [ref=e197]:
+                - img [ref=e198]
+              - button "添加到歌单" [ref=e200]:
+                - img [ref=e201]
+              - button "播放" [ref=e202]:
+                - img [ref=e203]
+          - generic [ref=e205] [cursor=pointer]:
+            - generic [ref=e206]:
+              - generic [ref=e207]: Emotion
+              - generic [ref=e208]: Carly Rae Jepsen
+            - generic [ref=e209]:
+              - button "收藏" [ref=e210]:
+                - img [ref=e211]
+              - button "添加到歌单" [ref=e213]:
+                - img [ref=e214]
+              - button "播放" [ref=e215]:
+                - img [ref=e216]
+          - generic [ref=e218] [cursor=pointer]:
+            - generic [ref=e219]:
+              - generic [ref=e220]: Stitches
+              - generic [ref=e221]: Shawn Mendes
+            - generic [ref=e222]:
+              - button "收藏" [ref=e223]:
+                - img [ref=e224]
+              - button "添加到歌单" [ref=e226]:
+                - img [ref=e227]
+              - button "播放" [ref=e228]:
+                - img [ref=e229]
+          - generic [ref=e231] [cursor=pointer]:
+            - generic [ref=e232]:
+              - generic [ref=e233]: Blank Space
+              - generic [ref=e234]: Tiffany Alvord
+            - generic [ref=e235]:
+              - button "收藏" [ref=e236]:
+                - img [ref=e237]
+              - button "添加到歌单" [ref=e239]:
+                - img [ref=e240]
+              - button "播放" [ref=e241]:
+                - img [ref=e242]
+          - generic [ref=e244]:
+            - button [disabled] [ref=e245]:
+              - img [ref=e246]
+            - generic [ref=e250]: 1 / 5
+            - button [ref=e251] [cursor=pointer]:
+              - img [ref=e252]
+      - generic [ref=e87]:
+        - heading "播放列表 (1 首)" [level=2] [ref=e89]:
+          - img [ref=e90]
+          - generic [ref=e92]: 播放列表
+          - generic [ref=e93]: (1 首)
+        - generic [ref=e96] [cursor=pointer]:
+          - generic [ref=e97]:
+            - generic [ref=e98]: "1"
+            - img [ref=e99]
+          - generic [ref=e101]:
+            - generic [ref=e102]: Nothin' on Me
+            - generic [ref=e103]: Leah Marie Perez
+          - generic [ref=e104]: 0:00
+          - generic [ref=e105]:
+            - button "收藏" [ref=e106]:
+              - img [ref=e107]
+            - button "移除" [ref=e109]:
+              - img [ref=e110]

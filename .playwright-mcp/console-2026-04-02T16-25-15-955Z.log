@@ -1,0 +1,4 @@
+[   44516ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[   46881ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/:0
+[   47467ms] [ERROR] WebSocket connection to 'ws://localhost:3000/socket.io/?sessionId=6855650b964e01489fe296fb6fed6404&EIO=4&transport=websocket' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:1523
+[   51598ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/api/rooms/03vvWEW-2k:0

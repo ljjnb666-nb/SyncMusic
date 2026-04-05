@@ -1,0 +1,37 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e6]:
+      - img [ref=e8]
+      - generic [ref=e12]:
+        - generic [ref=e13]: ContentCross
+        - generic [ref=e14]: 内容分发引擎
+    - generic [ref=e16]: 导航
+    - navigation [ref=e17]:
+      - link "仪表盘" [ref=e18] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e20]
+        - generic [ref=e25]: 仪表盘
+      - link "订阅源" [ref=e26] [cursor=pointer]:
+        - /url: /sources
+        - img [ref=e28]
+        - generic [ref=e32]: 订阅源
+      - link "内容改写" [ref=e33] [cursor=pointer]:
+        - /url: /rewrite
+        - img [ref=e35]
+        - generic [ref=e40]: 内容改写
+      - link "内容队列" [ref=e41] [cursor=pointer]:
+        - /url: /contents
+        - img [ref=e43]
+        - generic [ref=e44]: 内容队列
+      - link "发布日志" [ref=e45] [cursor=pointer]:
+        - /url: /logs
+        - img [ref=e47]
+        - generic [ref=e50]: 发布日志
+      - link "配置中心" [ref=e51] [cursor=pointer]:
+        - /url: /config
+        - img [ref=e53]
+        - generic [ref=e56]: 配置中心
+    - generic [ref=e58]:
+      - generic [ref=e61]: 系统状态
+      - generic [ref=e62]: 所有服务运行正常
+  - main [ref=e63]

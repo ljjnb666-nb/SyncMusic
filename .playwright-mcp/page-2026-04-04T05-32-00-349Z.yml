@@ -1,0 +1,85 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [active] [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - heading "我的收藏 3" [level=2] [ref=e116]:
+          - img [ref=e117]
+          - generic [ref=e119]: 我的收藏
+          - generic [ref=e120]: "3"
+        - button [ref=e121] [cursor=pointer]:
+          - img [ref=e122]
+      - generic [ref=e126]:
+        - generic [ref=e127] [cursor=pointer]:
+          - img [ref=e130]
+          - generic [ref=e134]:
+            - generic [ref=e135]: 那天下雨了
+            - generic [ref=e136]: 周杰伦
+            - generic [ref=e137]:
+              - generic [ref=e138]: 太阳之子
+              - generic [ref=e139]: 3:43
+              - generic [ref=e140]: kugou
+          - generic [ref=e141]:
+            - button "播放" [ref=e142]:
+              - img [ref=e143]
+            - button "添加到播放列表" [ref=e145]:
+              - img [ref=e146]
+            - button "取消收藏" [ref=e147]:
+              - img [ref=e148]
+        - generic [ref=e151] [cursor=pointer]:
+          - img [ref=e154]
+          - generic [ref=e158]:
+            - generic [ref=e159]: ���Ը���2
+            - generic [ref=e160]: ����������2
+          - generic [ref=e161]:
+            - button "播放" [ref=e162]:
+              - img [ref=e163]
+            - button "添加到播放列表" [ref=e165]:
+              - img [ref=e166]
+            - button "取消收藏" [ref=e167]:
+              - img [ref=e168]
+        - generic [ref=e171] [cursor=pointer]:
+          - img [ref=e174]
+          - generic [ref=e178]:
+            - generic [ref=e179]: ���Ը���
+            - generic [ref=e180]: ����������
+          - generic [ref=e181]:
+            - button "播放" [ref=e182]:
+              - img [ref=e183]
+            - button "添加到播放列表" [ref=e185]:
+              - img [ref=e186]
+            - button "取消收藏" [ref=e187]:
+              - img [ref=e188]

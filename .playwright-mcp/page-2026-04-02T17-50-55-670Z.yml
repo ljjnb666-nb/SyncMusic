@@ -1,0 +1,5 @@
+- generic [ref=e6]:
+  - img [ref=e7]
+  - heading "房间不存在" [level=2] [ref=e11]
+  - paragraph [ref=e12]: 无法找到该房间，请检查房间号是否正确
+  - button "返回首页" [ref=e13] [cursor=pointer]

@@ -1,0 +1,106 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e6]:
+      - img [ref=e8]
+      - generic [ref=e12]:
+        - generic [ref=e13]: ContentCross
+        - generic [ref=e14]: 内容分发引擎
+    - generic [ref=e16]: 导航
+    - navigation [ref=e17]:
+      - link "仪表盘" [ref=e18] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e20]
+        - generic [ref=e25]: 仪表盘
+      - link "订阅源" [ref=e27] [cursor=pointer]:
+        - /url: /sources
+        - img [ref=e29]
+        - generic [ref=e33]: 订阅源
+      - link "内容队列" [ref=e34] [cursor=pointer]:
+        - /url: /contents
+        - img [ref=e36]
+        - generic [ref=e37]: 内容队列
+      - link "发布日志" [ref=e38] [cursor=pointer]:
+        - /url: /logs
+        - img [ref=e40]
+        - generic [ref=e43]: 发布日志
+      - link "配置中心" [ref=e44] [cursor=pointer]:
+        - /url: /config
+        - img [ref=e46]
+        - generic [ref=e49]: 配置中心
+    - generic [ref=e51]:
+      - generic [ref=e54]: 系统状态
+      - generic [ref=e55]: 所有服务运行正常
+  - main [ref=e56]:
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - heading "仪表盘" [level=1] [ref=e59]
+        - paragraph [ref=e60]: 欢迎回来，以下是系统运行概览
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - img [ref=e66]
+          - generic [ref=e70]: 1 / 1
+          - generic [ref=e71]: 订阅源
+          - generic [ref=e72]: 活跃 / 总数
+        - generic [ref=e73]:
+          - img [ref=e77]
+          - generic [ref=e80]: "0"
+          - generic [ref=e81]: 待审核
+          - generic [ref=e82]: 内容需人工审核
+        - generic [ref=e83]:
+          - img [ref=e87]
+          - generic [ref=e90]: "0"
+          - generic [ref=e91]: 今日发布
+          - generic [ref=e92]: 成功发布数
+        - generic [ref=e93]:
+          - img [ref=e97]
+          - generic [ref=e99]: "0"
+          - generic [ref=e100]: 今日失败
+          - generic [ref=e101]: 发布失败数
+      - generic [ref=e102]:
+        - heading "快捷操作" [level=2] [ref=e103]
+        - generic [ref=e104]:
+          - link "+ 添加订阅源 接入新平台创作者" [ref=e105] [cursor=pointer]:
+            - /url: /sources
+            - generic [ref=e106]: +
+            - generic [ref=e107]:
+              - generic [ref=e108]: 添加订阅源
+              - generic [ref=e109]: 接入新平台创作者
+          - link "! 审核内容 0 条待处理" [ref=e110] [cursor=pointer]:
+            - /url: /contents
+            - generic [ref=e111]: "!"
+            - generic [ref=e112]:
+              - generic [ref=e113]: 审核内容
+              - generic [ref=e114]: 0 条待处理
+          - link "# 查看日志 最近发布记录" [ref=e115] [cursor=pointer]:
+            - /url: /logs
+            - generic [ref=e116]: "#"
+            - generic [ref=e117]:
+              - generic [ref=e118]: 查看日志
+              - generic [ref=e119]: 最近发布记录
+          - link "* 系统配置 平台账号与参数" [ref=e120] [cursor=pointer]:
+            - /url: /config
+            - generic [ref=e121]: "*"
+            - generic [ref=e122]:
+              - generic [ref=e123]: 系统配置
+              - generic [ref=e124]: 平台账号与参数
+      - generic [ref=e125]:
+        - heading "系统概览" [level=2] [ref=e126]
+        - generic [ref=e128]:
+          - generic [ref=e129]:
+            - generic [ref=e130]: 内容统计
+            - generic [ref=e131]:
+              - generic [ref=e132]:
+                - generic [ref=e133]: 内容总数
+                - generic [ref=e134]: "0"
+              - generic [ref=e135]:
+                - generic [ref=e136]: 待审核
+                - generic [ref=e137]: "0"
+          - generic [ref=e138]:
+            - generic [ref=e139]: 今日发布
+            - generic [ref=e140]:
+              - generic [ref=e141]:
+                - generic [ref=e142]: 成功
+                - generic [ref=e143]: "0"
+              - generic [ref=e144]:
+                - generic [ref=e145]: 失败
+                - generic [ref=e146]: "0"

@@ -1,0 +1,2 @@
+[  258777ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[  258777ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:88

@@ -1,0 +1,9 @@
+[   73228ms] TypeError: Failed to set the 'currentTime' property on 'HTMLMediaElement': The provided double value is non-finite.
+    at Proxy.seek (http://localhost:3000/src/components/AudioPlayer.vue:55:35)
+    at Socket2.<anonymous> (http://localhost:3000/src/stores/room.js:189:31)
+    at Emitter.emit (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:819:20)
+    at Socket2.emitEvent (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:3165:16)
+    at Socket2.onevent (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:3153:12)
+    at Socket2.onpacket (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:3124:14)
+    at Emitter.emit (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:819:20)
+    at http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:3728:12

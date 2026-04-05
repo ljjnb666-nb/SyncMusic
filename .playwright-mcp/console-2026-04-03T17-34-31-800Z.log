@@ -1,0 +1,10 @@
+[  132854ms] [LOG] Components: [RouterLink, RouterView] @ :7
+[  146096ms] [LOG] App refs: {"playerStore":{"$id":"player","playlist":[{"id":"local_1775237688949_0","title":"Nothin' on Me","artist":"Leah Marie Perez","album":"本地音乐","duration":0,"path":"C:\\Users\\LJJ2004\\Desktop\\音乐\\英文\\Leah Marie Perez - Nothin' on Me.mp3","isLocal":true}],"currentIndex":0,"isPlaying":true,"currentTime":0,"volume":80,"lyrics":[],"lyricsFetched":false,"playMode":"list","currentSong":{"id":"local_1775237688949_0","title":"Nothin' on Me","artist":"Leah Marie Perez","album":"本地音乐","duration":0,"path":"C:\\Users\\LJJ2004\\Desktop\\音乐\\英文\\Leah Marie Perez - Nothin' on Me.mp3","isLocal":true},"_isOptionsAPI":false},"audioPlayerRef":{},"audioSrc":"/local-music/C%3A%5CUsers%5CLJJ2004%5CDesktop%5C%E9%9F%B3%E4%B9%90%5C%E8%8B%B1%E6%96%87%5CLeah%20Marie%20Perez%20-%20Nothin'%20on%20Me.mp3","hasAudioSrc":true,"AppNavbar":{"__name":"AppNavbar","__hmrId":"2694e7c3","__scopeId":"data-v-2694e7c3","__file":"C:/Users/LJJ2004/所有项目/SyncMusic/frontend/src/components/AppNavbar.vue"},"AudioPlayer":{"__name":"AudioPlayer","props":{"src":{"default":""},"volume":{"default":80}},"emits":["timeupdate","ended","loaded"],"__hmrId":"9e3d83e8","__file":"C:/Users/LJJ2004/所有项目/SyncMusic/frontend/src/components/AudioPlayer.vue"}} @ :7
+[  175045ms] [LOG] App setupState keys: [playerStore, audioPlayerRef, audioSrc, hasAudioSrc, onTimeUpdate, onEnded, onLoaded, ref, computed, watch, AppNavbar, AudioPlayer, usePlayerStore] @ :10
+[  175045ms] [LOG] SubTree type: div @ :14
+[  175045ms] [LOG] Audio ref: Proxy(Object) @ :41
+[  175045ms] [LOG] Audio ref value: undefined @ :43
+[  208737ms] [LOG] audioPlayerRef type: object @ :6
+[  208737ms] [LOG] audioPlayerRef keys: [play, pause, seek, load] @ :7
+[  208739ms] [LOG] Has play?: function @ :8
+[  208739ms] [LOG] Has pause?: function @ :9

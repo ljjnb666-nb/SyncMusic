@@ -1,0 +1,6 @@
+[   19365ms] [ERROR] 导入音乐失败: AxiosError: Network Error
+    at XMLHttpRequest.handleError (http://localhost:3000/node_modules/.vite/deps/axios.js?v=6a9fb59f:1717:19)
+    at Axios.request (http://localhost:3000/node_modules/.vite/deps/axios.js?v=6a9fb59f:2328:41)
+    at async uploadMusicFiles (http://localhost:3000/src/api/music.js:67:20)
+    at async handleFileSelect (http://localhost:3000/src/views/Playlist.vue:80:20) @ http://localhost:3000/src/views/Playlist.vue:86
+[   19365ms] [ERROR] Failed to load resource: net::ERR_UPLOAD_FILE_CHANGED @ http://localhost:3000/api/music/upload:0

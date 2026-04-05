@@ -1,0 +1,7 @@
+[   94171ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/music/search:0
+[   94175ms] [ERROR] Search failed: AxiosError: Request failed with status code 500
+    at settle (http://localhost:3000/node_modules/.vite/deps/axios.js?v=6a9fb59f:1319:7)
+    at XMLHttpRequest.onloadend (http://localhost:3000/node_modules/.vite/deps/axios.js?v=6a9fb59f:1682:7)
+    at Axios.request (http://localhost:3000/node_modules/.vite/deps/axios.js?v=6a9fb59f:2328:41)
+    at async searchMusic (http://localhost:3000/src/api/music.js:43:20)
+    at async handleSearch (http://localhost:3000/src/views/Search.vue?t=1775189580994:29:18) @ http://localhost:3000/src/views/Search.vue?t=1775189580994:31

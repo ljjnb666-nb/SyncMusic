@@ -1,0 +1,4 @@
+[   37752ms] [ERROR] Play error: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[   37775ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[   37776ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:88
+[   38766ms] [ERROR] Play error: NotSupportedError: The element has no supported sources. @ http://localhost:3000/src/components/AudioPlayer.vue:45

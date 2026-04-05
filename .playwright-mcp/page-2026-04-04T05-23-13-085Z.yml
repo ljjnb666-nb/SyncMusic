@@ -1,0 +1,8 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - heading "ContentCross" [level=1] [ref=e6]
+    - paragraph [ref=e7]: 内容分发引擎
+  - generic [ref=e8]:
+    - textbox "用户名" [ref=e10]
+    - textbox "密码" [ref=e12]
+    - button "登录" [ref=e13]

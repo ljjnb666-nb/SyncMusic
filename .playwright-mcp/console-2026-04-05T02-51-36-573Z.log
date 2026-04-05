@@ -1,0 +1,4 @@
+[     157ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/rooms/MEYAQIYk4O:0
+[  106965ms] [ERROR] Play error: AbortError: The play() request was interrupted because the media was removed from the document. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[  106965ms] [ERROR] Play error: AbortError: The play() request was interrupted because the media was removed from the document. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[  106966ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/rooms/vT1z58hbE9:0

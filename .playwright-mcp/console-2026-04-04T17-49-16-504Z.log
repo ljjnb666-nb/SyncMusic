@@ -1,0 +1,3 @@
+[   82693ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/rooms/zg0fPSkFLX:0
+[   94671ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[   97031ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/rooms/zg0fPSkFLX:0

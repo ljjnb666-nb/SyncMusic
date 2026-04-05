@@ -1,0 +1,7 @@
+[   92158ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[  170593ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[  172955ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/:0
+[  173546ms] [ERROR] WebSocket connection to 'ws://localhost:3000/socket.io/?sessionId=6855650b964e01489fe296fb6fed6404&EIO=4&transport=websocket' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:1523
+[  268331ms] [WARNING] WebSocket connection to 'ws://localhost:3000/socket.io/?sessionId=6855650b964e01489fe296fb6fed6404&EIO=4&transport=websocket' failed: WebSocket is closed before the connection is established. @ http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:1499
+[  289148ms] [WARNING] WebSocket connection to 'ws://localhost:3000/socket.io/?sessionId=6855650b964e01489fe296fb6fed6404&EIO=4&transport=websocket' failed: WebSocket is closed before the connection is established. @ http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:1499
+[  310898ms] [WARNING] WebSocket connection to 'ws://localhost:3000/socket.io/?sessionId=6855650b964e01489fe296fb6fed6404&EIO=4&transport=websocket' failed: WebSocket is closed before the connection is established. @ http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=6a9fb59f:1499

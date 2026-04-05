@@ -1,0 +1,23 @@
+- generic [ref=e59]:
+  - banner [ref=e60]:
+    - button [ref=e61] [cursor=pointer]:
+      - img [ref=e62]
+    - generic [ref=e64]:
+      - heading "房间" [level=1] [ref=e65]
+      - paragraph [ref=e66]: "房间号:"
+    - button [ref=e67] [cursor=pointer]:
+      - img [ref=e68]
+  - generic [ref=e72]:
+    - img [ref=e73]
+    - text: "房主: 未知"
+  - generic [ref=e77]:
+    - generic [ref=e78]:
+      - heading "参与者" [level=3] [ref=e79]
+      - generic [ref=e80]: "0"
+    - generic [ref=e81]:
+      - img [ref=e82]
+      - paragraph [ref=e87]: 等待参与者加入...
+  - generic [ref=e89]:
+    - img [ref=e90]
+    - paragraph [ref=e93]: 暂无音乐播放
+  - button "离开房间" [ref=e94] [cursor=pointer]

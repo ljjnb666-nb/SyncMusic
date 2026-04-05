@@ -1,0 +1,90 @@
+- generic [ref=e59]:
+  - banner [ref=e60]:
+    - button [ref=e61] [cursor=pointer]:
+      - img [ref=e62]
+    - generic [ref=e64]:
+      - heading "本地音乐测试3" [level=1] [ref=e65]
+      - paragraph [ref=e66]: "房间号: pOOPq97eYG"
+    - button [ref=e67] [cursor=pointer]:
+      - img [ref=e68]
+  - generic [ref=e72]:
+    - img [ref=e73]
+    - text: 你现在是房主
+  - generic [ref=e76]:
+    - generic [ref=e77]:
+      - heading "参与者" [level=3] [ref=e78]
+      - generic [ref=e79]: "1"
+    - list [ref=e80]:
+      - listitem [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]: Guest3535
+          - generic [ref=e84]: 房主
+          - generic [ref=e85]: 你
+  - generic [ref=e87]:
+    - img [ref=e88]
+    - paragraph [ref=e91]: 暂无音乐播放
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - button "导入本地音乐" [ref=e94] [cursor=pointer]:
+          - img [ref=e95]
+          - text: 导入本地音乐
+        - generic [ref=e98]: 支持 mp3 / flac / m4a / wav
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - paragraph [ref=e161]: test
+          - paragraph [ref=e162]: 本地音乐
+        - button "添加" [active] [ref=e163] [cursor=pointer]:
+          - img [ref=e164]
+          - text: 添加
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - heading "输入音乐链接" [level=2] [ref=e103]:
+          - img [ref=e104]
+          - text: 输入音乐链接
+        - generic [ref=e107]:
+          - textbox "输入QQ音乐/网易云/酷狗音乐链接..." [ref=e108]
+          - combobox [ref=e109] [cursor=pointer]:
+            - option "128K MP3"
+            - option "320K MP3" [selected]
+            - option "FLAC 无损"
+            - option "Hi-Res 最高音质"
+        - generic [ref=e110]:
+          - button "解析" [ref=e111] [cursor=pointer]:
+            - img [ref=e112]
+            - generic [ref=e115]: 解析
+          - button "下载" [disabled] [ref=e116]:
+            - img [ref=e117]
+            - generic [ref=e120]: 下载
+      - generic [ref=e121]:
+        - heading "歌单解析" [level=2] [ref=e122]:
+          - img [ref=e123]
+          - text: 歌单解析
+        - generic [ref=e125]:
+          - textbox "输入QQ音乐/网易云/酷狗音乐歌单链接..." [ref=e126]
+          - button "解析歌单" [ref=e127] [cursor=pointer]:
+            - img [ref=e128]
+            - generic [ref=e131]: 解析歌单
+      - generic [ref=e132]:
+        - heading "搜索音乐" [level=2] [ref=e133]:
+          - img [ref=e134]
+          - text: 搜索音乐
+        - generic [ref=e137]:
+          - textbox "输入歌曲名或歌手..." [ref=e138]
+          - button "搜索" [ref=e139] [cursor=pointer]:
+            - img [ref=e140]
+            - generic [ref=e143]: 搜索
+      - generic [ref=e144]:
+        - heading "支持的链接格式" [level=2] [ref=e145]:
+          - img [ref=e146]
+          - text: 支持的链接格式
+        - list [ref=e150]:
+          - listitem [ref=e151]:
+            - generic [ref=e152]: 网易云
+            - text: https://music.163.com/song?id=347230
+          - listitem [ref=e153]:
+            - generic [ref=e154]: QQ
+            - text: https://y.qq.com/n/ryms/song/001Qu4vt2xurZd
+          - listitem [ref=e155]:
+            - generic [ref=e156]: 酷狗
+            - text: https://www.kugou.com/yy/song/detail/xxxxx
+  - button "离开房间" [ref=e157] [cursor=pointer]

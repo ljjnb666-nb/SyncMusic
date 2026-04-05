@@ -113,48 +113,7 @@
             <polygon points="10 8 16 12 10 16 10 8"/>
           </svg>
           <p>暂无音乐播放</p>
-          <!-- Local Music Import for host -->
-          <div v-if="roomStore.isHost" class="local-music-section">
-            <div class="import-actions">
-              <button @click="triggerLocalImport" class="btn btn-secondary">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <polyline points="17 8 12 3 7 8"/>
-                  <line x1="12" y1="3" x2="12" y2="15"/>
-                </svg>
-                <span>导入本地音乐</span>
-              </button>
-              <input
-                ref="localMusicInputRef"
-                type="file"
-                multiple
-                accept="audio/*,.mp3,.flac,.m4a,.wav,.ogg,.aac"
-                @change="handleLocalFileImport"
-                style="display: none;"
-              />
-              <span class="hint-text">支持 mp3 / flac / m4a / wav</span>
-            </div>
-            <!-- Local music list -->
-            <div v-if="localMusic.length > 0" class="local-music-list">
-              <div
-                v-for="song in localMusic"
-                :key="song.id"
-                class="local-music-item"
-              >
-                <div class="music-info">
-                  <p class="music-title">{{ song.title }}</p>
-                  <p class="music-artist">{{ song.artist }}</p>
-                </div>
-                <button @click="addLocalToPlaylist(song)" class="btn btn-secondary btn-sm">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-                    <line x1="12" y1="5" x2="12" y2="19"/>
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                  </svg>
-                  <span>添加</span>
-                </button>
-              </div>
-            </div>
-          </div>
+          <p class="placeholder-hint">请先在歌单页面导入音乐，或搜索添加</p>
         </div>
       </div>
 
@@ -205,18 +164,19 @@
         </div>
       </div>
 
-      <!-- Music Search Area (for host) -->
-      <div v-if="roomStore.isHost" class="room-section">
-        <MusicParser
-          :has-room="true"
-          :downloading-id="downloadingId"
-          :search-results="searchResults"
-          :loading-search="loadingSearch"
-          :searched="searched"
-          @search="onSearch"
-          @play-now="onPlayNow"
-          @add-to-playlist="onSongAdded"
-        />
+      <!-- Room Tips -->
+      <div class="room-section room-tips">
+        <div class="tip-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <div class="tip-content">
+            <p class="tip-title">音乐管理</p>
+            <p class="tip-desc">搜索、下载和导入音乐请前往 <router-link to="/search">搜索页面</router-link> 或 <router-link to="/playlist">歌单页面</router-link></p>
+          </div>
+        </div>
       </div>
 
       <!-- Leave Room Button -->
@@ -245,12 +205,10 @@ import { useRoute, useRouter } from 'vue-router'
 import { useRoomStore } from '../stores/room'
 import { usePlayerStore } from '../stores/player'
 import { getRoom, joinRoom } from '../api/room'
-import { browserDownload, uploadMusicFiles } from '../api/music'
 import { getSessionId, getUsername, setUsername } from '../utils/session'
 import socket, { connectToRoom, disconnect, getSocketInstance } from '../socket/client'
 import ParticipantList from '../components/ParticipantList.vue'
 import AudioPlayer from '../components/AudioPlayer.vue'
-import MusicParser from '../components/MusicParser.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -260,14 +218,6 @@ const isLoading = ref(true)
 const error = ref('')
 const copied = ref(false)
 const showLeaveModal = ref(false)
-const downloadingId = ref('')
-const searchResults = ref([])
-const loadingSearch = ref(false)
-const searched = ref(false)
-
-// Local music state
-const localMusic = ref([])
-const localMusicInputRef = ref(null)
 
 // Audio player state
 const audioPlayerRef = ref(null)
@@ -351,142 +301,6 @@ function togglePlay() {
   }
 }
 
-// Search music handler
-async function onSearch(keyword) {
-  if (!keyword?.trim()) return
-  loadingSearch.value = true
-  try {
-    const { searchMusic } = await import('../api/music')
-    const data = await searchMusic(keyword.trim())
-    if (data.results) {
-      searchResults.value = data.results
-    } else {
-      searchResults.value = []
-    }
-    searched.value = true
-  } catch (err) {
-    console.error('Search failed:', err)
-    searchResults.value = []
-    searched.value = true
-  } finally {
-    loadingSearch.value = false
-  }
-}
-
-// Song added from parser - auto play first song
-function onSongAdded(song) {
-  const added = playerStore.addSong(song)
-  if (added && roomStore.isHost) {
-    playerStore.setCurrentIndex(playerStore.playlist.length - 1)
-    roomStore.currentTrack = song
-    // Sync playlist to backend so guests receive it
-    const sock = getSocketInstance()
-    sock?.emit('room:update', {
-      roomId: roomId.value,
-      playlist: playerStore.playlist,
-      currentTrack: song
-    })
-    // Don't auto-play, let user click play
-  }
-}
-
-// Play now - download first, then add to playlist and play
-async function onPlayNow(song) {
-  if (!roomStore.isHost) return
-  downloadingId.value = song.id
-  try {
-    const data = await browserDownload(song.title, song.artist)
-    if (data.success && data.filename) {
-      // Add song with the downloaded file path
-      const downloadedSong = {
-        ...song,
-        id: `downloaded_${Date.now()}`,
-        path: data.filename,
-        url: `/downloads/${data.filename}`
-      }
-      const added = playerStore.addSong(downloadedSong)
-      if (added) {
-        const newIndex = playerStore.playlist.length - 1
-        playerStore.setCurrentIndex(newIndex)
-        roomStore.currentTrack = downloadedSong
-        // Emit play to socket and start playback
-        emitPlay()
-        playerStore.setPlaying(true)
-      }
-    }
-  } catch (err) {
-    console.error('Download failed:', err)
-    alert('下载失败: ' + (err.response?.data?.error || err.message))
-  } finally {
-    downloadingId.value = ''
-  }
-}
-
-// Handle local file import
-async function handleLocalFileImport(event) {
-  const files = event.target.files
-  if (!files || files.length === 0) return
-
-  const audioFiles = Array.from(files).filter(f =>
-    f.type.startsWith('audio/') || /\.(mp3|flac|m4a|wav|ogg|aac)$/i.test(f.name)
-  )
-
-  if (audioFiles.length === 0) return
-
-  // 先上传到后端，获取 path 用于同步
-  try {
-    const result = await uploadMusicFiles(audioFiles)
-    if (result.files && result.files.length > 0) {
-      const newSongs = result.files.map((file, i) => ({
-        id: `local_${Date.now()}_${i}_${Math.random().toString(36).slice(2, 6)}`,
-        title: file.title,
-        artist: file.artist,
-        album: '本地音乐',
-        duration: file.duration || 0,
-        path: file.path,  // 后端返回的路径，可用于同步
-        url: file.path,
-        isLocal: true
-      }))
-      localMusic.value = [...localMusic.value, ...newSongs]
-    }
-  } catch (err) {
-    console.error('导入音乐失败:', err)
-  }
-
-  // Clear input so same file can be re-selected
-  event.target.value = ''
-}
-
-// Add local song to playlist
-function addLocalToPlaylist(song) {
-  const added = playerStore.addSong(song)
-  if (added && roomStore.isHost) {
-    playerStore.setCurrentIndex(playerStore.playlist.length - 1)
-    roomStore.currentTrack = song
-    // Host: 让 AudioPlayer 的 watch 负责加载，自己只负责播放
-    // 先设置 playing 状态，watch 会检测到 src 变化并自动 load
-    roomStore.isPlaying = true
-    playerStore.setPlaying(true)
-    // Sync playlist to backend so guests receive it
-    const sock = getSocketInstance()
-    sock?.emit('room:update', {
-      roomId: roomId.value,
-      playlist: playerStore.playlist,
-      currentTrack: song
-    })
-    // 短暂延迟后播放，确保 load 已经开始
-    setTimeout(() => {
-      audioPlayerRef.value?.play()
-      emitPlay()
-    }, 100)
-  }
-}
-
-// Trigger file input click
-function triggerLocalImport() {
-  localMusicInputRef.value?.click()
-}
-
 // Play song from playlist at given index
 function playFromPlaylist(index) {
   playerStore.setCurrentIndex(index)
@@ -521,10 +335,6 @@ function removeFromPlaylist(index) {
     })
   }
 }
-
-const inviteUrl = computed(() => {
-  return `${window.location.origin}/room/${roomId.value}`
-})
 
 async function copyInviteLink() {
   try {
@@ -915,6 +725,12 @@ onUnmounted(() => {
   margin: 0 0 8px;
 }
 
+.playback-placeholder .placeholder-hint {
+  font-size: 13px;
+  color: #475569;
+  margin: 0;
+}
+
 .playback-placeholder span {
   font-size: 13px;
   color: #475569;
@@ -1023,6 +839,53 @@ onUnmounted(() => {
   transition: width 0.1s;
 }
 
+/* Room Tips */
+.room-tips {
+  margin-top: 16px;
+}
+
+.tip-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 12px;
+}
+
+.tip-card svg {
+  color: #8b5cf6;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tip-content {
+  flex: 1;
+}
+
+.tip-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0 0 4px;
+}
+
+.tip-desc {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.tip-desc a {
+  color: #a78bfa;
+  text-decoration: none;
+}
+
+.tip-desc a:hover {
+  text-decoration: underline;
+}
+
 /* Leave Button */
 .leave-btn {
   width: 100%;
@@ -1117,74 +980,6 @@ onUnmounted(() => {
 
 .modal-btn.confirm:hover {
   background: rgba(239, 68, 68, 0.3);
-}
-
-/* Local music section */
-.local-music-section {
-  margin-top: 16px;
-  padding: 16px;
-  background: rgba(139, 92, 246, 0.05);
-  border: 1px solid rgba(139, 92, 246, 0.1);
-  border-radius: 12px;
-}
-
-.import-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.hint-text {
-  color: #64748b;
-  font-size: 13px;
-}
-
-.local-music-list {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.local-music-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  background: rgba(139, 92, 246, 0.03);
-  border: 1px solid transparent;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-.local-music-item:hover {
-  background: rgba(139, 92, 246, 0.08);
-  border-color: rgba(139, 92, 246, 0.15);
-}
-
-.local-music-item .music-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.local-music-item .music-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #f8fafc;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.local-music-item .music-artist {
-  font-size: 12px;
-  color: #64748b;
-  margin-top: 2px;
-}
-
-.btn-sm {
-  padding: 6px 12px;
-  font-size: 13px;
 }
 
 /* Room Playlist Styles */

@@ -1,0 +1,75 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [active] [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e102]:
+      - generic [ref=e103]:
+        - heading "我的收藏 2" [level=2] [ref=e104]:
+          - img [ref=e105]
+          - generic [ref=e107]: 我的收藏
+          - generic [ref=e108]: "2"
+        - button [ref=e109] [cursor=pointer]:
+          - img [ref=e110]
+      - generic [ref=e114]:
+        - generic [ref=e115] [cursor=pointer]:
+          - img [ref=e118]
+          - generic [ref=e122]:
+            - generic [ref=e123]: Courage
+            - generic [ref=e124]: Capo Productions
+            - generic [ref=e125]:
+              - generic [ref=e126]: 本地音乐
+              - generic [ref=e127]: 2:03
+          - generic [ref=e128]:
+            - button "播放" [ref=e129]:
+              - img [ref=e130]
+            - button "添加到播放列表" [ref=e132]:
+              - img [ref=e133]
+            - button "取消收藏" [ref=e134]:
+              - img [ref=e135]
+        - generic [ref=e138] [cursor=pointer]:
+          - img [ref=e141]
+          - generic [ref=e145]:
+            - generic [ref=e146]: Corporate Dreams
+            - generic [ref=e147]: Capo Productions
+            - generic [ref=e148]:
+              - generic [ref=e149]: 本地音乐
+              - generic [ref=e150]: 4:29
+          - generic [ref=e151]:
+            - button "播放" [ref=e152]:
+              - img [ref=e153]
+            - button "添加到播放列表" [ref=e155]:
+              - img [ref=e156]
+            - button "取消收藏" [ref=e157]:
+              - img [ref=e158]

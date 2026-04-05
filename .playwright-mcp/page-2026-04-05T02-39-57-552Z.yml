@@ -1,0 +1,20 @@
+- main [ref=e4]:
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - img [ref=e13]
+      - heading "ContentCross" [level=1] [ref=e18]
+      - paragraph [ref=e19]: AI 驱动的内容分发引擎
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic:
+          - img
+        - textbox "输入用户名" [ref=e22]
+      - generic [ref=e23]:
+        - generic:
+          - img
+        - textbox "输入密码" [ref=e24]
+      - button "登录" [ref=e25] [cursor=pointer]:
+        - generic [ref=e26]:
+          - generic [ref=e27]: 登录
+          - img [ref=e28]
+    - generic [ref=e33]: AI 系统已就绪

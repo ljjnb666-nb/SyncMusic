@@ -1,0 +1,78 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - button "搜索" [active] [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - generic [ref=e228]:
+        - generic [ref=e229]:
+          - textbox "输入音乐链接或搜索关键词..." [ref=e230]
+          - button "搜索" [ref=e231] [cursor=pointer]
+          - button [ref=e232] [cursor=pointer]:
+            - img [ref=e233]
+        - generic [ref=e237]:
+          - textbox "输入QQ音乐/网易云/酷狗链接..." [ref=e238]
+          - button "解析" [ref=e239] [cursor=pointer]
+        - generic [ref=e241]:
+          - textbox "输入歌单链接..." [ref=e242]
+          - button "解析歌单" [ref=e243] [cursor=pointer]
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e187]:
+      - generic [ref=e188]:
+        - button [ref=e189] [cursor=pointer]:
+          - img [ref=e190]
+        - generic [ref=e192]:
+          - heading "测试房间" [level=1] [ref=e193]
+          - paragraph [ref=e194]: "房间号: skhWIBzTA7"
+        - button [ref=e195] [cursor=pointer]:
+          - img [ref=e196]
+      - generic [ref=e200]:
+        - img [ref=e201]
+        - text: 你现在是房主
+      - generic [ref=e204]:
+        - generic [ref=e205]:
+          - heading "参与者" [level=3] [ref=e206]
+          - generic [ref=e207]: "1"
+        - list [ref=e208]:
+          - listitem [ref=e209]:
+            - generic [ref=e210]:
+              - generic [ref=e211]: Guest5277
+              - generic [ref=e212]: 房主
+              - generic [ref=e213]: 你
+      - generic [ref=e215]:
+        - img [ref=e216]
+        - paragraph [ref=e219]: 暂无音乐播放
+        - generic [ref=e221]:
+          - button "导入本地音乐" [ref=e222] [cursor=pointer]:
+            - img [ref=e223]
+            - text: 导入本地音乐
+          - generic [ref=e226]: 支持 mp3 / flac / m4a / wav
+      - button "离开房间" [ref=e227] [cursor=pointer]

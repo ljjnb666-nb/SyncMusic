@@ -1,0 +1,67 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - button [ref=e106] [cursor=pointer]:
+          - img [ref=e107]
+        - generic [ref=e109]:
+          - heading "同步测试房间" [level=1] [ref=e110]
+          - paragraph [ref=e111]: "房间号: jVdSyROcsE"
+        - button [ref=e112] [cursor=pointer]:
+          - img [ref=e113]
+      - generic [ref=e117]:
+        - img [ref=e118]
+        - text: 你现在是房主
+      - generic [ref=e121]:
+        - generic [ref=e122]:
+          - heading "参与者" [level=3] [ref=e123]
+          - generic [ref=e124]: "1"
+        - list [ref=e125]:
+          - listitem [ref=e126]:
+            - generic [ref=e127]:
+              - generic [ref=e128]: Guest6625
+              - generic [ref=e129]: 房主
+              - generic [ref=e130]: 你
+      - generic [ref=e132]:
+        - img [ref=e133]
+        - paragraph [ref=e136]: 暂无音乐播放
+        - generic [ref=e138]:
+          - button "导入本地音乐" [active] [ref=e139] [cursor=pointer]:
+            - img [ref=e140]
+            - text: 导入本地音乐
+          - generic [ref=e143]: 支持 mp3 / flac / m4a / wav
+      - button "离开房间" [ref=e144] [cursor=pointer]

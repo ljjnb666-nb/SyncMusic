@@ -1,0 +1,11 @@
+[   32789ms] [ERROR] Play error: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[   32802ms] TypeError: Cannot create property 'value' on number '0'
+    at Socket2.<anonymous> (http://localhost:3000/src/stores/room.js:99:22)
+    at Emitter.emit (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:819:20)
+    at Socket2.emitEvent (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:3165:16)
+    at Socket2.onevent (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:3153:12)
+    at Socket2.onpacket (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:3124:14)
+    at Emitter.emit (http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:819:20)
+    at http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:3728:12
+[   32810ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/local-music/%2Fdownloads%2FCapo%20Productions%20-%20Breathe.mp3:0
+[   77673ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/api/rooms/4Tfj8vq__Y:0

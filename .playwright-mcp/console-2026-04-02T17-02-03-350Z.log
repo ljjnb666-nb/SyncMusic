@@ -1,0 +1,36 @@
+[  127098ms] [WARNING] [Vue warn]: Property "isJoining" was accessed during render but is not defined on instance. 
+  at <Home onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2203
+[  127103ms] [WARNING] [Vue warn]: Property "joinRoomId" was accessed during render but is not defined on instance. 
+  at <Home onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2203
+[  127103ms] [WARNING] [Vue warn]: Property "joinError" was accessed during render but is not defined on instance. 
+  at <Home onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2203
+[  127104ms] [WARNING] [Vue warn]: Property "isJoining" was accessed during render but is not defined on instance. 
+  at <Home onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2203
+[  127104ms] [WARNING] [Vue warn]: Property "joinRoomId" was accessed during render but is not defined on instance. 
+  at <Home onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2203
+[  127107ms] [WARNING] [Vue warn]: Unhandled error during execution of render function 
+  at <Home onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2203
+[  127107ms] [ERROR] TypeError: Cannot read properties of undefined (reading 'trim')
+    at Proxy._sfc_render (http://localhost:3000/src/views/Home.vue?t=1775149450284:121:57)
+    at renderComponentRoot (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:6720:17)
+    at ReactiveEffect.componentUpdateFn [as fn] (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:8366:26)
+    at ReactiveEffect.run (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:507:19)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2656:16
+    at Array.forEach (<anonymous>)
+    at rerender (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2648:25)
+    at Object.rerender (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2722:14)
+    at http://localhost:3000/src/views/Home.vue:149:25
+    at http://localhost:3000/@vite/client:34:58 @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2723
+[  127108ms] [WARNING] [HMR] Something went wrong during Vue component hot-reload. Full reload required. @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2724

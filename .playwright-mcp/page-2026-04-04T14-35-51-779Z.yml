@@ -1,0 +1,65 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - button [ref=e70] [cursor=pointer]:
+          - img [ref=e71]
+        - generic [ref=e73]:
+          - heading "FinalRoom" [level=1] [ref=e74]
+          - paragraph [ref=e75]: "房间号: PuCrbtc9BU"
+        - button [ref=e76] [cursor=pointer]:
+          - img [ref=e77]
+      - generic [ref=e81]:
+        - img [ref=e82]
+        - text: "房主: Guest6625"
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - heading "参与者" [level=3] [ref=e88]
+          - generic [ref=e89]: "2"
+        - list [ref=e90]:
+          - listitem [ref=e91]:
+            - generic [ref=e92]:
+              - generic [ref=e93]: Guest6625
+              - generic [ref=e94]: 房主
+          - listitem [ref=e95]:
+            - generic [ref=e96]:
+              - generic [ref=e97]: Guest6625
+              - generic [ref=e98]: 你
+      - generic [ref=e100]:
+        - img [ref=e101]
+        - paragraph [ref=e104]: 暂无音乐播放
+      - button "离开房间" [ref=e105] [cursor=pointer]

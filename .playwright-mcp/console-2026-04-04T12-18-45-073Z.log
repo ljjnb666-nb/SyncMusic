@@ -1,0 +1,13 @@
+[  143290ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[  143290ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:88
+[  185968ms] [ERROR] 导入音乐失败: AxiosError: Network Error
+    at XMLHttpRequest.handleError (http://localhost:3000/node_modules/.vite/deps/axios.js?v=bba82083:1717:19)
+    at Axios.request (http://localhost:3000/node_modules/.vite/deps/axios.js?v=bba82083:2328:41)
+    at async uploadMusicFiles (http://localhost:3000/src/api/music.js:72:20)
+    at async handleFileSelect (http://localhost:3000/src/views/Playlist.vue:111:20) @ http://localhost:3000/src/views/Playlist.vue:126
+[  185969ms] [ERROR] Failed to load resource: net::ERR_UPLOAD_FILE_CHANGED @ http://localhost:3000/api/music/upload:0
+[  347254ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[  349604ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/:0
+[  351070ms] [ERROR] WebSocket connection to 'ws://localhost:3000/socket.io/?sessionId=d6a0a0b30b191702a1037541aad22718&EIO=4&transport=websocket' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/node_modules/.vite/deps/socket__io-client.js?v=bba82083:1523
+[  985089ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[  987451ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/:0

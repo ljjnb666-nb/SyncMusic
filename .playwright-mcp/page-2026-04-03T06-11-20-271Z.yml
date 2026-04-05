@@ -1,0 +1,62 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e49]:
+      - heading "下载管理" [level=1] [ref=e51]:
+        - img [ref=e52]
+        - generic [ref=e55]: 下载管理
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - heading "已下载文件" [level=2] [ref=e59]:
+            - img [ref=e60]
+            - text: 已下载文件
+          - generic [ref=e89]:
+            - img [ref=e90]
+            - paragraph [ref=e94]: 暂无下载文件
+          - button "刷新列表" [ref=e69] [cursor=pointer]:
+            - img [ref=e70]
+            - generic [ref=e74]: 刷新列表
+        - generic [ref=e75]:
+          - heading "下载位置" [level=2] [ref=e76]:
+            - img [ref=e77]
+            - text: 下载位置
+          - generic [ref=e80]:
+            - textbox "输入下载目录路径..." [ref=e81]
+            - button "设置" [ref=e82] [cursor=pointer]:
+              - img [ref=e95]
+              - generic [ref=e99]: 设置
+          - paragraph [ref=e88]: 💡 支持绝对路径或相对路径（相对于项目根目录）
+          - paragraph [ref=e100]: 下载目录已更新

@@ -1,0 +1,11 @@
+[   54742ms] [LOG] ctx keys: [_pStores] @ :7
+[   88928ms] [LOG] audioRef.play: function @ :6
+[   88928ms] [LOG] audioRef.audioPlayer: JSHandle@node @ :7
+[   88932ms] [LOG] audioRef.audioPlayer.value: undefined @ :8
+[  135115ms] [LOG] Components: [RouterLink, RouterView] @ :6
+[  135115ms] [LOG] audioRef: Proxy(Object) @ :18
+[  135115ms] [LOG] audioRef.audioPlayer: JSHandle@node @ :19
+[  149352ms] [LOG] audioEl: JSHandle@node @ :11
+[  149352ms] [LOG] audioEl.src:  @ :12
+[  149352ms] [LOG] audioEl.paused: false @ :13
+[  156566ms] [LOG] Set src to: /local-music/C%3A%5CUsers%5CLJJ2004%5CDesktop%5C%E9%9F%B3%E4%B9%90%5C%E8%8B%B1%E6%96%87%5CLeah%20Marie%20Perez%20-%20Nothin'%20on%20Me.mp3 @ :14

@@ -1,0 +1,96 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - heading "我的收藏 2" [level=2] [ref=e51]:
+          - img [ref=e52]
+          - generic [ref=e54]: 我的收藏
+          - generic [ref=e55]: "2"
+        - button [ref=e56] [cursor=pointer]:
+          - img [ref=e57]
+      - generic [ref=e61]:
+        - generic [ref=e62] [cursor=pointer]:
+          - img [ref=e65]
+          - generic [ref=e69]:
+            - generic [ref=e70]: Courage
+            - generic [ref=e71]: Capo Productions
+            - generic [ref=e72]:
+              - generic [ref=e73]: 本地音乐
+              - generic [ref=e74]: 2:03
+          - generic [ref=e75]:
+            - button "播放" [ref=e76]:
+              - img [ref=e77]
+            - button "添加到播放列表" [ref=e79]:
+              - img [ref=e80]
+            - button "取消收藏" [ref=e81]:
+              - img [ref=e82]
+        - generic [ref=e85] [cursor=pointer]:
+          - img [ref=e88]
+          - generic [ref=e92]:
+            - generic [ref=e93]: Corporate Dreams
+            - generic [ref=e94]: Capo Productions
+            - generic [ref=e95]:
+              - generic [ref=e96]: 本地音乐
+              - generic [ref=e97]: 4:29
+          - generic [ref=e98]:
+            - button "播放" [ref=e99]:
+              - img [ref=e100]
+            - button "添加到播放列表" [ref=e102]:
+              - img [ref=e103]
+            - button "取消收藏" [ref=e104]:
+              - img [ref=e105]
+  - generic [ref=e108]:
+    - img [ref=e112]
+    - generic [ref=e115]:
+      - generic [ref=e116] [cursor=pointer]:
+        - generic [ref=e117]: Nothin' on Me
+        - generic [ref=e118]: Leah Marie Perez
+      - generic [ref=e119]:
+        - generic [ref=e120]: 0:00
+        - slider [ref=e122] [cursor=pointer]: "0"
+        - generic [ref=e124]: 0:00
+    - generic [ref=e125]:
+      - button "上一首" [ref=e126] [cursor=pointer]:
+        - img [ref=e127]
+      - button "播放" [ref=e129] [cursor=pointer]:
+        - img [ref=e130]
+      - button "下一首" [ref=e132] [cursor=pointer]:
+        - img [ref=e133]
+    - generic [ref=e135]:
+      - button "静音" [ref=e136] [cursor=pointer]:
+        - img [ref=e137]
+      - slider [ref=e142] [cursor=pointer]: "80"

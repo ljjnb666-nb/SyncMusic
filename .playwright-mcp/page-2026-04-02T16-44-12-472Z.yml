@@ -1,0 +1,33 @@
+- generic [ref=e51]:
+  - banner [ref=e52]:
+    - button [ref=e53] [cursor=pointer]:
+      - img [ref=e54]
+    - generic [ref=e56]:
+      - heading "最终测试" [level=1] [ref=e57]
+      - paragraph [ref=e58]: "房间号: l1DrU9EcLP"
+    - button [ref=e59] [cursor=pointer]:
+      - img [ref=e60]
+  - generic [ref=e64]:
+    - img [ref=e65]
+    - text: 你现在是房主
+  - generic [ref=e68]:
+    - generic [ref=e69]:
+      - heading "参与者" [level=3] [ref=e70]
+      - generic [ref=e71]: "1"
+    - list [ref=e72]:
+      - listitem [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e75]: Guest4504
+          - generic [ref=e76]: 房主
+          - generic [ref=e77]: 你
+  - generic [ref=e270]:
+    - generic [ref=e271]:
+      - generic [ref=e272]:
+        - paragraph [ref=e273]: 稻香
+        - paragraph [ref=e274]: 周杰伦
+      - button [ref=e276] [cursor=pointer]:
+        - img [ref=e277]
+    - generic [ref=e280]:
+      - generic [ref=e281]: 0:00
+      - generic [ref=e283]: 3:43
+  - button "离开房间" [ref=e149] [cursor=pointer]

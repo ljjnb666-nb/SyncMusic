@@ -1,0 +1,29 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - button [ref=e8] [cursor=pointer]:
+      - img [ref=e9]
+    - generic [ref=e11]:
+      - heading "房间" [level=1] [ref=e12]
+      - paragraph [ref=e13]: "房间号:"
+    - button [ref=e14] [cursor=pointer]:
+      - img [ref=e15]
+  - generic [ref=e19]:
+    - img [ref=e20]
+    - text: "房主: 未知"
+  - generic [ref=e24]:
+    - generic [ref=e25]:
+      - heading "参与者" [level=3] [ref=e26]
+      - generic [ref=e27]: "0"
+    - generic [ref=e28]:
+      - img [ref=e29]
+      - paragraph [ref=e34]: 等待参与者加入...
+  - generic [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: 稻香
+        - paragraph [ref=e40]: 周杰伦
+      - generic [ref=e42]: 已暂停
+    - generic [ref=e43]:
+      - generic [ref=e44]: 0:00
+      - generic [ref=e46]: 0:00
+  - button "离开房间" [ref=e47] [cursor=pointer]

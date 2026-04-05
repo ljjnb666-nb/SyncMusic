@@ -1,0 +1,98 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [active] [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e238]:
+      - generic [ref=e239]:
+        - heading "我的收藏 2" [level=2] [ref=e240]:
+          - img [ref=e241]
+          - generic [ref=e243]: 我的收藏
+          - generic [ref=e244]: "2"
+        - button [ref=e245] [cursor=pointer]:
+          - img [ref=e246]
+      - generic [ref=e250]:
+        - generic [ref=e251] [cursor=pointer]:
+          - img [ref=e254]
+          - generic [ref=e258]:
+            - generic [ref=e259]: 晴天
+            - generic [ref=e260]: 周杰伦
+            - generic [ref=e261]:
+              - generic [ref=e262]: 叶惠美
+              - generic [ref=e263]: 4:29
+              - generic [ref=e264]: kugou
+          - generic [ref=e265]:
+            - button "播放" [ref=e266]:
+              - img [ref=e267]
+            - button "添加到播放列表" [ref=e269]:
+              - img [ref=e270]
+            - button "取消收藏" [ref=e271]:
+              - img [ref=e272]
+        - generic [ref=e275] [cursor=pointer]:
+          - img [ref=e278]
+          - generic [ref=e282]:
+            - generic [ref=e283]: 那天下雨了
+            - generic [ref=e284]: 周杰伦
+            - generic [ref=e285]:
+              - generic [ref=e286]: 太阳之子
+              - generic [ref=e287]: 3:43
+              - generic [ref=e288]: kugou
+          - generic [ref=e289]:
+            - button "播放" [ref=e290]:
+              - img [ref=e291]
+            - button "添加到播放列表" [ref=e293]:
+              - img [ref=e294]
+            - button "取消收藏" [ref=e295]:
+              - img [ref=e296]
+  - generic [ref=e49]:
+    - img [ref=e53]
+    - generic [ref=e56]:
+      - generic [ref=e57] [cursor=pointer]:
+        - generic [ref=e58]: 那天下雨了
+        - generic [ref=e59]: 周杰伦
+      - generic [ref=e60]:
+        - generic [ref=e61]: 0:00
+        - slider [ref=e63] [cursor=pointer]: "0"
+        - generic [ref=e65]: 3:43
+    - generic [ref=e66]:
+      - button "上一首" [ref=e67] [cursor=pointer]:
+        - img [ref=e68]
+      - button "播放" [ref=e70] [cursor=pointer]:
+        - img [ref=e71]
+      - button "下一首" [ref=e73] [cursor=pointer]:
+        - img [ref=e74]
+    - generic [ref=e76]:
+      - button "静音" [ref=e77] [cursor=pointer]:
+        - img [ref=e78]
+      - slider [ref=e83] [cursor=pointer]: "80"

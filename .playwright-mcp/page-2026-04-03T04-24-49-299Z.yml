@@ -1,0 +1,108 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+      - button "一起听" [ref=e36] [cursor=pointer]:
+        - img [ref=e37]
+        - generic [ref=e42]: 一起听
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - generic [ref=e46]:
+        - img [ref=e47]
+        - textbox "搜索歌曲、歌手或专辑..." [ref=e50]: 周杰伦
+        - button [ref=e58] [cursor=pointer]:
+          - img [ref=e59]
+      - generic [ref=e62]:
+        - generic [ref=e64]: 找到 5 首歌曲
+        - generic [ref=e65]:
+          - generic [ref=e66] [cursor=pointer]:
+            - generic [ref=e67]:
+              - img [ref=e69]
+              - img [ref=e74]
+            - generic [ref=e76]:
+              - generic [ref=e77]: 那天下雨了
+              - generic [ref=e78]: 周杰伦
+            - generic [ref=e79]:
+              - button "添加到歌单" [ref=e80]:
+                - img [ref=e81]
+              - button "下载" [ref=e82]:
+                - img [ref=e83]
+          - generic [ref=e86] [cursor=pointer]:
+            - generic [ref=e87]:
+              - img [ref=e89]
+              - img [ref=e94]
+            - generic [ref=e96]:
+              - generic [ref=e97]: 爱琴海
+              - generic [ref=e98]: 周杰伦
+            - generic [ref=e99]:
+              - button "添加到歌单" [ref=e100]:
+                - img [ref=e101]
+              - button "下载" [ref=e102]:
+                - img [ref=e103]
+          - generic [ref=e106] [cursor=pointer]:
+            - generic [ref=e107]:
+              - img [ref=e109]
+              - img [ref=e114]
+            - generic [ref=e116]:
+              - generic [ref=e117]: 晴天
+              - generic [ref=e118]: 周杰伦
+            - generic [ref=e119]:
+              - button "添加到歌单" [ref=e120]:
+                - img [ref=e121]
+              - button "下载" [ref=e122]:
+                - img [ref=e123]
+          - generic [ref=e126] [cursor=pointer]:
+            - generic [ref=e127]:
+              - img [ref=e129]
+              - img [ref=e134]
+            - generic [ref=e136]:
+              - generic [ref=e137]: 稻香
+              - generic [ref=e138]: 周杰伦
+            - generic [ref=e139]:
+              - button "添加到歌单" [ref=e140]:
+                - img [ref=e141]
+              - button "下载" [active] [ref=e142]:
+                - img [ref=e143]
+          - generic [ref=e146] [cursor=pointer]:
+            - generic [ref=e147]:
+              - img [ref=e149]
+              - img [ref=e154]
+            - generic [ref=e156]:
+              - generic [ref=e157]: 太阳之子
+              - generic [ref=e158]: 周杰伦
+            - generic [ref=e159]:
+              - button "添加到歌单" [ref=e160]:
+                - img [ref=e161]
+              - button "下载" [ref=e162]:
+                - img [ref=e163]
+      - generic [ref=e167]:
+        - heading "下载歌曲" [level=3] [ref=e168]
+        - generic [ref=e169]:
+          - paragraph
+          - paragraph [ref=e170]: 周杰伦
+        - button "开始下载" [ref=e172] [cursor=pointer]
+        - button "关闭" [ref=e173] [cursor=pointer]

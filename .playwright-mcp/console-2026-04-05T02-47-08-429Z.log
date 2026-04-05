@@ -1,0 +1,4 @@
+[  228312ms] [ERROR] Play error: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[  228312ms] [ERROR] Play error: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[  228821ms] [LOG] Playing! @ :7
+[  264880ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/rooms/MEYAQIYk4O:0

@@ -1,0 +1,3 @@
+[     680ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://localhost:3003/node_modules/.vite/deps/pinia.js?v=6a9fb59f:0
+[     685ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://localhost:3003/node_modules/.vite/deps/vue.js?v=6a9fb59f:0
+[    1275ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/favicon.ico:0

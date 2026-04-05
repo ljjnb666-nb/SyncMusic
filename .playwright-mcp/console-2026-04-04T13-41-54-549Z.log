@@ -1,0 +1,25 @@
+[   65045ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[   65046ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:88
+[  156806ms] [LOG] Socket state: no socket @ :3
+[  156806ms] [LOG] Room store: no store @ :6
+[  156806ms] [LOG] Player store: no store @ :9
+[  238064ms] [LOG] Room button: <svg data-v-bb473bb7="" viewBox="0 0 24 24" fill=" back-btn @ :11
+[  238064ms] [LOG] Room button: <svg data-v-bb473bb7="" viewBox="0 0 24 24" fill=" share-btn @ :11
+[  238064ms] [LOG] Room button: <svg data-v-bb473bb7="" viewBox="0 0 24 24" fill=" play-btn @ :11
+[  238064ms] [LOG] Room button:  离开房间  leave-btn @ :11
+[  244538ms] [LOG] Button 0: "一起听" class="room-btn" ref=none @ :5
+[  244538ms] [LOG] Button 1: "" class="back-btn" ref=none @ :5
+[  244538ms] [LOG] Button 2: "" class="share-btn" ref=none @ :5
+[  244538ms] [LOG] Button 3: "" class="play-btn" ref=none @ :5
+[  244538ms] [LOG] Button 4: "离开房间" class="leave-btn" ref=none @ :5
+[  244538ms] [LOG] Button 5: "" class="ctrl-btn" ref=none @ :5
+[  244538ms] [LOG] Button 6: "" class="ctrl-btn play-btn" ref=none @ :5
+[  244538ms] [LOG] Button 7: "" class="ctrl-btn" ref=none @ :5
+[  244538ms] [LOG] Button 8: "" class="ctrl-btn vol-btn" ref=none @ :5
+[  257086ms] [LOG] Found play buttons: 2 @ :2
+[  257086ms] [LOG] Room play button found, clicking... @ :7
+[  257088ms] [ERROR] Play error: NotSupportedError: The element has no supported sources. @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[  257088ms] [ERROR] Play error: NotSupportedError: The element has no supported sources. @ http://localhost:3000/src/components/AudioPlayer.vue:88
+[  283769ms] [LOG] Room content: found @ :5
+[  283769ms] [LOG] Room play btn: found @ :6
+[  283769ms] [LOG] Clicked room play button @ :9

@@ -1,0 +1,2 @@
+[     202ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
+[   92049ms] [ERROR] Play error: AbortError: The play() request was interrupted because the media was removed from the document. https://goo.gl/LdLk22 @ http://localhost:3000/src/components/AudioPlayer.vue:41

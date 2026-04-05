@@ -30,7 +30,7 @@ SyncMusic enables friends to listen to music together in real-time from anywhere
 Plans:
 - [x] 01-01: Backend foundation - REST API, RoomService, RoomManager, Socket.io handlers
 - [x] 01-02: Frontend state - Pinia store, session management, API client, Socket client
-- [ ] 01-03: Frontend UI - Home view, Room view, ParticipantList, Vue Router
+- [x] 01-03: Frontend UI - Home view, Room view, ParticipantList, Vue Router
 
 ### Phase 2: Real-time Sync + Audio Playback
 **Goal**: Room host controls playback and all participants stay synchronized to the same moment
@@ -134,7 +134,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Room Management | 2/3 | In Progress|  |
+| 1. Room Management | 3/3 | Completed| 2026-04-05 |
 | 2. Real-time Sync + Audio Playback | 0/10 | Not started | - |
 | 3. Music Search & Sources | 0/9 | Not started | - |
 | 4. Playlist Queue + History | 0/6 | Not started | - |

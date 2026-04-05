@@ -1,0 +1,222 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e121]:
+      - generic [ref=e122]:
+        - button [ref=e123] [cursor=pointer]:
+          - img [ref=e124]
+        - generic [ref=e126]:
+          - heading "测试房间" [level=1] [ref=e127]
+          - paragraph [ref=e128]: "房间号: W7riJBLEo7"
+        - button [ref=e129] [cursor=pointer]:
+          - img [ref=e130]
+      - generic [ref=e134]:
+        - img [ref=e135]
+        - text: 你现在是房主
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - heading "参与者" [level=3] [ref=e140]
+          - generic [ref=e141]: "1"
+        - list [ref=e142]:
+          - listitem [ref=e143]:
+            - generic [ref=e144]:
+              - generic [ref=e145]: Guest1181
+              - generic [ref=e146]: 房主
+              - generic [ref=e147]: 你
+      - generic [ref=e335]:
+        - generic [ref=e336]:
+          - generic [ref=e337]:
+            - paragraph [ref=e338]: 晴天
+            - paragraph [ref=e339]: 周杰伦
+          - button [ref=e341] [cursor=pointer]:
+            - img [ref=e385]
+        - generic [ref=e344]:
+          - generic [ref=e345]: 0:00
+          - generic [ref=e347]: 0:00
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - heading "输入音乐链接" [level=2] [ref=e165]:
+            - img [ref=e166]
+            - text: 输入音乐链接
+          - generic [ref=e169]:
+            - textbox "输入QQ音乐/网易云/酷狗音乐链接..." [ref=e170]
+            - combobox [ref=e171] [cursor=pointer]:
+              - option "128K MP3"
+              - option "320K MP3" [selected]
+              - option "FLAC 无损"
+              - option "Hi-Res 最高音质"
+          - generic [ref=e172]:
+            - button "解析" [ref=e173] [cursor=pointer]:
+              - img [ref=e174]
+              - generic [ref=e177]: 解析
+            - button "下载" [disabled] [ref=e178]:
+              - img [ref=e179]
+              - generic [ref=e182]: 下载
+        - generic [ref=e183]:
+          - heading "歌单解析" [level=2] [ref=e184]:
+            - img [ref=e185]
+            - text: 歌单解析
+          - generic [ref=e187]:
+            - textbox "输入QQ音乐/网易云/酷狗音乐歌单链接..." [ref=e188]
+            - button "解析歌单" [ref=e189] [cursor=pointer]:
+              - img [ref=e190]
+              - generic [ref=e193]: 解析歌单
+        - generic [ref=e194]:
+          - heading "搜索音乐" [level=2] [ref=e195]:
+            - img [ref=e196]
+            - text: 搜索音乐
+          - generic [ref=e199]:
+            - textbox "输入歌曲名或歌手..." [ref=e200]: 周杰伦
+            - button "搜索" [ref=e201] [cursor=pointer]:
+              - img [ref=e220]
+              - generic [ref=e223]: 搜索
+          - generic [ref=e224]:
+            - generic [ref=e225]:
+              - img [ref=e227]
+              - generic [ref=e229]:
+                - paragraph [ref=e230]: 那天下雨了
+                - paragraph [ref=e231]: 周杰伦 • 酷狗
+              - generic [ref=e232]:
+                - button "取消收藏" [ref=e233] [cursor=pointer]:
+                  - img [ref=e234]
+                - button "播放" [ref=e413] [cursor=pointer]:
+                  - img [ref=e414]
+                  - generic [ref=e416]: 播放
+                - button "添加" [ref=e240] [cursor=pointer]:
+                  - img [ref=e241]
+                  - generic [ref=e242]: 添加
+                - button [ref=e243] [cursor=pointer]:
+                  - img [ref=e244]
+            - generic [ref=e247]:
+              - img [ref=e249]
+              - generic [ref=e251]:
+                - paragraph [ref=e252]: 爱琴海
+                - paragraph [ref=e253]: 周杰伦 • 酷狗
+              - generic [ref=e254]:
+                - button "收藏" [ref=e255] [cursor=pointer]:
+                  - img [ref=e256]
+                - button "播放" [ref=e417] [cursor=pointer]:
+                  - img [ref=e418]
+                  - generic [ref=e420]: 播放
+                - button "添加" [ref=e262] [cursor=pointer]:
+                  - img [ref=e263]
+                  - generic [ref=e264]: 添加
+                - button [ref=e265] [cursor=pointer]:
+                  - img [ref=e266]
+            - generic [ref=e269]:
+              - img [ref=e271]
+              - generic [ref=e273]:
+                - paragraph [ref=e274]: 晴天
+                - paragraph [ref=e275]: 周杰伦 • 酷狗
+              - generic [ref=e276]:
+                - button "取消收藏" [ref=e277] [cursor=pointer]:
+                  - img [ref=e278]
+                - button "播放" [ref=e421] [cursor=pointer]:
+                  - img [ref=e422]
+                  - generic [ref=e424]: 播放
+                - button "添加" [ref=e284] [cursor=pointer]:
+                  - img [ref=e285]
+                  - generic [ref=e286]: 添加
+                - button [ref=e287] [cursor=pointer]:
+                  - img [ref=e288]
+            - generic [ref=e291]:
+              - img [ref=e293]
+              - generic [ref=e295]:
+                - paragraph [ref=e296]: 稻香
+                - paragraph [ref=e297]: 周杰伦 • 酷狗
+              - generic [ref=e298]:
+                - button "收藏" [ref=e299] [cursor=pointer]:
+                  - img [ref=e300]
+                - button "播放" [ref=e425] [cursor=pointer]:
+                  - img [ref=e426]
+                  - generic [ref=e428]: 播放
+                - button "添加" [ref=e306] [cursor=pointer]:
+                  - img [ref=e307]
+                  - generic [ref=e308]: 添加
+                - button [ref=e309] [cursor=pointer]:
+                  - img [ref=e310]
+            - generic [ref=e313]:
+              - img [ref=e315]
+              - generic [ref=e317]:
+                - paragraph [ref=e318]: 太阳之子
+                - paragraph [ref=e319]: 周杰伦 • 酷狗
+              - generic [ref=e320]:
+                - button "收藏" [ref=e321] [cursor=pointer]:
+                  - img [ref=e322]
+                - button "播放" [ref=e429] [cursor=pointer]:
+                  - img [ref=e430]
+                  - generic [ref=e432]: 播放
+                - button "添加" [ref=e328] [cursor=pointer]:
+                  - img [ref=e329]
+                  - generic [ref=e330]: 添加
+                - button [ref=e331] [cursor=pointer]:
+                  - img [ref=e332]
+        - generic [ref=e206]:
+          - heading "支持的链接格式" [level=2] [ref=e207]:
+            - img [ref=e208]
+            - text: 支持的链接格式
+          - list [ref=e212]:
+            - listitem [ref=e213]:
+              - generic [ref=e214]: 网易云
+              - text: https://music.163.com/song?id=347230
+            - listitem [ref=e215]:
+              - generic [ref=e216]: QQ
+              - text: https://y.qq.com/n/ryms/song/001Qu4vt2xurZd
+            - listitem [ref=e217]:
+              - generic [ref=e218]: 酷狗
+              - text: https://www.kugou.com/yy/song/detail/xxxxx
+      - button "离开房间" [ref=e219] [cursor=pointer]
+  - generic [ref=e348]:
+    - img [ref=e352]
+    - generic [ref=e355]:
+      - generic [ref=e356] [cursor=pointer]:
+        - generic [ref=e357]: 晴天
+        - generic [ref=e358]: 周杰伦
+      - generic [ref=e359]:
+        - generic [ref=e360]: 0:00
+        - slider [ref=e362] [cursor=pointer]: "0"
+        - generic [ref=e364]: 4:29
+    - generic [ref=e365]:
+      - button "上一首" [ref=e366] [cursor=pointer]:
+        - img [ref=e367]
+      - button "暂停" [ref=e389] [cursor=pointer]:
+        - img [ref=e390]
+      - button "下一首" [ref=e372] [cursor=pointer]:
+        - img [ref=e373]
+    - generic [ref=e375]:
+      - button "静音" [ref=e376] [cursor=pointer]:
+        - img [ref=e377]
+      - slider [ref=e382] [cursor=pointer]: "80"

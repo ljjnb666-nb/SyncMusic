@@ -1,0 +1,163 @@
+- generic [ref=e59]:
+  - banner [ref=e60]:
+    - button [ref=e61] [cursor=pointer]:
+      - img [ref=e62]
+    - generic [ref=e64]:
+      - heading "完整测试" [level=1] [ref=e65]
+      - paragraph [ref=e66]: "房间号: oCRu18Uvpr"
+    - button [ref=e67] [cursor=pointer]:
+      - img [ref=e68]
+  - generic [ref=e72]:
+    - img [ref=e73]
+    - text: 你现在是房主
+  - generic [ref=e76]:
+    - generic [ref=e77]:
+      - heading "参与者" [level=3] [ref=e78]
+      - generic [ref=e79]: "1"
+    - list [ref=e80]:
+      - listitem [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]: Guest3535
+          - generic [ref=e84]: 房主
+          - generic [ref=e85]: 你
+  - generic [ref=e87]:
+    - img [ref=e88]
+    - paragraph [ref=e91]: 暂无音乐播放
+    - generic [ref=e93]:
+      - button "导入本地音乐" [ref=e94] [cursor=pointer]:
+        - img [ref=e95]
+        - text: 导入本地音乐
+      - generic [ref=e98]: 支持 mp3 / flac / m4a / wav
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - heading "输入音乐链接" [level=2] [ref=e103]:
+          - img [ref=e104]
+          - text: 输入音乐链接
+        - generic [ref=e107]:
+          - textbox "输入QQ音乐/网易云/酷狗音乐链接..." [ref=e108]
+          - combobox [ref=e109] [cursor=pointer]:
+            - option "128K MP3"
+            - option "320K MP3" [selected]
+            - option "FLAC 无损"
+            - option "Hi-Res 最高音质"
+        - generic [ref=e110]:
+          - button "解析" [ref=e111] [cursor=pointer]:
+            - img [ref=e112]
+            - generic [ref=e115]: 解析
+          - button "下载" [disabled] [ref=e116]:
+            - img [ref=e117]
+            - generic [ref=e120]: 下载
+      - generic [ref=e121]:
+        - heading "歌单解析" [level=2] [ref=e122]:
+          - img [ref=e123]
+          - text: 歌单解析
+        - generic [ref=e125]:
+          - textbox "输入QQ音乐/网易云/酷狗音乐歌单链接..." [ref=e126]
+          - button "解析歌单" [ref=e127] [cursor=pointer]:
+            - img [ref=e128]
+            - generic [ref=e131]: 解析歌单
+      - generic [ref=e132]:
+        - heading "搜索音乐" [level=2] [ref=e133]:
+          - img [ref=e134]
+          - text: 搜索音乐
+        - generic [ref=e137]:
+          - textbox "输入歌曲名或歌手..." [ref=e138]: 周杰伦 稻香
+          - button "搜索" [ref=e139] [cursor=pointer]:
+            - img [ref=e158]
+            - generic [ref=e161]: 搜索
+        - generic [ref=e162]:
+          - generic [ref=e163]:
+            - img [ref=e165]
+            - generic:
+              - paragraph: 稻香
+              - paragraph: 周杰伦 • 酷狗
+            - generic [ref=e167]:
+              - button "收藏" [ref=e168] [cursor=pointer]:
+                - img [ref=e169]
+              - button "下载中" [disabled] [ref=e258]:
+                - img [ref=e259]
+                - generic [ref=e261]: 下载中
+              - button "添加" [ref=e175] [cursor=pointer]:
+                - img [ref=e176]
+                - generic [ref=e177]: 添加
+              - button [ref=e178] [cursor=pointer]:
+                - img [ref=e179]
+          - generic [ref=e182]:
+            - img [ref=e184]
+            - generic:
+              - paragraph: 稻香 (2018 CCTV-15音乐频道精彩音乐汇现场)
+              - paragraph: 周杰伦 • 酷狗
+            - generic [ref=e186]:
+              - button "收藏" [ref=e187] [cursor=pointer]:
+                - img [ref=e188]
+              - button "下载中" [disabled] [ref=e262]:
+                - img [ref=e263]
+                - generic [ref=e265]: 下载中
+              - button "添加" [ref=e194] [cursor=pointer]:
+                - img [ref=e195]
+                - generic [ref=e196]: 添加
+              - button [ref=e197] [cursor=pointer]:
+                - img [ref=e198]
+          - generic [ref=e201]:
+            - img [ref=e203]
+            - generic:
+              - paragraph: 稻香 (3D环绕版)
+              - paragraph: 周杰伦 • 酷狗
+            - generic [ref=e205]:
+              - button "收藏" [ref=e206] [cursor=pointer]:
+                - img [ref=e207]
+              - button "下载中" [disabled] [ref=e266]:
+                - img [ref=e267]
+                - generic [ref=e269]: 下载中
+              - button "添加" [ref=e213] [cursor=pointer]:
+                - img [ref=e214]
+                - generic [ref=e215]: 添加
+              - button [ref=e216] [cursor=pointer]:
+                - img [ref=e217]
+          - generic [ref=e220]:
+            - img [ref=e222]
+            - generic:
+              - paragraph: 稻香 (Live)
+              - paragraph: 周杰伦 • 酷狗
+            - generic [ref=e224]:
+              - button "收藏" [ref=e225] [cursor=pointer]:
+                - img [ref=e226]
+              - button "下载中" [disabled] [ref=e270]:
+                - img [ref=e271]
+                - generic [ref=e273]: 下载中
+              - button "添加" [ref=e232] [cursor=pointer]:
+                - img [ref=e233]
+                - generic [ref=e234]: 添加
+              - button [ref=e235] [cursor=pointer]:
+                - img [ref=e236]
+          - generic [ref=e239]:
+            - img [ref=e241]
+            - generic:
+              - paragraph: 青花瓷
+              - paragraph: 周杰伦 • 酷狗
+            - generic [ref=e243]:
+              - button "收藏" [ref=e244] [cursor=pointer]:
+                - img [ref=e245]
+              - button "下载中" [disabled] [ref=e274]:
+                - img [ref=e275]
+                - generic [ref=e277]: 下载中
+              - button "添加" [ref=e251] [cursor=pointer]:
+                - img [ref=e252]
+                - generic [ref=e253]: 添加
+              - button [ref=e254] [cursor=pointer]:
+                - img [ref=e255]
+      - generic [ref=e144]:
+        - heading "支持的链接格式" [level=2] [ref=e145]:
+          - img [ref=e146]
+          - text: 支持的链接格式
+        - list [ref=e150]:
+          - listitem [ref=e151]:
+            - generic [ref=e152]: 网易云
+            - text: https://music.163.com/song?id=347230
+          - listitem [ref=e153]:
+            - generic [ref=e154]: QQ
+            - text: https://y.qq.com/n/ryms/song/001Qu4vt2xurZd
+          - listitem [ref=e155]:
+            - generic [ref=e156]: 酷狗
+            - text: https://www.kugou.com/yy/song/detail/xxxxx
+  - button "离开房间" [ref=e157] [cursor=pointer]

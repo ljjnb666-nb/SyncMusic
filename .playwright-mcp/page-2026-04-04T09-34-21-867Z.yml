@@ -1,0 +1,14 @@
+- generic [ref=e3]:
+  - generic [ref=e4]: "[plugin:vite:vue] Invalid end tag."
+  - generic [ref=e5]: C:/Users/LJJ2004/所有项目/内容创作/content-cross/frontend/src/views/Sources.vue:268:17
+  - generic [ref=e6]: "266 | ></span> 267 | {{ source.enabled ? '启用' : '禁用' }} 268 | </span> | ^ 269 | </td> 270 | <td class=\"px-6 py-4 text-right\">"
+  - generic [ref=e7]: at createCompilerError (C:\Users\LJJ2004\所有项目\内容创作\content-cross\frontend\node_modules\@vue\compiler-core\dist\compiler-core.cjs.js:1378:17) at emitError (C:\Users\LJJ2004\所有项目\内容创作\content-cross\frontend\node_modules\@vue\compiler-core\dist\compiler-core.cjs.js:3014:5) at Object.onclosetag (C:\Users\LJJ2004\所有项目\内容创作\content-cross\frontend\node_modules\@vue\compiler-core\dist\compiler-core.cjs.js:2391:9) at Tokenizer.stateInClosingTagName (C:\Users\LJJ2004\所有项目\内容创作\content-cross\frontend\node_modules\@vue\compiler-core\dist\compiler-core.cjs.js:799:16) at Tokenizer.parse (C:\Users\LJJ2004\所有项目\内容创作\content-cross\frontend\node_modules\@vue\compiler-core\dist\compiler-core.cjs.js:1157:16) at Object.baseParse (C:\Users\LJJ2004\所有项目\内容创作\content-cross\frontend\node_modules\@vue\compiler-core\dist\compiler-core.cjs.js:3053:13) at Object.parse (C:\Users\LJJ2004\所有项目\内容创作\content-cross\frontend\node_modules\@vue\compiler-dom\dist\compiler-dom.cjs.js:910:23) at Object.parse$1 [as parse] (C:\Users\LJJ2004\所有项目\内容创作\content-cross\frontend\node_modules\@vue\compiler-sfc\dist\compiler-sfc.cjs.js:1824:24) at createDescriptor (file:///C:/Users/LJJ2004/%E6%89%80%E6%9C%89%E9%A1%B9%E7%9B%AE/%E5%86%85%E5%AE%B9%E5%88%9B%E4%BD%9C/content-cross/frontend/node_modules/@vitejs/plugin-vue/dist/index.mjs:54:42) at handleHotUpdate (file:///C:/Users/LJJ2004/%E6%89%80%E6%9C%89%E9%A1%B9%E7%9B%AE/%E5%86%85%E5%AE%B9%E5%88%9B%E4%BD%9C/content-cross/frontend/node_modules/@vitejs/plugin-vue/dist/index.mjs:1162:25)
+  - generic [ref=e8]:
+    - text: Click outside, press Esc key, or fix the code to dismiss.
+    - text: You can also disable this overlay by setting
+    - code [ref=e9]: server.hmr.overlay
+    - text: to
+    - code [ref=e10]: "false"
+    - text: in
+    - code [ref=e11]: vite.config.js
+    - text: .

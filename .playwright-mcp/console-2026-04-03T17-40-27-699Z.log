@@ -1,0 +1,7 @@
+[   10380ms] [LOG] refs: {} @ :6
+[   10380ms] [LOG] AudioPlayer: undefined @ :9
+[   10380ms] [LOG]  @ :23
+[   85936ms] [LOG] audioSrc: undefined @ :5
+[   85936ms] [LOG] hasAudioSrc: undefined @ :6
+[  150475ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3000/@vite/client:559
+[  152849ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/:0

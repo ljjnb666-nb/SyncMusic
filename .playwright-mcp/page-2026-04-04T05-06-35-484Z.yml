@@ -1,0 +1,79 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [active] [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e145]:
+      - generic [ref=e147]:
+        - img [ref=e148]
+        - textbox "搜索歌曲、歌手或专辑..." [ref=e151]
+      - generic [ref=e152]:
+        - heading "链接解析" [level=3] [ref=e153]:
+          - img [ref=e154]
+          - text: 链接解析
+        - generic [ref=e157]:
+          - textbox "输入QQ音乐/网易云/酷狗链接..." [ref=e158]
+          - button "解析" [ref=e159] [cursor=pointer]
+      - generic [ref=e160]:
+        - heading "歌单解析" [level=3] [ref=e161]:
+          - img [ref=e162]
+          - text: 歌单解析
+        - generic [ref=e163]:
+          - textbox "输入歌单链接..." [ref=e164]
+          - button "解析歌单" [ref=e165] [cursor=pointer]
+      - generic [ref=e167]:
+        - img [ref=e168]
+        - paragraph [ref=e171]: 搜索你喜欢的音乐
+        - generic [ref=e172]: 输入关键词开始搜索
+  - generic [ref=e108]:
+    - img [ref=e112]
+    - generic [ref=e115]:
+      - generic [ref=e116] [cursor=pointer]:
+        - generic [ref=e117]: Courage
+        - generic [ref=e118]: Capo Productions
+      - generic [ref=e119]:
+        - generic [ref=e120]: 0:00
+        - slider [ref=e122] [cursor=pointer]: "0"
+        - generic [ref=e124]: 2:03
+    - generic [ref=e125]:
+      - button "上一首" [ref=e126] [cursor=pointer]:
+        - img [ref=e127]
+      - button "播放" [ref=e129] [cursor=pointer]:
+        - img [ref=e130]
+      - button "下一首" [ref=e132] [cursor=pointer]:
+        - img [ref=e133]
+    - generic [ref=e135]:
+      - button "静音" [ref=e136] [cursor=pointer]:
+        - img [ref=e137]
+      - slider [ref=e142] [cursor=pointer]: "80"

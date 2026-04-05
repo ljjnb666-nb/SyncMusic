@@ -1,0 +1,89 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [active] [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e435]:
+      - generic [ref=e438]:
+        - img [ref=e439]
+        - heading "SyncMusic" [level=1] [ref=e443]
+        - generic [ref=e444]: 一起听
+      - generic [ref=e445]:
+        - generic [ref=e446]:
+          - heading "加入房间" [level=2] [ref=e447]
+          - paragraph [ref=e448]: 输入房间号，与朋友一起听歌
+        - generic [ref=e449]:
+          - textbox "输入房间号" [ref=e451]
+          - button "加入房间" [disabled] [ref=e452]
+      - generic [ref=e453]:
+        - generic [ref=e454]:
+          - heading "创建房间" [level=2] [ref=e455]
+          - paragraph [ref=e456]: 创建一个新房间，邀请朋友一起听音乐
+        - generic [ref=e457]:
+          - textbox "输入房间名称" [ref=e459]
+          - button "创建房间" [disabled] [ref=e460]
+      - generic [ref=e461]:
+        - generic [ref=e462]:
+          - img [ref=e464]
+          - heading "邀请朋友" [level=3] [ref=e469]
+          - paragraph [ref=e470]: 创建房间后分享链接即可邀请朋友加入
+        - generic [ref=e471]:
+          - img [ref=e473]
+          - heading "同步播放" [level=3] [ref=e477]
+          - paragraph [ref=e478]: 房主控制播放，所有人同步收听
+        - generic [ref=e479]:
+          - img [ref=e481]
+          - heading "音乐解析" [level=3] [ref=e484]
+          - paragraph [ref=e485]: 支持QQ音乐、网易云、酷狗链接解析
+  - generic [ref=e348]:
+    - img [ref=e352]
+    - generic [ref=e355]:
+      - generic [ref=e356] [cursor=pointer]:
+        - generic [ref=e357]: 晴天
+        - generic [ref=e358]: 周杰伦
+      - generic [ref=e359]:
+        - generic [ref=e360]: 0:00
+        - slider [ref=e362] [cursor=pointer]: "0"
+        - generic [ref=e364]: 4:29
+    - generic [ref=e365]:
+      - button "上一首" [ref=e366] [cursor=pointer]:
+        - img [ref=e367]
+      - button "暂停" [ref=e389] [cursor=pointer]:
+        - img [ref=e390]
+      - button "下一首" [ref=e372] [cursor=pointer]:
+        - img [ref=e373]
+    - generic [ref=e375]:
+      - button "静音" [ref=e376] [cursor=pointer]:
+        - img [ref=e377]
+      - slider [ref=e382] [cursor=pointer]: "80"

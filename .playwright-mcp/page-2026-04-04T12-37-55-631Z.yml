@@ -1,0 +1,100 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "SyncMusic" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]: SyncMusic
+      - generic [ref=e12]:
+        - link "发现" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+          - generic [ref=e17]: 发现
+        - link "搜索" [ref=e18] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e19]
+          - generic [ref=e22]: 搜索
+        - link "收藏" [ref=e23] [cursor=pointer]:
+          - /url: /favorites
+          - img [ref=e24]
+          - generic [ref=e26]: 收藏
+        - link "历史" [ref=e27] [cursor=pointer]:
+          - /url: /history
+          - img [ref=e28]
+          - generic [ref=e31]: 历史
+        - link "歌单" [active] [ref=e32] [cursor=pointer]:
+          - /url: /playlist
+          - img [ref=e33]
+          - generic [ref=e34]: 歌单
+        - link "下载" [ref=e35] [cursor=pointer]:
+          - /url: /downloads
+          - img [ref=e36]
+          - generic [ref=e39]: 下载
+      - button "一起听" [ref=e41] [cursor=pointer]:
+        - img [ref=e42]
+        - generic [ref=e47]: 一起听
+  - main [ref=e48]:
+    - generic [ref=e139]:
+      - generic [ref=e140]:
+        - heading "歌单" [level=1] [ref=e141]:
+          - img [ref=e142]
+          - generic [ref=e144]: 歌单
+        - button "清空" [ref=e146] [cursor=pointer]:
+          - img [ref=e147]
+          - generic [ref=e150]: 清空
+      - generic [ref=e151]:
+        - generic [ref=e152]:
+          - heading "本地音乐" [level=2] [ref=e153]:
+            - img [ref=e154]
+            - generic [ref=e156]: 本地音乐
+          - button "导入" [ref=e157] [cursor=pointer]:
+            - img [ref=e158]
+            - generic [ref=e161]: 导入
+        - generic [ref=e162]:
+          - textbox "输入音乐文件夹路径，如 D:\\Music" [ref=e163]
+          - button "加载" [ref=e164] [cursor=pointer]:
+            - img [ref=e165]
+            - generic [ref=e169]: 加载
+        - paragraph [ref=e170]: 支持 mp3 / flac / m4a
+        - generic [ref=e171]:
+          - img [ref=e172]
+          - paragraph [ref=e176]: 暂无本地音乐
+      - generic [ref=e177]:
+        - heading "播放列表 (1 首)" [level=2] [ref=e179]:
+          - img [ref=e180]
+          - generic [ref=e182]: 播放列表
+          - generic [ref=e183]: (1 首)
+        - generic [ref=e186] [cursor=pointer]:
+          - generic [ref=e187]:
+            - generic [ref=e188]: "1"
+            - img [ref=e189]
+          - generic [ref=e191]:
+            - generic [ref=e192]: Breathe
+            - generic [ref=e193]: Capo Productions
+          - generic [ref=e194]: 2:05
+          - generic [ref=e195]:
+            - button "取消收藏" [ref=e196]:
+              - img [ref=e197]
+            - button "移除" [ref=e199]:
+              - img [ref=e200]
+  - generic [ref=e102]:
+    - img [ref=e106]
+    - generic [ref=e109]:
+      - generic [ref=e110] [cursor=pointer]:
+        - generic [ref=e111]: Breathe
+        - generic [ref=e112]: Capo Productions
+      - generic [ref=e113]:
+        - generic [ref=e114]: 0:00
+        - slider [ref=e116] [cursor=pointer]: "0"
+        - generic [ref=e118]: 2:05
+    - generic [ref=e119]:
+      - button "上一首" [ref=e120] [cursor=pointer]:
+        - img [ref=e121]
+      - button "播放" [ref=e123] [cursor=pointer]:
+        - img [ref=e124]
+      - button "下一首" [ref=e126] [cursor=pointer]:
+        - img [ref=e127]
+    - generic [ref=e129]:
+      - button "静音" [ref=e130] [cursor=pointer]:
+        - img [ref=e131]
+      - slider [ref=e136] [cursor=pointer]: "80"

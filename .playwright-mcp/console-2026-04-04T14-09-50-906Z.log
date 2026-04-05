@@ -1,0 +1,4 @@
+[      46ms] [WARNING] [Vue Router warn]: No match found for location with path "/room" @ http://localhost:3000/node_modules/.vite/deps/vue-router.js?v=bba82083:51
+[   83920ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:45
+[   83920ms] [ERROR] Play error: NotSupportedError: Failed to load because no supported source was found. @ http://localhost:3000/src/components/AudioPlayer.vue:88
+[  388468ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/api/rooms/X-uvitzev6:0

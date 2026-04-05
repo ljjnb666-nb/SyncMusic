@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1775050524131,
+  "lastScanned": 1775324159957,
   "projectRoot": "C:\\Users\\LJJ2004\\所有项目\\SyncMusic",
   "techStack": {
     "languages": [],
@@ -28,8 +28,207 @@
     "gitBranches": null
   },
   "customNotes": [],
-  "directoryMap": {},
+  "directoryMap": {
+    "backend": {
+      "path": "backend",
+      "purpose": null,
+      "fileCount": 9,
+      "lastAccessed": 1775324159942,
+      "keyFiles": [
+        "Dockerfile",
+        "exec-ytdl.cjs",
+        "package-lock.json",
+        "package.json",
+        "test-spawn.cjs"
+      ]
+    },
+    "data": {
+      "path": "data",
+      "purpose": "Data files",
+      "fileCount": 7,
+      "lastAccessed": 1775324159942,
+      "keyFiles": [
+        "favorites.json",
+        "history.json",
+        "rooms.json",
+        "syncmusic.db",
+        "syncmusic.db-shm"
+      ]
+    },
+    "downloads": {
+      "path": "downloads",
+      "purpose": null,
+      "fileCount": 15,
+      "lastAccessed": 1775324159942,
+      "keyFiles": [
+        "Adele - Hello (Official Music Video) [YQHsXMglC9A].mp3",
+        "Capo Productions - Aurora.mp3",
+        "Capo Productions - Beautiful Revenge.mp3",
+        "Capo Productions - Breathe.mp3",
+        "Capo Productions - Cast Away.mp3"
+      ]
+    },
+    "frontend": {
+      "path": "frontend",
+      "purpose": null,
+      "fileCount": 8,
+      "lastAccessed": 1775324159942,
+      "keyFiles": [
+        "Dockerfile",
+        "index.html",
+        "nginx.conf",
+        "package-lock.json",
+        "package.json"
+      ]
+    },
+    "backend\\node_modules": {
+      "path": "backend\\node_modules",
+      "purpose": "Dependencies",
+      "fileCount": 1,
+      "lastAccessed": 1775324159943,
+      "keyFiles": []
+    },
+    "backend\\src": {
+      "path": "backend\\src",
+      "purpose": "Source code",
+      "fileCount": 2,
+      "lastAccessed": 1775324159943,
+      "keyFiles": [
+        "db.js",
+        "index.js"
+      ]
+    },
+    "frontend\\dist": {
+      "path": "frontend\\dist",
+      "purpose": "Distribution/build output",
+      "fileCount": 1,
+      "lastAccessed": 1775324159945,
+      "keyFiles": [
+        "index.html"
+      ]
+    },
+    "frontend\\node_modules": {
+      "path": "frontend\\node_modules",
+      "purpose": "Dependencies",
+      "fileCount": 1,
+      "lastAccessed": 1775324159945,
+      "keyFiles": []
+    },
+    "frontend\\src": {
+      "path": "frontend\\src",
+      "purpose": "Source code",
+      "fileCount": 3,
+      "lastAccessed": 1775324159946,
+      "keyFiles": [
+        "App.vue",
+        "main.js",
+        "style.css"
+      ]
+    }
+  },
   "hotPaths": [
+    {
+      "path": "frontend\\src\\views\\Room.vue",
+      "accessCount": 181,
+      "lastAccessed": 1775384384736,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\routes\\music.js",
+      "accessCount": 91,
+      "lastAccessed": 1775314397212,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\stores\\room.js",
+      "accessCount": 42,
+      "lastAccessed": 1775377576230,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\socket\\handlers.js",
+      "accessCount": 38,
+      "lastAccessed": 1775377515819,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\socket\\client.js",
+      "accessCount": 28,
+      "lastAccessed": 1775324690978,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\index.js",
+      "accessCount": 27,
+      "lastAccessed": 1775324682624,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\stores\\player.js",
+      "accessCount": 25,
+      "lastAccessed": 1775377587588,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\components\\MusicParser.vue",
+      "accessCount": 23,
+      "lastAccessed": 1775384246184,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src",
+      "accessCount": 19,
+      "lastAccessed": 1775324832872,
+      "type": "directory"
+    },
+    {
+      "path": "backend\\src\\services\\roomService.js",
+      "accessCount": 17,
+      "lastAccessed": 1775314634733,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\components\\AudioPlayer.vue",
+      "accessCount": 17,
+      "lastAccessed": 1775379022170,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\routes\\room.js",
+      "accessCount": 16,
+      "lastAccessed": 1775321056931,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\views\\Home.vue",
+      "accessCount": 16,
+      "lastAccessed": 1775324240344,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\utils\\session.js",
+      "accessCount": 13,
+      "lastAccessed": 1775320547871,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\api\\music.js",
+      "accessCount": 12,
+      "lastAccessed": 1775314196217,
+      "type": "file"
+    },
+    {
+      "path": ".planning\\STATE.md",
+      "accessCount": 12,
+      "lastAccessed": 1775324218667,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\App.vue",
+      "accessCount": 11,
+      "lastAccessed": 1775384214377,
+      "type": "file"
+    },
     {
       "path": ".planning\\PROJECT.md",
       "accessCount": 10,
@@ -38,8 +237,8 @@
     },
     {
       "path": ".planning\\ROADMAP.md",
-      "accessCount": 9,
-      "lastAccessed": 1775055016906,
+      "accessCount": 10,
+      "lastAccessed": 1775139995136,
       "type": "file"
     },
     {
@@ -49,27 +248,27 @@
       "type": "file"
     },
     {
-      "path": ".planning\\STATE.md",
+      "path": "backend\\src\\db.js",
       "accessCount": 9,
-      "lastAccessed": 1775055089990,
+      "lastAccessed": 1775137999305,
       "type": "file"
     },
     {
-      "path": "frontend\\src\\socket\\client.js",
+      "path": "",
+      "accessCount": 9,
+      "lastAccessed": 1775140744647,
+      "type": "directory"
+    },
+    {
+      "path": "frontend\\src\\api\\room.js",
       "accessCount": 8,
-      "lastAccessed": 1775065144272,
+      "lastAccessed": 1775324691268,
       "type": "file"
     },
     {
       "path": ".planning\\research\\ARCHITECTURE.md",
       "accessCount": 7,
       "lastAccessed": 1775053640314,
-      "type": "file"
-    },
-    {
-      "path": "frontend\\src\\views\\Home.vue",
-      "accessCount": 7,
-      "lastAccessed": 1775064398622,
       "type": "file"
     },
     {
@@ -91,57 +290,27 @@
       "type": "file"
     },
     {
-      "path": "frontend\\src\\utils\\session.js",
-      "accessCount": 6,
-      "lastAccessed": 1775060989248,
-      "type": "file"
-    },
-    {
-      "path": "frontend\\src\\views\\Room.vue",
-      "accessCount": 6,
-      "lastAccessed": 1775064564673,
-      "type": "file"
-    },
-    {
-      "path": "frontend\\src\\stores\\room.js",
-      "accessCount": 6,
-      "lastAccessed": 1775065056283,
-      "type": "file"
-    },
-    {
-      "path": "frontend\\src\\api\\room.js",
+      "path": ".planning\\research\\SUMMARY.md",
       "accessCount": 5,
-      "lastAccessed": 1775064541588,
-      "type": "file"
-    },
-    {
-      "path": "backend\\src\\socket\\handlers.js",
-      "accessCount": 5,
-      "lastAccessed": 1775065128664,
-      "type": "file"
-    },
-    {
-      "path": "backend\\src\\services\\roomService.js",
-      "accessCount": 5,
-      "lastAccessed": 1775065361094,
+      "lastAccessed": 1775108732022,
       "type": "file"
     },
     {
       "path": ".planning\\research\\PITFALLS.md",
-      "accessCount": 4,
-      "lastAccessed": 1775052075140,
+      "accessCount": 5,
+      "lastAccessed": 1775108732078,
       "type": "file"
     },
     {
-      "path": ".planning\\research\\SUMMARY.md",
-      "accessCount": 4,
-      "lastAccessed": 1775052193004,
+      "path": ".planning\\phases\\01-room-management\\01-03-PLAN.md",
+      "accessCount": 5,
+      "lastAccessed": 1775324224412,
       "type": "file"
     },
     {
-      "path": "backend\\src\\index.js",
-      "accessCount": 4,
-      "lastAccessed": 1775060933669,
+      "path": "frontend\\src\\router\\index.js",
+      "accessCount": 5,
+      "lastAccessed": 1775324240365,
       "type": "file"
     },
     {
@@ -152,8 +321,8 @@
     },
     {
       "path": ".planning\\research\\FEATURES.md",
-      "accessCount": 3,
-      "lastAccessed": 1775052075060,
+      "accessCount": 4,
+      "lastAccessed": 1775108731961,
       "type": "file"
     },
     {
@@ -169,28 +338,16 @@
       "type": "file"
     },
     {
-      "path": ".planning\\phases\\01-room-management\\01-03-PLAN.md",
-      "accessCount": 3,
-      "lastAccessed": 1775055089896,
-      "type": "file"
-    },
-    {
-      "path": "backend\\src\\routes\\room.js",
-      "accessCount": 3,
-      "lastAccessed": 1775060835475,
-      "type": "file"
-    },
-    {
       "path": "backend/src",
       "accessCount": 3,
       "lastAccessed": 1775065042702,
       "type": "directory"
     },
     {
-      "path": "",
-      "accessCount": 2,
-      "lastAccessed": 1775053650266,
-      "type": "directory"
+      "path": "frontend\\src\\components\\RoomPlayer.vue",
+      "accessCount": 3,
+      "lastAccessed": 1775138489170,
+      "type": "file"
     },
     {
       "path": "backend\\tests\\room.service.test.js",
@@ -211,9 +368,9 @@
       "type": "file"
     },
     {
-      "path": "frontend\\src\\App.vue",
+      "path": "frontend\\src\\components\\ParticipantList.vue",
       "accessCount": 2,
-      "lastAccessed": 1775055361375,
+      "lastAccessed": 1775324240416,
       "type": "file"
     },
     {
@@ -221,12 +378,6 @@
       "accessCount": 1,
       "lastAccessed": 1775052802753,
       "type": "directory"
-    },
-    {
-      "path": "backend\\src\\db.js",
-      "accessCount": 1,
-      "lastAccessed": 1775053719489,
-      "type": "file"
     },
     {
       "path": "backend\\src\\state\\roomManager.js",
@@ -253,22 +404,28 @@
       "type": "file"
     },
     {
-      "path": "frontend\\src\\router\\index.js",
-      "accessCount": 1,
-      "lastAccessed": 1775055330402,
-      "type": "file"
-    },
-    {
-      "path": "frontend\\src\\components\\ParticipantList.vue",
-      "accessCount": 1,
-      "lastAccessed": 1775055332077,
-      "type": "file"
-    },
-    {
       "path": "frontend/src/views/Home.vue",
       "accessCount": 1,
       "lastAccessed": 1775064394307,
       "type": "directory"
+    },
+    {
+      "path": "frontend\\tailwind.config.js",
+      "accessCount": 1,
+      "lastAccessed": 1775108714614,
+      "type": "file"
+    },
+    {
+      "path": "frontend\\src\\components\\FavoriteButton.vue",
+      "accessCount": 1,
+      "lastAccessed": 1775108729891,
+      "type": "file"
+    },
+    {
+      "path": "backend\\src\\services\\qqMusic.js",
+      "accessCount": 1,
+      "lastAccessed": 1775108764078,
+      "type": "file"
     }
   ],
   "userDirectives": []

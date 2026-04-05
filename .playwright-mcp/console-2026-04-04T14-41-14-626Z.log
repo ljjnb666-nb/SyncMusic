@@ -1,0 +1,9 @@
+[   93934ms] [ERROR] 导入音乐失败: AxiosError: Network Error
+    at XMLHttpRequest.handleError (http://localhost:3000/node_modules/.vite/deps/axios.js?v=bba82083:1717:19)
+    at Axios.request (http://localhost:3000/node_modules/.vite/deps/axios.js?v=bba82083:2328:41)
+    at async uploadMusicFiles (http://localhost:3000/src/api/music.js:72:20)
+    at async handleLocalFileImport (http://localhost:3000/src/views/Room.vue?t=1775312179179:147:20) @ http://localhost:3000/src/views/Room.vue?t=1775312179179:161
+[   93935ms] [ERROR] Failed to load resource: net::ERR_UPLOAD_FILE_CHANGED @ http://localhost:3000/api/music/upload:0
+[  172036ms] [LOG] Socket-related keys: [location, navigation, locationbar, devicePixelRatio, clientInformation, ondurationchange, onsecuritypolicyviolation, onwebkitanimationend, onwebkitanimationiteration, onwebkitanimationstart, onwebkittransitionend, onselectionchange, onanimationcancel, onanimationend, onanimationiteration, onanimationstart, ontransitionrun, ontransitionstart, ontransitionend, ontransitioncancel, onrejectionhandled, onunhandledrejection, sessionStorage, cancelAnimationFrame, getSelection, requestAnimationFrame, webkitCancelAnimationFrame, webkitRequestAnimationFrame, ondevicemotion, ondeviceorientation, ondeviceorientationabsolute] @ :3
+[  203147ms] [LOG] app keys: [__vue_app__] @ :5
+[  203147ms] [LOG] pinia exposed: false @ :10

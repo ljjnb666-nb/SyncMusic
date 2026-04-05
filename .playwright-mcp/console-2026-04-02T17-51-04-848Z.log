@@ -1,0 +1,11 @@
+[   51167ms] [WARNING] [Vue warn]: Unhandled error during execution of native event handler 
+  at <Room onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2203
+[   51177ms] TypeError: playerStore.changeSong is not a function
+    at Proxy.addLocalToPlaylist (http://localhost:3000/src/views/Room.vue?t=1775151398015:183:17)
+    at onClick (http://localhost:3000/src/views/Room.vue?t=1775151398015:695:68)
+    at callWithErrorHandling (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2351:19)
+    at callWithAsyncErrorHandling (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:2358:17)
+    at HTMLButtonElement.invoker (http://localhost:3000/node_modules/.vite/deps/chunk-4VAHRDA3.js?v=6a9fb59f:11519:5)
+[   80540ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/api/rooms/XPZXRLZ9TA:0
