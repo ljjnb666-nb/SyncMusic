@@ -48,6 +48,13 @@ export const useRoomStore = defineStore('room', () => {
         playerStore.setPlaylist([room.currentTrack])
         playerStore.setCurrentIndex(0)
       }
+      // Seek guest to correct position and play/pause to sync with host
+      if (audioPlayerRef.value) {
+        syncGuestPlayback(room)
+      } else {
+        // audioPlayerRef not ready yet, save for later
+        pendingRoomState = room
+      }
     }
   }
 
@@ -96,8 +103,43 @@ export const useRoomStore = defineStore('room', () => {
   // Initialize socket event bindings (call once)
   // audioPlayerRef should be set externally via setAudioPlayerRef
   let audioPlayerRef = null
+  // Track last received room state for deferred sync (when audioPlayerRef wasn't ready yet)
+  let pendingRoomState = null
+
   function setAudioPlayerRef(ref) {
     audioPlayerRef = ref
+    // If we have a pending room state (guest joined while audio wasn't ready), sync now
+    if (pendingRoomState && !isHost.value) {
+      syncGuestPlayback(pendingRoomState)
+      pendingRoomState = null
+    }
+  }
+
+  // Sync guest playback when room:state arrives
+  function syncGuestPlayback(room) {
+    if (!audioPlayerRef.value || isHost.value) return
+    const playerStore = usePlayerStore()
+    playerStore.setPlaying(room.isPlaying ?? false)
+    if (room.playlist && room.playlist.length > 0) {
+      playerStore.setPlaylist(room.playlist)
+      const idx = room.playlist.findIndex(t => t.id === room.currentTrack?.id)
+      playerStore.setCurrentIndex(idx >= 0 ? idx : 0)
+    } else if (room.currentTrack) {
+      playerStore.setPlaylist([room.currentTrack])
+      playerStore.setCurrentIndex(0)
+    }
+    // Seek and play/pause
+    const nowPlaying = room.isPlaying ?? false
+    const syncPosition = room.position ?? 0
+    const positionUpdatedAt = room.positionUpdatedAt ?? Date.now()
+    const elapsed = (Date.now() - positionUpdatedAt) / 1000
+    const livePosition = nowPlaying ? syncPosition + elapsed : syncPosition
+    audioPlayerRef.value.seek(livePosition)
+    if (nowPlaying) {
+      audioPlayerRef.value.play()
+    } else {
+      audioPlayerRef.value.pause()
+    }
   }
 
   function initSocket() {

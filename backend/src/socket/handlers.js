@@ -57,7 +57,14 @@ function handleJoin(io, socket, { roomId, username }) {
     socket.join(roomId)
 
     // Emit room:state to joining user (FULL room first)
-    socket.emit('room:state', room)
+    // Include playback state explicitly so guests can sync even when room is reconstructed from DB
+    socket.emit('room:state', {
+      ...room,
+      isPlaying: room.isPlaying,
+      position: room.position,
+      positionUpdatedAt: room.positionUpdatedAt,
+      playlist: room.playlist || []
+    })
 
     // Emit room:join to others
     socket.to(roomId).emit('room:join', { userId, username: participant.username })
@@ -68,11 +75,28 @@ function handleJoin(io, socket, { roomId, username }) {
 }
 
 function handlePlay(io, socket, { roomId, track, position, timestamp }) {
-  socket.to(roomId).emit('playback:play', { track, position, timestamp })
+  // Update room state first
+  const room = RoomManager.get(roomId)
+  if (room) {
+    room.isPlaying = true
+    room.position = position
+    room.positionUpdatedAt = timestamp
+    if (track) room.currentTrack = track
+  }
+  // Broadcast to ALL room members (including host) so host triggers local playback
+  io.to(roomId).emit('playback:play', { track, position, timestamp })
 }
 
 function handlePause(io, socket, { roomId, position, timestamp }) {
-  socket.to(roomId).emit('playback:pause', { position, timestamp })
+  // Update room state first
+  const room = RoomManager.get(roomId)
+  if (room) {
+    room.isPlaying = false
+    room.position = position
+    room.positionUpdatedAt = timestamp
+  }
+  // Broadcast to ALL room members (including host) so host triggers local playback
+  io.to(roomId).emit('playback:pause', { position, timestamp })
 }
 
 function handleSeek(io, socket, { roomId, position, timestamp }) {
