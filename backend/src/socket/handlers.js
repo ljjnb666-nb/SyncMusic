@@ -2,7 +2,7 @@
 import { nanoid } from 'nanoid'
 import { RoomManager } from '../state/roomManager.js'
 import { getRoom, roomExists } from '../services/roomService.js'
-import { deleteRoom, addParticipant, removeParticipant } from '../db.js'
+import { deleteRoom, addParticipant, removeParticipant, savePlaylist } from '../db.js'
 import { normalizeTrackPath, normalizePlaylist } from '../routes/music.js'
 
 function handleJoin(io, socket, { roomId, username }) {
@@ -120,7 +120,11 @@ function handleNext(io, socket, { roomId }) {
 function handleRoomUpdate(io, socket, { roomId, playlist, currentTrack }) {
   const room = RoomManager.get(roomId)
   if (!room) return
-  if (playlist !== undefined) room.playlist = playlist
+  if (playlist !== undefined) {
+    room.playlist = playlist
+    // Persist playlist to DB so it survives server restarts
+    savePlaylist(roomId, playlist)
+  }
   if (currentTrack !== undefined) room.currentTrack = currentTrack
   socket.to(roomId).emit('room:update', { playlist: normalizePlaylist(room.playlist), currentTrack: normalizeTrackPath(room.currentTrack) })
 }

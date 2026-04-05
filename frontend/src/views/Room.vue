@@ -389,9 +389,12 @@ function emitPlay() {
 function emitPause() {
   const sock = getSocketInstance()
   if (!roomStore.isHost) return
+  // Read position directly from audio element to ensure accurate position at pause time
+  const audio = audioPlayerRef.value?.audioPlayer
+  const pausePosition = audio ? audio.currentTime : currentTime.value
   sock.emit('playback:pause', {
     roomId: roomId.value,
-    position: currentTime.value,
+    position: pausePosition,
     timestamp: Date.now()
   })
 }

@@ -1,7 +1,7 @@
 // RoomService - Room creation and management
 import { nanoid } from 'nanoid'
 import { RoomManager } from '../state/roomManager.js'
-import { createRoom as dbCreateRoom, getRoom as dbGetRoom, roomExists as dbRoomExists, addParticipant as dbAddParticipant, getParticipants as dbGetParticipants, removeParticipant as dbRemoveParticipant, clearParticipants as dbClearParticipants } from '../db.js'
+import { createRoom as dbCreateRoom, getRoom as dbGetRoom, roomExists as dbRoomExists, addParticipant as dbAddParticipant, getParticipants as dbGetParticipants, removeParticipant as dbRemoveParticipant, clearParticipants as dbClearParticipants, savePlaylist, getPlaylist } from '../db.js'
 
 function createRoom(name, hostId, hostUsername) {
   const roomId = nanoid(10)
@@ -53,7 +53,7 @@ function getRoom(roomId) {
       currentTrack: null,
       position: 0,
       positionUpdatedAt: Date.now(),
-      playlist: [],
+      playlist: getPlaylist(roomId),
       participants: dbParticipants.map(p => ({
         id: p.id,
         username: p.username,

@@ -26,7 +26,8 @@ db.exec(`
     id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
     host_id TEXT NOT NULL,
-    created_at INTEGER NOT NULL
+    created_at INTEGER NOT NULL,
+    playlist TEXT NOT NULL DEFAULT '[]'
   )
 `)
 
@@ -44,8 +45,24 @@ db.exec(`
 
 // Helper functions
 function createRoom(id, name, hostId) {
-  const stmt = db.prepare('INSERT INTO rooms (id, name, host_id, created_at) VALUES (?, ?, ?, ?)')
-  return stmt.run(id, name, hostId, Date.now())
+  const stmt = db.prepare('INSERT INTO rooms (id, name, host_id, created_at, playlist) VALUES (?, ?, ?, ?, ?)')
+  return stmt.run(id, name, hostId, Date.now(), '[]')
+}
+
+function savePlaylist(roomId, playlist) {
+  const stmt = db.prepare('UPDATE rooms SET playlist = ? WHERE id = ?')
+  return stmt.run(JSON.stringify(playlist), roomId)
+}
+
+function getPlaylist(roomId) {
+  const stmt = db.prepare('SELECT playlist FROM rooms WHERE id = ?')
+  const row = stmt.get(roomId)
+  if (!row) return []
+  try {
+    return JSON.parse(row.playlist)
+  } catch {
+    return []
+  }
 }
 
 function getRoom(id) {
@@ -83,4 +100,4 @@ function clearParticipants(roomId) {
   return stmt.run(roomId)
 }
 
-export { db, createRoom, getRoom, deleteRoom, roomExists, addParticipant, removeParticipant, getParticipants, clearParticipants }
+export { db, createRoom, getRoom, deleteRoom, roomExists, addParticipant, removeParticipant, getParticipants, clearParticipants, savePlaylist, getPlaylist }
