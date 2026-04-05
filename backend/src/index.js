@@ -25,6 +25,9 @@ app.use(express.json())
 function serveDownloadFile(req, res, prefix) {
   console.log(`[serveDownloadFile] ${prefix} ${req.path} params:`, req.params)
   const urlPath = req.params[0]
+  if (!urlPath) {
+    return res.status(400).send('Missing filename')
+  }
   // 双重解码，防止文件名含 % 被浏览器二次编码后无法解析；失败时降级到单次解码
   let filename
   try {
@@ -99,15 +102,16 @@ app.use('/api/favorites', favoritesRouter)
 app.use('/api/history', historyRouter)
 app.use('/api/auth', authRouter)
 
-// Regex routes: avoids Express router decodeURIComponent failure on filenames with %
-// Note: string routes cannot be used because Express router tries to decode path params,
-// and a bare % followed by non-hex chars (e.g., %O) throws URIError before the handler runs.
-// The regex route captures the raw path segment without triggering Express's decode.
-app.get(/^\/downloads\/(.*)$/, (req, res) => serveDownloadFile(req, res, '/downloads'))
-app.get('/downloads', (req, res) => res.redirect('/downloads/'))
-app.get(/^\/api\/downloads\/(.*)$/, (req, res) => serveDownloadFile(req, res, '/api/downloads'))
-app.get('/api/downloads', (req, res) => res.redirect('/api/downloads/'))
-app.get(/^\/local-music\/(.*)$/, (req, res) => serveLocalMusicFile(req, res))
+// String routes with * wildcard — Express handles these without pre-decoding the
+// path segment, so % in filenames works fine (frontend always encodes % to %25).
+// The music router's /downloads (no trailing /) serves the file list.
+app.get('/downloads/*', (req, res) => serveDownloadFile(req, res, '/downloads'))
+app.get('/downloads', (req, res) => {
+  // 透传到 music router 的 /downloads 列表接口
+  import('./routes/music.js').then(m => m.default.handle(req, res, () => {}))
+})
+app.get('/api/downloads/*', (req, res) => serveDownloadFile(req, res, '/api/downloads'))
+app.get('/local-music/*', (req, res) => serveLocalMusicFile(req, res))
 
 // 捕获 Express decode 错误（路由层 decodeURIComponent 失败）
 app.use((err, req, res, next) => {
