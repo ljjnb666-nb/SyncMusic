@@ -21,6 +21,12 @@ const DOWNLOAD_DIR = path.isAbsolute(process.env.DOWNLOAD_DIR || '')
   ? process.env.DOWNLOAD_DIR
   : path.join(process.cwd(), '..', process.env.DOWNLOAD_DIR || 'downloads')
 
+// 文件名安全化：替换所有会导致 URL 编码问题的字符
+function safeFilename(name) {
+  // 替换 % 以及其他所有 URL 特殊字符为空格或下划线
+  return name.replace(/%/g, '_').replace(/[<>:"/\\|?*]/g, '_').replace(/\s+/g, ' ').trim()
+}
+
 // 文件上传配置
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -28,7 +34,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     // 使用原文件名，移除特殊字符
-    const safeName = file.originalname.replace(/[<>:"/\\|?*]/g, '_')
+    const safeName = safeFilename(file.originalname)
     cb(null, safeName)
   }
 })
@@ -540,7 +546,13 @@ print(result.stderr, file=sys.stderr)
                       || stderr.match(/\[download\] (.+\.mp3) has already been downloaded/)
     if (alreadyMatch) {
       let filename = alreadyMatch[1].split(/[\\/]/).pop()
-      console.log('[browser-download] Already exists:', filename)
+      const safeName = safeFilename(filename)
+      console.log('[browser-download] Already exists:', filename, '-> safe:', safeName)
+      // 如果文件名含不安全字符，重命名文件
+      if (safeName !== filename && fs.existsSync(path.join(DOWNLOAD_DIR, filename))) {
+        fs.renameSync(path.join(DOWNLOAD_DIR, filename), path.join(DOWNLOAD_DIR, safeName))
+        filename = safeName
+      }
       res.json({ success: true, message: `已存在: ${filename}`, filename: filename })
       return
     }
@@ -553,7 +565,18 @@ print(result.stderr, file=sys.stderr)
       .sort((a, b) => b.mtime - a.mtime)
 
     if (newFiles.length > 0) {
-      res.json({ success: true, message: `下载成功: ${newFiles[0].name}`, filename: newFiles[0].name })
+      let filename = newFiles[0].name
+      const safeName = safeFilename(filename)
+      // 如果文件名含不安全字符，重命名文件
+      if (safeName !== filename) {
+        const oldPath = path.join(DOWNLOAD_DIR, filename)
+        const newPath = path.join(DOWNLOAD_DIR, safeName)
+        if (fs.existsSync(oldPath)) {
+          fs.renameSync(oldPath, newPath)
+          filename = safeName
+        }
+      }
+      res.json({ success: true, message: `下载成功: ${filename}`, filename: filename })
       return
     }
 
@@ -562,8 +585,18 @@ print(result.stderr, file=sys.stderr)
     if (destMatch) {
       let filename = destMatch[1]
       if (!filename.endsWith('.mp3')) filename += '.mp3'
+      const safeName = safeFilename(filename)
       const fullPath = path.join(DOWNLOAD_DIR, filename)
-      if (fs.existsSync(fullPath)) {
+      const safePath = path.join(DOWNLOAD_DIR, safeName)
+      // 如果文件名含不安全字符，重命名文件
+      if (safeName !== filename && fs.existsSync(fullPath)) {
+        fs.renameSync(fullPath, safePath)
+        filename = safeName
+      } else if (fs.existsSync(fullPath)) {
+        filename = safeName
+        fs.renameSync(fullPath, safePath)
+      }
+      if (fs.existsSync(safePath)) {
         res.json({ success: true, message: `下载成功: ${filename}`, filename: filename })
         return
       }

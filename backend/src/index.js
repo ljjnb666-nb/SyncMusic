@@ -25,7 +25,13 @@ app.use(express.json())
 function serveDownloadFile(req, res, prefix) {
   console.log(`[serveDownloadFile] ${prefix} ${req.path} params:`, req.params)
   const urlPath = req.params[0]
-  const filename = decodeURIComponent(urlPath)
+  // 双重解码，防止文件名含 % 被浏览器二次编码后无法解析；失败时降级到单次解码
+  let filename
+  try {
+    filename = decodeURIComponent(decodeURIComponent(urlPath))
+  } catch {
+    try { filename = decodeURIComponent(urlPath) } catch { filename = urlPath }
+  }
   const resolvedPath = path.resolve(DOWNLOAD_DIR, filename)
   console.log(`[serveDownloadFile] filename: ${filename} resolved: ${resolvedPath} exists: ${fs.existsSync(resolvedPath)}`)
 
@@ -51,7 +57,13 @@ function serveDownloadFile(req, res, prefix) {
 
 function serveLocalMusicFile(req, res) {
   const urlPath = req.params[0]
-  const filePath = decodeURIComponent(urlPath)
+  // 双重解码，防止文件名含 % 被浏览器二次编码后无法解析；失败时降级到单次解码
+  let filePath
+  try {
+    filePath = decodeURIComponent(decodeURIComponent(urlPath))
+  } catch {
+    try { filePath = decodeURIComponent(urlPath) } catch { filePath = urlPath }
+  }
 
   if (!fs.existsSync(filePath)) {
     return res.status(404).send('File not found')
@@ -81,6 +93,15 @@ app.get('/api/downloads/*', (req, res) => serveDownloadFile(req, res, '/api/down
 app.get('/api/downloads', (req, res) => res.redirect('/api/downloads/'))
 app.get('/local-music/*', (req, res) => serveLocalMusicFile(req, res))
 
+// 捕获 Express 路由层 decodeURIComponent 失败（如文件名含 % 导致解码异常）
+app.use((err, req, res, next) => {
+  if (err.message && err.message.includes('Failed to decode')) {
+    console.warn('[Express decode error]', err.message)
+    return res.status(400).json({ error: 'Invalid URL encoding' })
+  }
+  next(err)
+})
+
 import musicRouter from './routes/music.js'
 import roomRouter from './routes/room.js'
 import favoritesRouter from './routes/favorites.js'
@@ -93,8 +114,21 @@ app.use('/api/favorites', favoritesRouter)
 app.use('/api/history', historyRouter)
 app.use('/api/auth', authRouter)
 
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' })
+// 用正则路由避免 Express 路由层 decodeURIComponent 失败（文件名含 % 会导致解码异常）
+// 正则路由的 ? 在这里表示 "可选的 /"，避免路径参数被提前 decode
+app.get(/^\/downloads\/(.*)$/, (req, res) => serveDownloadFile(req, res, '/downloads'))
+app.get('/downloads', (req, res) => res.redirect('/downloads/'))
+app.get(/^\/api\/downloads\/(.*)$/, (req, res) => serveDownloadFile(req, res, '/api/downloads'))
+app.get('/api/downloads', (req, res) => res.redirect('/api/downloads/'))
+app.get(/^\/local-music\/(.*)$/, (req, res) => serveLocalMusicFile(req, res))
+
+// 捕获 Express decode 错误（路由层 decodeURIComponent 失败）
+app.use((err, req, res, next) => {
+  if (err instanceof URIError && err.message.includes('Failed to decode')) {
+    console.warn('[decode error]', err.message)
+    return res.status(400).json({ error: 'Invalid URL encoding' })
+  }
+  next(err)
 })
 
 // Socket.io connection handler

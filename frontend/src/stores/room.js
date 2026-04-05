@@ -180,7 +180,7 @@ export const useRoomStore = defineStore('room', () => {
           } else {
             targetSrc = `/downloads/${track.path}`
           }
-          // 如果 src 已经是目标 path，无需重新加载
+          // 如果 src 已经是目标 path，无需重新加载，直接尝试 seek+play
           if (src !== targetSrc) {
             audio.src = targetSrc
             audio.load()
@@ -191,16 +191,22 @@ export const useRoomStore = defineStore('room', () => {
             audioPlayerRef.value?.seek(pos + elapsed)
             audioPlayerRef.value?.play()
           }
-          audio.onloadedmetadata = doPlay
-          // 备用：1秒后直接播放（以防事件没触发）
+          // 如果 metadata 已加载，doPlay 会立即执行；否则等 metadata 事件
+          if (audio.readyState >= 1) {
+            // HAVE_CURRENT_DATA 或更好状态 — 直接 seek+play
+            doPlay()
+          } else {
+            audio.onloadedmetadata = doPlay
+          }
+          // 备用：300ms 后直接尝试播放（以防事件没触发，或 metadata 加载太慢）
           setTimeout(() => {
-            if (audioPlayerRef.value?.audioPlayer) {
+            if (audioPlayerRef.value?.audioPlayer && !audio.paused === false) {
               audio.onloadedmetadata = null
               const elapsed = (Date.now() - timestamp) / 1000
               audioPlayerRef.value?.seek(pos + elapsed)
               audioPlayerRef.value?.play()
             }
-          }, 1000)
+          }, 300)
         } else if (track && track.url) {
           // URL 类型（如 blobUrl，虽然 guest 不应该有 blobUrl）
           audio.src = track.url
