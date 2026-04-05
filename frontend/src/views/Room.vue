@@ -85,7 +85,7 @@
               <p class="track-artist">{{ playerStore.currentSong?.artist || '未知艺术家' }}</p>
             </div>
             <div class="player-controls">
-              <button v-if="roomStore.isHost" @click="togglePlay" class="play-btn">
+              <button @click="togglePlay" class="play-btn">
                 <svg v-if="!playerStore.isPlaying" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="5 3 19 12 5 21 5 3"/>
                 </svg>
@@ -94,9 +94,6 @@
                   <rect x="14" y="4" width="4" height="16"/>
                 </svg>
               </button>
-              <div v-else class="sync-badge" :class="playerStore.isPlaying ? 'playing' : 'paused'">
-                <span>{{ playerStore.isPlaying ? '同步播放中' : '已暂停' }}</span>
-              </div>
             </div>
           </div>
           <div class="progress-bar-container">
@@ -421,10 +418,14 @@ watch(() => roomStore.isPlaying, (playing) => {
   playerStore.setPlaying(playing)
 })
 
-// Watch for track changes
+// Watch for track changes — only reload when switching to a genuinely different track
 watch(() => roomStore.currentTrack, (track) => {
   if (!track || !audioPlayerRef.value) return
-  audioPlayerRef.value.load(currentTrackSrc.value)
+  const prev = audioPlayerRef.value.audioPlayer?.src || ''
+  const next = currentTrackSrc.value
+  if (prev !== next) {
+    audioPlayerRef.value.load(next)
+  }
 })
 
 onMounted(async () => {
